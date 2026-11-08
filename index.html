@@ -37,13 +37,43 @@
         .hero-sky-bg {
             background: linear-gradient(180deg, #D5E5EE 0%, #EAF2F6 45%, #F8FAFC 100%);
         }
+        /* Controle direto do Menu Lateral (100% compatível com celular) */
+        #menuBackdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 9998;
+        }
+        #menuBackdrop.open {
+            display: block;
+        }
+        #navDrawer {
+            position: fixed;
+            top: 0;
+            left: -340px;
+            width: 300px;
+            max-width: 85vw;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 9999;
+            transition: left 0.28s ease;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+        #navDrawer.open {
+            left: 0;
+        }
     </style>
 </head>
 <body class="bg-white text-feiraDark font-sans antialiased selection:bg-feiraRed selection:text-white">
 
-    <!-- Gaveta de Navegação Lateral -->
-    <div id="menuBackdrop" onclick="toggleDrawer(false)" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
-    <aside id="navDrawer" class="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+    <!-- Fundo Escuro e Menu Lateral -->
+    <div id="menuBackdrop" onclick="closeMenu()"></div>
+    <aside id="navDrawer" aria-hidden="true">
         <div>
             <div class="p-5 border-b border-gray-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -52,28 +82,28 @@
                     </span>
                     <span class="font-extrabold tracking-tight text-feiraRed text-base">ELISA COSMÉTICOS</span>
                 </div>
-                <button onclick="toggleDrawer(false)" class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 cursor-pointer" aria-label="Fechar menu">
-                    <i class="fa-solid fa-xmark"></i>
+                <button type="button" onclick="closeMenu()" class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 cursor-pointer" aria-label="Fechar menu">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <nav class="p-5 space-y-1">
-                <a href="#inicio" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+            <nav class="p-4 space-y-1">
+                <a href="#inicio" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
                     <i class="fa-solid fa-house w-5 text-feiraRed"></i> Início &amp; Destaques
                 </a>
-                <a href="#sobre" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                <a href="#sobre" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
                     <i class="fa-solid fa-store w-5 text-feiraRed"></i> Sobre Nós &amp; Atuação
                 </a>
-                <a href="#vitrine" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                <a href="#vitrine" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
                     <i class="fa-solid fa-bag-shopping w-5 text-feiraRed"></i> Produtos Pronta Entrega
                 </a>
-                <a href="#simulador" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                <a href="#simulador" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
                     <i class="fa-solid fa-gift w-5 text-feiraRed"></i> Monte seu Presente
                 </a>
-                <a href="#localizacao" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                <a href="#localizacao" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
                     <i class="fa-solid fa-location-dot w-5 text-feiraRed"></i> Feira do Palmital (Domingos)
                 </a>
             </nav>
-            <div class="mx-5 p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-2.5 text-xs text-gray-600">
+            <div class="mx-4 p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2 text-xs text-gray-600">
                 <div class="flex items-center gap-2 font-bold text-gray-900">
                     <i class="fa-solid fa-file-invoice text-feiraRed"></i> 100% Original com Nota Fiscal
                 </div>
@@ -85,8 +115,8 @@
                 </div>
             </div>
         </div>
-        <div class="p-5 border-t border-gray-100">
-            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20a%20pronta%20entrega%20e%20valores." target="_top" class="w-full py-3.5 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
+        <div class="p-4 border-t border-gray-100">
+            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20a%20pronta%20entrega%20e%20valores." class="w-full py-3.5 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
                 <i class="fa-brands fa-whatsapp text-lg"></i> (31) 98727-6596
             </a>
         </div>
@@ -95,10 +125,11 @@
     <!-- Cabeçalho Oficial Estilo FeiraMinas -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
-            <button onclick="toggleDrawer(true)" class="w-11 h-11 rounded-md bg-gray-100 hover:bg-gray-200/80 flex flex-col items-center justify-center gap-1.5 transition cursor-pointer shrink-0" aria-label="Abrir menu">
-                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
-                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
-                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
+            <!-- Botão dos Três Tracinhos (Menu) -->
+            <button type="button" onclick="openMenu()" class="w-11 h-11 rounded-md bg-gray-100 active:bg-gray-200 hover:bg-gray-200/80 flex flex-col items-center justify-center gap-1.5 transition cursor-pointer shrink-0" aria-label="Abrir menu">
+                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
+                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
+                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
             </button>
 
             <a href="#inicio" class="flex items-center gap-2 sm:gap-2.5 group">
@@ -115,7 +146,7 @@
                 </div>
             </a>
 
-            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20consultar%20valores%20e%20produtos%20dispon%C3%ADveis." target="_top" class="bg-feiraGreen hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-sm hover:shadow transition shrink-0">
+            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20consultar%20valores%20e%20produtos%20dispon%C3%ADveis." class="bg-feiraGreen hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-sm hover:shadow transition shrink-0">
                 <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                 <span>Fale Conosco</span>
             </a>
@@ -139,14 +170,14 @@
 
             <!-- Carrossel Fotográfico de 4 Colunas -->
             <div class="relative mt-7 sm:mt-9 max-w-5xl mx-auto">
-                <button onclick="slideHero(-1)" class="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Anterior">
+                <button type="button" onclick="slideHero(-1)" class="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Anterior">
                     <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
                 </button>
 
                 <div id="heroCarousel" class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 rounded-2xl overflow-hidden shadow-xl bg-white p-1.5 sm:p-2">
                     <!-- Coluna 1 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Avon%20Care%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20o%20valor%20e%20disponibilidade!" target="_top" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-rose-100 block">
-                        <img data-slot="0" src="" alt="" class="dynamic-repo-img hidden w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Avon%20Care%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20o%20valor%20e%20disponibilidade!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-rose-100 block">
+                        <img data-base="Screenshot_20261108-134316" src="Screenshot_20261108-134316_Gallery.jpg" onerror="tryNextExt(this)" alt="Kit Presente Avon Care com Laço Azul" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                         <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                             Pronta Entrega
@@ -161,8 +192,8 @@
                     </a>
 
                     <!-- Coluna 2 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Natura%20Ekos%20Maracuj%C3%A1%20e%20o%20Kit%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20os%20valores!" target="_top" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-amber-100 block">
-                        <img data-slot="1" src="" alt="" class="dynamic-repo-img hidden w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Natura%20Ekos%20Maracuj%C3%A1%20e%20o%20Kit%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20os%20valores!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-amber-100 block">
+                        <img data-base="Screenshot_20261108-134322" src="Screenshot_20261108-134322_Gallery.jpg" onerror="tryNextExt(this)" alt="Natura Ekos Maracujá e Kit Presente" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                         <div class="absolute top-2.5 left-2.5 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                             Natura &amp; Avon
@@ -177,8 +208,8 @@
                     </a>
 
                     <!-- Coluna 3 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Especial%20com%20La%C3%A7o%20Vermelho%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" target="_top" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-red-100 block">
-                        <img data-slot="2" src="" alt="" class="dynamic-repo-img hidden w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Especial%20com%20La%C3%A7o%20Vermelho%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-red-100 block">
+                        <img data-base="Screenshot_20261108-134335" src="Screenshot_20261108-134335_Gallery.jpg" onerror="tryNextExt(this)" alt="Presente Especial com Laço Vermelho" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                         <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                             Presente Pronto
@@ -193,8 +224,8 @@
                     </a>
 
                     <!-- Coluna 4 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20a%20Cesta%20Luxo%20O%20Botic%C3%A1rio%20Nativa%20SPA%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" target="_top" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-emerald-100 block">
-                        <img data-slot="3" src="" alt="" class="dynamic-repo-img hidden w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20a%20Cesta%20Luxo%20O%20Botic%C3%A1rio%20Nativa%20SPA%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-emerald-100 block">
+                        <img data-base="Screenshot_20261108-134340" src="Screenshot_20261108-134340_Gallery.jpg" onerror="tryNextExt(this)" alt="Cesta Luxo O Boticário Nativa SPA" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                         <div class="absolute top-2.5 left-2.5 bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                             O Boticário
@@ -209,13 +240,13 @@
                     </a>
                 </div>
 
-                <button onclick="slideHero(1)" class="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Próximo">
+                <button type="button" onclick="slideHero(1)" class="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Próximo">
                     <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
                 </button>
             </div>
 
             <p class="mt-6 sm:mt-8 text-base sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                Temos produtos a <strong class="font-bold text-gray-900">pronta entrega</strong> em estoque! Para saber valores e fazer seu pedido, <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Gostaria%20de%20saber%20valores%20e%20fazer%20um%20pedido." target="_top" class="font-bold text-feiraGreen underline">chame no WhatsApp (31) 98727-6596</a>.
+                Temos produtos a <strong class="font-bold text-gray-900">pronta entrega</strong> em estoque! Para saber valores e fazer seu pedido, <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Gostaria%20de%20saber%20valores%20e%20fazer%20um%20pedido." class="font-bold text-feiraGreen underline">chame no WhatsApp (31) 98727-6596</a>.
             </p>
 
             <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-700">
@@ -252,4 +283,362 @@
             </p>
 
             <div class="mt-10 pt-8 border-t border-gray-200/80 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center max-w-2xl mx-auto">
-                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border bor
+                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-serif font-bold text-lg text-emerald-900 tracking-wide">
+                    O BOTICÁRIO
+                </div>
+                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-sans font-extrabold text-xl text-orange-600 tracking-wider lowercase">
+                    natura
+                </div>
+                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-sans font-extrabold text-lg text-pink-600 tracking-widest uppercase">
+                    AVON
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Vitrine de Produtos Pronta Entrega -->
+    <section id="vitrine" class="py-16 sm:py-20 bg-gray-50 border-t border-gray-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs sm:text-sm font-extrabold tracking-widest text-feiraRed uppercase">
+                    // PRONTA ENTREGA • ESTOQUE REAL
+                </span>
+                <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-feiraDark">
+                    Nossos Produtos &amp; Kits
+                </h2>
+                <p class="mt-3 text-sm sm:text-base text-gray-600">
+                    Clique em qualquer produto para consultar valores e reservar pelo WhatsApp <strong>(31) 98727-6596</strong>. Todos os itens acompanham <strong>Nota Fiscal</strong>.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+                <div class="flex flex-wrap items-center justify-center gap-2" id="categoryFilters">
+                    <button type="button" onclick="filterProducts('todos', this)" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-feiraRed text-white shadow-xs transition cursor-pointer">
+                        Todos (Pronta Entrega)
+                    </button>
+                    <button type="button" onclick="filterProducts('kits', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
+                        Kits &amp; Cestas
+                    </button>
+                    <button type="button" onclick="filterProducts('boticario', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
+                        O Boticário
+                    </button>
+                    <button type="button" onclick="filterProducts('natura', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
+                        Natura
+                    </button>
+                    <button type="button" onclick="filterProducts('avon', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
+                        Avon
+                    </button>
+                </div>
+
+                <div class="relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Buscar marca ou produto..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-gray-200 text-sm focus:outline-none focus:border-feiraRed">
+                </div>
+            </div>
+
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador Rápido de Atendimento -->
+    <section id="simulador" class="py-16 sm:py-20 bg-white border-t border-gray-200/70">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="rounded-3xl bg-gradient-to-br from-gray-900 via-neutral-800 to-gray-900 text-white p-6 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="inline-block text-xs font-extrabold tracking-widest text-rose-400 uppercase">
+                            // ATENDIMENTO DIRETO NO WHATSAPP
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                            Quer saber valores ou montar um kit presente?
+                        </h2>
+                        <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+                            Temos diversos produtos a <strong>pronta entrega</strong> em estoque! Escolha para quem é o presente ou a marca desejada e chame a Elisa no WhatsApp para receber fotos e valores atualizados.
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-1 text-xs text-gray-300">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Pronta entrega</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Nota Fiscal inclusa</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Pix ou Cartão</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 bg-white text-gray-900 rounded-2xl p-5 sm:p-6 shadow-lg space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">1. O que você procura?</label>
+                            <select id="giftInterest" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
+                                <option value="Kit ou Cesta de Presente pronta">Kit ou Cesta de Presente pronta</option>
+                                <option value="Perfumes e Colônias">Perfumes e Colônias</option>
+                                <option value="Hidratantes e Sabonetes">Hidratantes e Sabonetes</option>
+                                <option value="Desodorantes Roll-on e uso diário">Desodorantes Roll-on e uso diário</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">2. Marca de preferência</label>
+                            <select id="giftBrand" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
+                                <option value="O Boticário">O Boticário</option>
+                                <option value="Natura">Natura</option>
+                                <option value="Avon">Avon</option>
+                                <option value="Todas (O Boticário, Natura e Avon)">Todas (O Boticário, Natura e Avon)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">3. Como prefere retirar/receber?</label>
+                            <select id="giftDelivery" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
+                                <option value="Retirar domingo na Feira do Palmital">Retirar domingo na Feira do Palmital</option>
+                                <option value="Combinar entrega / reserva antecipada">Combinar entrega / reserva antecipada</option>
+                            </select>
+                        </div>
+
+                        <a id="simulatorWaLink" href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20valores%20e%20op%C3%A7%C3%B5es%20a%20pronta%20entrega!" class="w-full py-3.5 px-5 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Valores no WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Onde Encontrar: Feira do Palmital -->
+    <section id="localizacao" class="py-16 bg-gray-50 border-t border-gray-200/70">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
+                    <div class="w-11 h-11 rounded-xl bg-red-50 text-feiraRed flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Feira do Palmital</h3>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                        Atendimento presencial todos os <strong>domingos pela manhã</strong>. Produtos a pronta entrega para você escolher de perto!
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-50 text-feiraGreen flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Garantia e Nota Fiscal</h3>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                        100% dos produtos são originais de fábrica (<strong>O Boticário, Natura e Avon</strong>) com emissão de <strong>Nota Fiscal</strong>.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Pagamento Facilitado</h3>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                        Pague com total praticidade no <strong>Pix</strong>, <strong>Cartão de Crédito</strong>, <strong>Cartão de Débito</strong> ou dinheiro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé Oficial -->
+    <footer class="bg-feiraDark text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2">
+                    <span class="font-extrabold text-xl text-white tracking-tight">ELISA COSMÉTICOS</span>
+                    <span class="text-xs bg-feiraRed text-white px-2 py-0.5 rounded font-bold">PRONTA ENTREGA</span>
+                </div>
+                <p class="mt-2 text-xs sm:text-sm text-gray-400">
+                    O Boticário • Natura • Avon — Produtos Originais com Nota Fiscal
+                </p>
+                <p class="mt-1 text-xs text-gray-500">
+                    Todos os domingos na Feira do Palmital | Aceitamos Cartão e Pix
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Gostaria%20de%20falar%20com%20voc%C3%AA%20pelo%20WhatsApp%20para%20saber%20mais%20sobre%20os%20produtos." class="bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm px-6 py-3 rounded-full flex items-center gap-2 shadow-lg transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp: (31) 98727-6596
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20e%20valores." class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-105" aria-label="Chamar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const WHATSAPP_NUMBER = "5531987276596";
+
+        function openMenu() {
+            document.getElementById("navDrawer").classList.add("open");
+            document.getElementById("menuBackdrop").classList.add("open");
+        }
+
+        function closeMenu() {
+            document.getElementById("navDrawer").classList.remove("open");
+            document.getElementById("menuBackdrop").classList.remove("open");
+        }
+
+        // Tenta todas as variações comuns de nomes de Screenshot no Android
+        function tryNextExt(img) {
+            const base = img.getAttribute("data-base");
+            const step = parseInt(img.getAttribute("data-step") || "0", 10);
+            const variants = [
+                `${base}_Gallery.png`,
+                `${base}_Chrome.jpg`,
+                `${base}_Chrome.png`,
+                `${base}.jpg`,
+                `${base}.png`,
+                `${base}_WhatsApp.jpg`
+            ];
+            if (step < variants.length) {
+                img.setAttribute("data-step", step + 1);
+                img.src = variants[step];
+            } else {
+                img.style.display = "none";
+            }
+        }
+
+        function buildWaUrl(message) {
+            return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+        }
+
+        const products = [
+            {
+                id: 1,
+                name: "Kit Presente Avon Care com Laço Azul",
+                brand: "Avon",
+                categories: ["kits", "avon"],
+                badge: "Pronta Entrega",
+                description: "Loção Desodorante Corporal Leite de Amêndoas 200ml + sabonetes embalados com carinho e laço.",
+                base: "Screenshot_20261108-134316"
+            },
+            {
+                id: 2,
+                name: "Sabonetes Natura Ekos Maracujá & Kit Presente",
+                brand: "Natura / Avon",
+                categories: ["kits", "natura", "avon"],
+                badge: "Pronta Entrega",
+                description: "Caixa de sabonetes cremosos Natura Ekos Maracujá e kits presenteáveis com laço pronto.",
+                base: "Screenshot_20261108-134322"
+            },
+            {
+                id: 3,
+                name: "Kit Presente Especial com Laço Vermelho",
+                brand: "Natura / O Boticário",
+                categories: ["kits", "natura", "boticario"],
+                badge: "Presente Pronto",
+                description: "Embalagem presenteável decorada com flores secas, laço vermelho e produtos originais lacrados.",
+                base: "Screenshot_20261108-134335"
+            },
+            {
+                id: 4,
+                name: "Cesta Luxo Nativa SPA com Laço",
+                brand: "O Boticário",
+                categories: ["kits", "boticario"],
+                badge: "Cesta Luxo",
+                description: "Cesta especial O Boticário Nativa SPA com hidratante, esponja de banho e acabamento presenteável.",
+                base: "Screenshot_20261108-134340"
+            }
+        ];
+
+        let currentCategory = "todos";
+
+        function renderProducts() {
+            const grid = document.getElementById("productsGrid");
+            const searchTerm = document.getElementById("searchInput").value.toLowerCase().trim();
+
+            const filtered = products.filter(item => {
+                const matchesCategory = currentCategory === "todos" || item.categories.includes(currentCategory);
+                const matchesSearch = item.name.toLowerCase().includes(searchTerm) ||
+                                      item.brand.toLowerCase().includes(searchTerm) ||
+                                      item.description.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-200">
+                        <p class="text-gray-600 font-medium">Nenhum produto encontrado para essa busca.</p>
+                        <a href="${buildWaUrl('Olá Elisa! Procuro um produto específico (Avon, Natura ou O Boticário) e gostaria de saber se você tem a pronta entrega.')}" class="inline-block mt-4 px-5 py-2.5 rounded-full bg-feiraGreen text-white text-sm font-bold">
+                            Consultar no WhatsApp
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(product => {
+                const waLink = buildWaUrl(`Olá Elisa! Tenho interesse no produto: *${product.name}* (${product.brand}). Gostaria de saber o valor e disponibilidade!`);
+                return `
+                    <article class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-lg transition flex flex-col justify-between group">
+                        <div>
+                            <a href="${waLink}" class="block relative h-72 overflow-hidden bg-rose-50">
+                                <img data-base="${product.base}" src="${product.base}_Gallery.jpg" onerror="tryNextExt(this)" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-3 left-3 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                                    ${product.badge}
+                                </span>
+                                <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-gray-800 text-[10px] font-bold px-2.5 py-1 rounded shadow-xs">
+                                    <i class="fa-solid fa-file-invoice text-feiraRed mr-1"></i>Nota Fiscal
+                                </span>
+                            </a>
+                            <div class="p-5">
+                                <span class="text-[11px] font-extrabold uppercase tracking-wider text-feiraRed">${product.brand}</span>
+                                <h3 class="mt-1 text-base font-bold text-gray-900 leading-snug">${product.name}</h3>
+                                <p class="mt-2 text-xs text-gray-600 leading-relaxed">${product.description}</p>
+                            </div>
+                        </div>
+                        <div class="px-5 pb-5 pt-2">
+                            <div class="flex items-center justify-between text-[11px] text-gray-500 mb-3 pt-2 border-t border-gray-100">
+                                <span><i class="fa-brands fa-pix text-teal-600 mr-1"></i>Pix / Cartão</span>
+                                <span class="font-semibold text-gray-700">Pronta Entrega</span>
+                            </div>
+                            <a href="${waLink}" class="w-full py-3 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xs">
+                                <i class="fa-brands fa-whatsapp text-base"></i> Saber Valor no WhatsApp
+                            </a>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        function filterProducts(category, btnElement) {
+            currentCategory = category;
+            document.querySelectorAll(".filter-btn").forEach(btn => {
+                btn.classList.remove("bg-feiraRed", "text-white", "font-bold");
+                btn.classList.add("bg-white", "text-gray-700", "font-semibold", "border", "border-gray-200");
+            });
+            btnElement.classList.remove("bg-white", "text-gray-700", "font-semibold", "border", "border-gray-200");
+            btnElement.classList.add("bg-feiraRed", "text-white", "font-bold");
+            renderProducts();
+        }
+
+        function searchProducts() {
+            renderProducts();
+        }
+
+        function updateSimulatorLink() {
+            const interest = document.getElementById("giftInterest").value;
+            const brand = document.getElementById("giftBrand").value;
+            const delivery = document.getElementById("giftDelivery").value;
+            const message = `Olá Elisa! Vim pelo site e gostaria de saber mais valores e opções a pronta entrega:\n• *Interesse:* ${interest}\n• *Marca:* ${brand}\n• *Retirada/Entrega:* ${delivery}`;
+            document.getElementById("simulatorWaLink").href = buildWaUrl(message);
+        }
+
+        function slideHero(direction) {
+            const carousel = document.getElementById("heroCarousel");
+            const cards = Array.from(carousel.children);
+            if (direction > 0) {
+                carousel.appendChild(cards[0]);
+            } else {
+                carousel.insertBefore(cards[cards.length - 1], cards[0]);
+            }
+        }
+
+        renderProducts();
+        updateSimulatorLink();
+    </script>
+</body>
+</html>
