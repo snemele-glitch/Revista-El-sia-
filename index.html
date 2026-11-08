@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisa Cosméticos & Presentes | Oficial - Feira do Palmital</title>
+    <meta name="description" content="Produtos originais O Boticário, Natura e Avon à pronta entrega com Nota Fiscal aos domingos na Feira do Palmital. Aceitamos Pix e Cartão. Peça pelo WhatsApp (31) 98727-6596.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        feiraRed: '#C81E2B',
+                        feiraDark: '#262626',
+                        feiraGreen: '#1E9E5A',
+                        feiraSage: '#789A82',
+                        feiraSky: '#DCE9F0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .polka-dots {
+            background-image: radial-gradient(#D1D5DB 2.2px, transparent 2.2px);
+            background-size: 16px 16px;
+        }
+        .hero-sky-bg {
+            background: linear-gradient(180deg, #D5E5EE 0%, #EAF2F6 45%, #F8FAFC 100%);
+        }
+    </style>
+</head>
+<body class="bg-white text-feiraDark font-sans antialiased selection:bg-feiraRed selection:text-white">
+
+    <!-- Gaveta de Navegação Lateral (Menu Hambúrguer estilo FeiraMinas) -->
+    <div id="menuBackdrop" onclick="toggleDrawer(false)" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    <aside id="navDrawer" class="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+        <div>
+            <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-7 h-7 bg-feiraRed text-white rounded-sm">
+                        <i class="fa-solid fa-gem text-xs"></i>
+                    </span>
+                    <span class="font-extrabold tracking-tight text-feiraRed text-base">ELISA COSMÉTICOS</span>
+                </div>
+                <button onclick="toggleDrawer(false)" class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 cursor-pointer" aria-label="Fechar menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="p-5 space-y-1">
+                <a href="#inicio" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                    <i class="fa-solid fa-house w-5 text-feiraRed"></i> Início & Destaques
+                </a>
+                <a href="#sobre" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                    <i class="fa-solid fa-store w-5 text-feiraRed"></i> Sobre Nós & Atuação
+                </a>
+                <a href="#vitrine" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                    <i class="fa-solid fa-bag-shopping w-5 text-feiraRed"></i> Produtos Pronta Entrega
+                </a>
+                <a href="#simulador" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                    <i class="fa-solid fa-gift w-5 text-feiraRed"></i> Monte seu Presente
+                </a>
+                <a href="#localizacao" onclick="toggleDrawer(false)" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
+                    <i class="fa-solid fa-location-dot w-5 text-feiraRed"></i> Feira do Palmital (Domingos)
+                </a>
+            </nav>
+            <div class="mx-5 p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-2.5 text-xs text-gray-600">
+                <div class="flex items-center gap-2 font-bold text-gray-900">
+                    <i class="fa-solid fa-file-invoice text-feiraRed"></i> 100% Original com Nota Fiscal
+                </div>
+                <p>Produtos a pronta entrega das marcas <strong>O Boticário, Natura e Avon</strong>. Chame no WhatsApp para saber valores.</p>
+                <div class="pt-1 flex flex-wrap gap-1.5 font-semibold text-gray-800">
+                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Pix</span>
+                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Crédito</span>
+                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Débito</span>
+                </div>
+            </div>
+        </div>
+        <div class="p-5 border-t border-gray-100">
+            <button onclick="openWhatsApp('Olá Elisa! Vim pelo site oficial e gostaria de saber mais sobre os produtos a pronta entrega e valores.')" class="w-full py-3.5 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-lg"></i> (31) 98727-6596
+            </button>
+        </div>
+    </aside>
+
+    <!-- Cabeçalho Oficial Estilo FeiraMinas -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+            <!-- Botão Hambúrguer à Esquerda -->
+            <button onclick="toggleDrawer(true)" class="w-11 h-11 rounded-md bg-gray-100 hover:bg-gray-200/80 flex flex-col items-center justify-center gap-1.5 transition cursor-pointer shrink-0" aria-label="Abrir menu">
+                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
+                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
+                <span class="w-5 h-0.5 bg-gray-700 rounded-full"></span>
+            </button>
+
+            <!-- Logotipo Centralizado -->
+            <a href="#inicio" class="flex items-center gap-2 sm:gap-2.5 group">
+                <div class="flex items-center">
+                    <svg class="w-7 h-6 sm:w-8 sm:h-7 text-feiraRed" viewBox="0 0 36 28" fill="currentColor">
+                        <polygon points="10,4 2,24 18,24" />
+                        <polygon points="24,6 15,24 33,24" opacity="0.88" />
+                        <circle cx="17" cy="11" r="2.2" fill="#FFFFFF" />
+                    </svg>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5 leading-none">
+                    <span class="text-lg sm:text-2xl font-extrabold tracking-tight text-feiraRed uppercase">ELISA</span>
+                    <span class="text-[10px] sm:text-sm font-bold tracking-widest text-gray-800 uppercase">COSMÉTICOS</span>
+                </div>
+            </a>
+
+            <!-- Botão Verde "Fale Conosco" à Direita -->
+            <button onclick="openWhatsApp('Olá Elisa! Vim pelo site oficial e gostaria de consultar valores e produtos disponíveis.')" class="bg-feiraGreen hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-sm hover:shadow transition cursor-pointer shrink-0">
+                <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+                <span>Fale Conosco</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Seção Hero Editorial + Carrossel com as Fotos Reais -->
+    <section id="inicio" class="hero-sky-bg relative overflow-hidden pt-8 sm:pt-12 pb-10 sm:pb-14 border-b border-gray-200/70">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <!-- Selo circular superior -->
+            <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-feiraRed text-white shadow-md mb-2">
+                <i class="fa-solid fa-crown text-xs"></i>
+            </div>
+
+            <!-- Título Editorial Duplo Tom -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none uppercase">
+                <span class="font-extralight text-feiraSage">BELEZA</span><span class="font-normal text-gray-600">&amp;PRESENTE</span>
+            </h1>
+
+            <!-- Subtítulo Espaçado -->
+            <p class="mt-3 text-[11px] sm:text-sm font-semibold tracking-[0.25em] text-gray-600 uppercase">
+                PRONTA ENTREGA • NOTA FISCAL • AVON, NATURA &amp; O BOTICÁRIO
+            </p>
+
+            <!-- Carrossel Fotográfico de 4 Colunas com as Fotos Reais -->
+            <div class="relative mt-7 sm:mt-9 max-w-5xl mx-auto">
+                <!-- Seta Esquerda -->
+                <button onclick="slideHero(-1)" class="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Anterior">
+                    <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+                </button>
+
+                <!-- Grade / Trilho de 4 Colunas Fotográficas Reais -->
+                <div id="heroCarousel" class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 rounded-2xl overflow-hidden shadow-xl bg-white p-1.5 sm:p-2">
+                    <!-- Foto 1: Kit Presente Avon Care com Laço Azul -->
+                    <div onclick="openWhatsApp('Olá Elisa! Vi o Kit Presente Avon Care com Laço Azul no site. Gostaria de saber o valor e disponibilidade!')" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer">
+                        <img src="foto1.jpg" alt="Kit Presente Avon Care com Laço Azul" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            Pronta Entrega
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
+                            <p class="text-[11px] uppercase tracking-wider text-sky-200 font-semibold">Avon Care • Laço Azul</p>
+                            <h3 class="text-sm sm:text-base font-bold leading-tight">Kit Hidratação &amp; Sabonetes</h3>
+                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
+                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2: Combo Natura Ekos Maracujá + Kit Presente -->
+                    <div onclick="openWhatsApp('Olá Elisa! Vi o Natura Ekos Maracujá e o Kit com Laço Azul no site. Gostaria de saber os valores!')" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer">
+                        <img src="foto2.jpg" alt="Natura Ekos Maracujá e Kit Presente" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute top-2.5 left-2.5 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            Natura &amp; Avon
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
+                            <p class="text-[11px] uppercase tracking-wider text-amber-200 font-semibold">Natura Ekos</p>
+                            <h3 class="text-sm sm:text-base font-bold leading-tight">Sabonetes Maracujá &amp; Kits</h3>
+                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
+                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3: Presente Especial com Laço Vermelho -->
+                    <div onclick="openWhatsApp('Olá Elisa! Vi o Kit Presente Especial com Laço Vermelho no site. Gostaria de saber o valor!')" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer">
+                        <img src="foto3.jpg" alt="Presente Especial com Laço Vermelho" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            Presente Pronto
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
+                            <p class="text-[11px] uppercase tracking-wider text-rose-200 font-semibold">Embalagem Especial</p>
+                            <h3 class="text-sm sm:text-base font-bold leading-tight">Kit Presente com Laço</h3>
+                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
+                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4: Cesta Luxo O Boticário Nativa SPA -->
+                    <div onclick="openWhatsApp('Olá Elisa! Vi a Cesta Luxo O Boticário Nativa SPA no site. Gostaria de saber o valor!')" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer">
+                        <img src="foto4.jpg" alt="Cesta Luxo O Boticário Nativa SPA" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute top-2.5 left-2.5 bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            O Boticário
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
+                            <p class="text-[11px] uppercase tracking-wider text-pink-200 font-semibold">Nativa SPA</p>
+                            <h3 class="text-sm sm:text-base font-bold leading-tight">Cesta Luxo com Laço</h3>
+                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
+                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 5: Estoque Roll-on Avon & Hidratante Cuide-se Bem -->
+                    <div onclick="openWhatsApp('Olá Elisa! Vi os Desodorantes Roll-on Avon e Hidratante Cuide-se Bem Deleite no site. Gostaria de saber os valores!')" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer">
+                        <img src="foto5.jpg" alt="Roll-on Avon e O Boticário Cuide-se Bem Deleite" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute top-2.5 left-2.5 bg-gray-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            Pronta Entrega
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
+                            <p class="text-[11px] uppercase tracking-wider text-pink-200 font-semibold">Cuidados Diários</p>
+                            <h3 class="text-sm sm:text-base font-bold leading-tight">Roll-on &amp; Cuide-se Bem</h3>
+                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
+                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seta Direita -->
+                <button onclick="slideHero(1)" class="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Próximo">
+                    <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Frase Editorial Abaixo do Carrossel -->
+            <p class="mt-6 sm:mt-8 text-base sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                Temos produtos a <strong class="font-bold text-gray-900">pronta entrega</strong> em estoque! Para saber valores e fazer seu pedido, <strong class="font-bold text-feiraGreen">chame no WhatsApp</strong>.
+            </p>
+
+            <!-- Barra de Garantias e Formas de Pagamento -->
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-700">
+                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
+                    <i class="fa-solid fa-boxes-stacked text-feiraRed"></i> Produtos Pronta Entrega
+                </span>
+                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
+                    <i class="fa-solid fa-file-invoice text-feiraRed"></i> Com Nota Fiscal
+                </span>
+                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
+                    <i class="fa-brands fa-pix text-teal-600"></i> Aceitamos Pix
+                </span>
+                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
+                    <i class="fa-regular fa-credit-card text-blue-600"></i> Cartão Crédito e Débito
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção "// SOBRE NÓS — Nossa Área de Atuação" -->
+    <section id="sobre" class="relative 
