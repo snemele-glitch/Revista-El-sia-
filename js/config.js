@@ -14,8 +14,8 @@
   NUNCA cole aqui a chave "service_role".
 */
 window.ELISA_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://ilwlxohllbkdrbqovpye.supabase.co",
+  supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlsd2x4b2hsbGJrZHJicW92cHllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQxNTQ4ODQsImV4cCI6MjEwOTczMDg4NH0.1CDzbkC3VeaS95vUxN2Z9BuV7oelK0RtcW6vhRkrZH4",
   // Número usado enquanto a Elisa não salvar outro no painel (com DDI 55 e DDD)
   whatsapp: "5531987276596"
 };
