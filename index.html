@@ -1,644 +1,774 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elisa Cosméticos & Presentes | Oficial - Feira do Palmital</title>
-    <meta name="description" content="Produtos originais O Boticário, Natura e Avon à pronta entrega com Nota Fiscal aos domingos na Feira do Palmital. Aceitamos Pix e Cartão. Peça pelo WhatsApp (31) 98727-6596.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        feiraRed: '#C81E2B',
-                        feiraDark: '#262626',
-                        feiraGreen: '#1E9E5A',
-                        feiraSage: '#789A82',
-                        feiraSky: '#DCE9F0',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .polka-dots {
-            background-image: radial-gradient(#D1D5DB 2.2px, transparent 2.2px);
-            background-size: 16px 16px;
-        }
-        .hero-sky-bg {
-            background: linear-gradient(180deg, #D5E5EE 0%, #EAF2F6 45%, #F8FAFC 100%);
-        }
-        /* Controle direto do Menu Lateral (100% compatível com celular) */
-        #menuBackdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 9998;
-        }
-        #menuBackdrop.open {
-            display: block;
-        }
-        #navDrawer {
-            position: fixed;
-            top: 0;
-            left: -340px;
-            width: 300px;
-            max-width: 85vw;
-            height: 100vh;
-            background: #ffffff;
-            z-index: 9999;
-            transition: left 0.28s ease;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-y: auto;
-        }
-        #navDrawer.open {
-            left: 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Revista Elisa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Revista Elisa Cosméticos & Presentes: kits e produtos O Boticário, Natura e Avon a pronta entrega, com Nota Fiscal, todo domingo na Feira do Palmital. Peça pelo WhatsApp (31) 98727-6596.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Jost:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<style>
+/* Layout: uma revista impressa. Capa, sumário e páginas numeradas, com faixas da toalha vermelha de bolinhas da banca da feira separando as editorias. */
+:root{
+  --paper:#FFFBFA;        /* papel da revista */
+  --paper-2:#FBEFEC;      /* papel rosado (página alternada) */
+  --ink:#24171A;          /* tinta */
+  --muted:#6E5A5E;        /* texto secundário */
+  --line:#EAD9D6;
+  --red:#C81E2B;          /* toalha da banca */
+  --red-deep:#9E1520;
+  --ribbon:#1F4FB5;       /* laço azul */
+  --kraft:#E5B42C;        /* caixa Ekos Maracujá */
+  --green:#1E9E5A;        /* WhatsApp */
+  --on-red:#FFFFFF;
+  --card:#FFFFFF;
+  --shadow:rgba(60,20,25,.16);
+
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1A1214; --paper-2:#221719; --ink:#F6ECEA; --muted:#BFA9AC; --line:#3B2A2D;
+    --red:#D9323F; --red-deep:#B32330; --ribbon:#6F96F0; --kraft:#EBC14A; --green:#25B46A;
+    --card:#271B1E; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1A1214; --paper-2:#221719; --ink:#F6ECEA; --muted:#BFA9AC; --line:#3B2A2D;
+  --red:#D9323F; --red-deep:#B32330; --ribbon:#6F96F0; --kraft:#EBC14A; --green:#25B46A;
+  --card:#271B1E; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--ribbon);outline-offset:3px;border-radius:4px}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.folio{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--muted)}
+.page{padding-block:88px;position:relative}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:40px}
+.lead{font-size:clamp(18px,2.1vw,21px);color:var(--muted);max-width:60ch}
+
+/* faixa da toalha de bolinhas */
+.toalha{
+  background-color:var(--red);
+  background-image:radial-gradient(rgba(255,255,255,.92) 18%, transparent 19%),radial-gradient(rgba(255,255,255,.6) 10%, transparent 11%);
+  background-size:42px 42px, 42px 42px;background-position:0 0, 21px 21px;
+}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s, background .2s, box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px var(--green)}
+.btn-ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.btn-red{background:var(--red);color:var(--on-red)}
+
+/* ---------- barra superior ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.mast-mini{font-family:var(--f-display);font-weight:900;font-size:26px;letter-spacing:.06em;text-decoration:none;color:var(--red);line-height:1}
+.mast-mini small{display:block;font-family:var(--f-body);font-weight:500;font-size:9px;letter-spacing:.3em;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-size:17px}
+.top-wa{padding:10px 18px;font-size:14px}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;background:var(--red);width:0}
+.page-indicator{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media (max-width:620px){.page-indicator,.top-wa span{display:none}.top-wa{padding:10px 14px}}
+
+/* menu / sumário lateral */
+.drawer-bg{position:fixed;inset:0;background:rgba(20,8,10,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer{position:fixed;top:0;bottom:0;right:0;width:min(380px,90vw);background:var(--paper);z-index:90;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 24px;overflow-y:auto}
+body.menu-open .drawer{transform:none}
+body.menu-open .drawer-bg{opacity:1;pointer-events:auto}
+.drawer h2{font-size:34px;font-style:italic;font-weight:400}
+.drawer ol{list-style:none;padding:0;margin:20px 0;display:grid}
+.drawer li a{display:grid;grid-template-columns:44px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+.drawer li a span{font-family:var(--f-display);font-style:italic;color:var(--red);font-variant-numeric:tabular-nums}
+.drawer li a:hover{color:var(--red)}
+
+/* ---------- CAPA ---------- */
+.capa{position:relative;overflow:hidden;padding-block:28px 56px;background:var(--paper)}
+.capa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.capa-meta{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:8px 0}
+.masthead{font-family:var(--f-display);font-weight:900;font-size:clamp(96px,17vw,230px);line-height:.82;letter-spacing:-.02em;color:var(--red);margin:22px 0 6px}
+.masthead em{font-style:italic;font-weight:400}
+.mast-sub{font-size:13px;letter-spacing:.42em;text-transform:uppercase;font-weight:600}
+.capa h1{font-size:clamp(34px,4.6vw,58px);margin-top:28px;font-weight:400}
+.capa h1 i{color:var(--red)}
+.chamadas{display:grid;gap:14px;margin-top:28px;padding:0;list-style:none}
+.chamadas a{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;text-decoration:none;border-top:1px solid var(--line);padding-top:12px}
+.chamadas b{font-family:var(--f-display);font-style:italic;font-weight:400;color:var(--red);font-size:15px;white-space:nowrap}
+.chamadas strong{font-weight:600}
+.chamadas a:hover strong{color:var(--red)}
+.capa-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.capa-foto{position:relative;max-width:520px;justify-self:center;width:100%}
+.capa-foto .frame{border-radius:240px 240px 18px 18px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -20px var(--shadow);border:10px solid var(--card);max-width:100%}
+.capa-foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s ease}
+.capa-foto:hover img{transform:scale(1.09)}
+.selo{position:absolute;left:-26px;bottom:60px;width:128px;height:128px;border-radius:50%;background:var(--kraft);color:#2a1a05;display:grid;place-items:center;text-align:center;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;line-height:1.25;transform:rotate(-12deg);box-shadow:0 12px 24px -10px var(--shadow)}
+.selo span{font-family:var(--f-display);font-style:italic;font-size:26px;text-transform:none;letter-spacing:0;display:block}
+.tag-carinho{position:absolute;right:-8px;top:46px;background:var(--card);color:var(--red);font-family:var(--f-hand);font-size:28px;padding:6px 20px 8px;border-radius:999px;border:2px dashed var(--red);transform:rotate(8deg);box-shadow:0 8px 18px -8px var(--shadow)}
+@media (max-width:860px){
+  .capa-grid{grid-template-columns:1fr}
+  .capa-foto{max-width:420px}
+  .selo{left:0;width:108px;height:108px;font-size:11px}
+  .tag-carinho{right:0}
+}
+
+/* entrada da capa */
+@media (prefers-reduced-motion:no-preference){
+  .masthead{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .capa h1{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
+  .chamadas li{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .chamadas li:nth-child(1){animation-delay:.22s}.chamadas li:nth-child(2){animation-delay:.3s}.chamadas li:nth-child(3){animation-delay:.38s}
+  .capa-foto{animation:fade 1.2s .1s ease both}
+  .selo{animation:spinIn 1s .6s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{transform:translateY(24px)}to{transform:none}}
+  @keyframes fade{from{opacity:.4;transform:scale(.97)}to{opacity:1;transform:none}}
+  @keyframes spinIn{from{transform:rotate(-80deg) scale(.6)}to{transform:rotate(-12deg)}}
+  .reveal{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.pre{transform:translateY(28px)}
+}
+
+/* faixa de selos */
+.ticker{color:var(--on-red);overflow:hidden;padding-block:14px}
+.ticker-track{display:flex;gap:44px;width:max-content;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.ticker-track span{display:inline-flex;gap:10px;align-items:center;background:var(--red);padding:4px 12px;border-radius:999px}
+@media (prefers-reduced-motion:no-preference){.ticker-track{animation:tick 38s linear infinite}@keyframes tick{to{transform:translateX(-50%)}}}
+
+/* ---------- CARTA DA ELISA ---------- */
+.carta{display:grid;grid-template-columns:280px 1fr;gap:56px}
+.carta aside{border-right:1px solid var(--line);padding-right:32px}
+.carta aside h2{font-size:clamp(40px,5vw,60px);font-style:italic;font-weight:400}
+.carta-text{columns:2 300px;column-gap:44px;color:var(--ink)}
+.carta-text p{margin-bottom:1em;break-inside:avoid-column}
+.carta-text p:first-child::first-letter{font-family:var(--f-display);font-weight:900;float:left;font-size:88px;line-height:.78;padding:8px 10px 0 0;color:var(--red)}
+.assinatura{font-family:var(--f-hand);font-size:44px;color:var(--red);line-height:1;margin-top:8px}
+.marcas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.marcas span{border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:14px;font-weight:500;background:var(--card)}
+@media (max-width:860px){.carta{grid-template-columns:1fr;gap:28px}.carta aside{border-right:0;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:20px}}
+
+/* ---------- MATÉRIA DE CAPA (hotspots) ---------- */
+.materia{background:var(--paper-2)}
+.materia-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.materia h2{font-size:clamp(40px,5.5vw,76px)}
+.materia h2 em{color:var(--ribbon);font-weight:400}
+.hot-figure{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -24px var(--shadow);max-width:540px;width:100%;justify-self:center}
+.hot-figure img{width:100%;aspect-ratio:994/1436;object-fit:cover}
+.hot{position:absolute;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:0;background:var(--card);color:var(--red);font-weight:700;font-family:var(--f-display);font-size:17px;box-shadow:0 0 0 6px rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.35);transition:transform .2s, background .2s}
+.hot:hover,.hot[aria-pressed="true"]{transform:scale(1.15);background:var(--red);color:var(--on-red)}
+@media (prefers-reduced-motion:no-preference){.hot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:pulse 2.2s infinite}@keyframes pulse{from{transform:scale(.8);opacity:1}to{transform:scale(1.6);opacity:0}}}
+.hot-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:4px;counter-reset:h}
+.hot-list button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:36px 1fr;gap:14px;padding:14px 16px;border-radius:12px;width:100%}
+.hot-list button:focus-visible{outline:3px solid var(--ribbon)}
+.hot-list button span{font-family:var(--f-display);font-style:italic;font-size:22px;color:var(--red);line-height:1.2}
+.hot-list button strong{display:block;font-weight:600}
+.hot-list button small{display:block;color:var(--muted);font-size:15px;max-height:0;overflow:hidden;transition:max-height .35s ease}
+.hot-list button.on{background:var(--card);box-shadow:0 10px 24px -14px var(--shadow)}
+.hot-list button.on small{max-height:140px}
+@media (max-width:860px){.materia-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- VITRINE ---------- */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:8px 18px;font-size:14px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.vitrine{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.produto{background:none;border:0;padding:0;text-align:left;display:flex;flex-direction:column;gap:12px}
+.produto .ph{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--paper-2)}
+.produto img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.produto:hover img{transform:scale(1.06)}
+.produto .badge{position:absolute;top:10px;left:10px;background:var(--card);color:var(--red);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:999px}
+.produto .marca{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.produto h3{font-size:22px}
+.produto .ver{font-size:14px;font-weight:600;color:var(--red);display:inline-flex;gap:8px;align-items:center}
+.produto[hidden]{display:none}
+@media (max-width:980px){.vitrine{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.vitrine{grid-template-columns:1fr}}
+
+/* modal */
+.modal{border:0;padding:0;border-radius:20px;max-width:min(860px,calc(100vw - 32px));width:100%;background:var(--paper);color:var(--ink);box-shadow:0 40px 80px -20px rgba(0,0,0,.5)}
+.modal::backdrop{background:rgba(20,8,10,.6)}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr}
+.modal-grid img{width:100%;height:100%;object-fit:cover;max-height:80vh}
+.modal-body{padding:32px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.modal-body h3{font-size:32px}
+.modal-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);box-shadow:0 4px 12px var(--shadow)}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:15px}
+.checks .ico{color:var(--green);margin-right:8px}
+@media (max-width:700px){.modal-grid{grid-template-columns:1fr}.modal-grid img{max-height:44vh}.modal-body{padding:22px}}
+
+/* ---------- TESTE ---------- */
+.teste{background:var(--ink);color:var(--paper)}
+.teste .page-head{border-color:rgba(255,255,255,.18)}
+.teste .folio{color:rgba(255,255,255,.6)}
+.teste .kicker{color:var(--kraft)}
+.teste h2{font-size:clamp(38px,5vw,66px)}
+.teste h2 em{color:var(--kraft);font-weight:400}
+.teste-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.quiz{background:var(--paper);color:var(--ink);border-radius:20px;padding:30px;min-width:0}
+.q-step{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.q-title{font-family:var(--f-display);font-size:28px;margin:6px 0 18px;line-height:1.15}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q-opts button{border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:16px;text-align:left;font-weight:500;display:flex;gap:12px;align-items:center;transition:border-color .2s, transform .2s}
+.q-opts button .ico{color:var(--red);width:20px;text-align:center;flex:none}
+.q-opts button:hover{border-color:var(--red);transform:translateY(-2px)}
+.q-bar{height:4px;background:var(--line);border-radius:4px;margin-bottom:22px;overflow:hidden}
+.q-bar div{height:100%;background:var(--red);transition:width .4s}
+.q-result{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
+.q-result img{border-radius:14px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.q-result h3{font-size:28px;margin:4px 0 8px}
+.q-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.q-actions .btn{padding:11px 18px;font-size:14px}
+@media (max-width:860px){.teste-grid{grid-template-columns:1fr;gap:28px}}
+@media (max-width:520px){.q-opts{grid-template-columns:1fr}.q-result{grid-template-columns:1fr}.q-result img{max-width:180px}.quiz{padding:22px}}
+
+/* ---------- MONTE SEU KIT ---------- */
+.kit-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+.kit-form{display:grid;gap:30px;min-width:0}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{font-family:var(--f-display);font-size:24px;font-weight:700;margin-bottom:12px;padding:0}
+legend span{font-style:italic;font-weight:400;color:var(--red);margin-right:8px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:10px 18px;font-size:15px;cursor:pointer;transition:all .2s}
+.opt input:checked + label{border-color:var(--red);background:var(--red);color:var(--on-red)}
+.opt input:focus-visible + label{outline:3px solid var(--ribbon);outline-offset:2px}
+.swatch{width:16px;height:16px;border-radius:50%;display:inline-block;border:2px solid rgba(255,255,255,.7);box-shadow:0 0 0 1px var(--line)}
+.kit-form input[type=text]{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px 14px;font:inherit;margin-top:10px}
+.preview{position:sticky;top:90px;background:var(--card);border-radius:22px;padding:26px;box-shadow:0 30px 60px -28px var(--shadow);border:1px solid var(--line);min-width:0}
+.caixa{position:relative;height:230px;border-radius:14px;display:grid;place-items:center;overflow:hidden;background:var(--paper-2)}
+.caixa .box{width:62%;height:64%;border-radius:10px;background:var(--paper);border:3px solid var(--line);position:relative;display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:12px;transition:all .4s}
+.caixa.cesta .box{border-radius:0 0 60px 60px;background:var(--kraft);border-color:color-mix(in srgb,var(--kraft) 70%,#000)}
+.caixa.cesta .box::before{content:"";position:absolute;left:8%;right:8%;top:-70%;height:110%;border:6px solid color-mix(in srgb,var(--kraft) 70%,#000);border-bottom:0;border-radius:200px 200px 0 0}
+.caixa.floral .box{background:repeating-radial-gradient(circle at 30% 30%,#E46A6A 0 6px,#5A6E3A 7px 13px,#3a2b2b 14px 20px)}
+.caixa .item{width:20px;border-radius:6px 6px 3px 3px;background:var(--ink);opacity:.85;transition:height .3s}
+.laco{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:44px;transition:color .3s}
+.fita{position:absolute;left:50%;top:40px;bottom:0;width:6px;transform:translateX(-50%);transition:background .3s;opacity:.85}
+.etiqueta{position:absolute;right:12%;bottom:22px;background:#fff;color:#C81E2B;font-family:var(--f-hand);font-size:20px;padding:4px 14px;border-radius:999px;border:2px dashed #C81E2B;transform:rotate(-6deg);max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resumo{margin:20px 0;display:grid;gap:8px;font-size:15px}
+.resumo div{display:grid;grid-template-columns:96px 1fr;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.resumo dt{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.resumo dd{margin:0;font-weight:500;min-width:0}
+.preview .btn{width:100%}
+@media (max-width:900px){.kit-grid{grid-template-columns:1fr}.preview{position:static}}
+
+/* ---------- NA FEIRA ---------- */
+.feira-band{color:var(--on-red);padding-block:80px}
+.feira-card{background:var(--paper);color:var(--ink);border-radius:24px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
+.feira-card h2{font-size:clamp(38px,5vw,64px)}
+.contagem{display:flex;gap:12px;margin:22px 0}
+.contagem div{background:var(--paper-2);border-radius:14px;padding:12px 16px;text-align:center;min-width:78px}
+.contagem b{display:block;font-family:var(--f-display);font-size:40px;line-height:1;font-variant-numeric:tabular-nums;color:var(--red)}
+.contagem small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hoje{font-family:var(--f-hand);font-size:34px;color:var(--red)}
+.infos{display:grid;gap:18px;align-content:start}
+.info{display:grid;grid-template-columns:44px 1fr;gap:14px}
+.info .ico{width:44px;height:44px;border-radius:12px;background:var(--paper-2);color:var(--red);display:grid;place-items:center;font-size:18px}
+.info strong{display:block}
+.info p{color:var(--muted);font-size:15px}
+@media (max-width:860px){.feira-card{grid-template-columns:1fr}}
+
+/* ---------- PERGUNTAS ---------- */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-family:var(--f-display);font-size:22px;font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{color:var(--red);transition:transform .3s;margin-top:4px;flex:none}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--muted);max-width:62ch}
+
+/* ---------- CONTRACAPA ---------- */
+.contracapa{background:var(--ink);color:var(--paper);padding-block:72px calc(40px + env(safe-area-inset-bottom,0px))}
+.contracapa .grande{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,13vw,170px);line-height:.85;color:var(--red)}
+.contracapa .grande em{font-weight:400;color:var(--paper)}
+.contra-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end;margin-top:28px}
+.numero{font-size:clamp(22px,3vw,32px);font-weight:600;letter-spacing:.04em;user-select:all}
+.copy-btn{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--paper);border-radius:999px;padding:8px 14px;font-size:13px;margin-left:10px}
+.creditos{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;color:rgba(255,255,255,.6);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:30px;text-decoration:none;box-shadow:0 14px 30px -8px rgba(0,0,0,.45)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:999px;font-size:14px;z-index:100;transition:transform .3s}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+</style>
 </head>
-<body class="bg-white text-feiraDark font-sans antialiased selection:bg-feiraRed selection:text-white">
+<body>
 
-    <!-- Fundo Escuro e Menu Lateral -->
-    <div id="menuBackdrop" onclick="closeMenu()"></div>
-    <aside id="navDrawer" aria-hidden="true">
-        <div>
-            <div class="p-5 border-b border-gray-100 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center justify-center w-7 h-7 bg-feiraRed text-white rounded-sm">
-                        <i class="fa-solid fa-gem text-xs"></i>
-                    </span>
-                    <span class="font-extrabold tracking-tight text-feiraRed text-base">ELISA COSMÉTICOS</span>
-                </div>
-                <button type="button" onclick="closeMenu()" class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 cursor-pointer" aria-label="Fechar menu">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-            <nav class="p-4 space-y-1">
-                <a href="#inicio" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
-                    <i class="fa-solid fa-house w-5 text-feiraRed"></i> Início &amp; Destaques
-                </a>
-                <a href="#sobre" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
-                    <i class="fa-solid fa-store w-5 text-feiraRed"></i> Sobre Nós &amp; Atuação
-                </a>
-                <a href="#vitrine" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
-                    <i class="fa-solid fa-bag-shopping w-5 text-feiraRed"></i> Produtos Pronta Entrega
-                </a>
-                <a href="#simulador" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
-                    <i class="fa-solid fa-gift w-5 text-feiraRed"></i> Monte seu Presente
-                </a>
-                <a href="#localizacao" onclick="closeMenu()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-feiraRed transition">
-                    <i class="fa-solid fa-location-dot w-5 text-feiraRed"></i> Feira do Palmital (Domingos)
-                </a>
-            </nav>
-            <div class="mx-4 p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2 text-xs text-gray-600">
-                <div class="flex items-center gap-2 font-bold text-gray-900">
-                    <i class="fa-solid fa-file-invoice text-feiraRed"></i> 100% Original com Nota Fiscal
-                </div>
-                <p>Produtos a pronta entrega das marcas <strong>O Boticário, Natura e Avon</strong>. Chame no WhatsApp para saber valores.</p>
-                <div class="pt-1 flex flex-wrap gap-1.5 font-semibold text-gray-800">
-                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Pix</span>
-                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Crédito</span>
-                    <span class="px-2 py-0.5 bg-white border border-gray-200 rounded">Débito</span>
-                </div>
-            </div>
+<header class="topbar">
+  <div class="wrap">
+    <a href="#capa" class="mast-mini">ELISA<small>COSMÉTICOS &amp; PRESENTES</small></a>
+    <div class="top-actions">
+      <span class="page-indicator" id="pageIndicator">Capa</span>
+      <a class="btn btn-wa top-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de saber valores e produtos a pronta entrega." href="#"><i class="fa-brands fa-whatsapp"></i><span>Fale com a Elisa</span></a>
+      <button class="icon-btn" id="menuBtn" aria-label="Abrir sumário" aria-expanded="false" aria-controls="drawer"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="drawer-bg" id="drawerBg"></div>
+<nav class="drawer" id="drawer" aria-label="Sumário">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="kicker">Nesta edição</span>
+    <button class="icon-btn" id="closeMenu" aria-label="Fechar sumário"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <h2>Sumário</h2>
+  <ol id="sumario"></ol>
+  <a class="btn btn-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de fazer um pedido." href="#"><i class="fa-brands fa-whatsapp"></i>(31) 98727-6596</a>
+</nav>
+
+<main>
+<!-- CAPA -->
+<section class="capa" id="capa" data-page="Capa">
+  <div class="wrap">
+    <div class="capa-meta"><span id="edicao">Edição de Natal</span><span>Feira do Palmital · Domingos</span></div>
+    <div class="capa-grid">
+      <div>
+        <div class="masthead">Elisa<em>.</em></div>
+        <div class="mast-sub">Cosméticos &amp; Presentes</div>
+        <h1>Presentes prontos, <i>com laço</i> e com carinho, esperando por você no domingo.</h1>
+        <ul class="chamadas">
+          <li><a href="#materia"><b>pág. 04</b><strong>Por dentro do kit Avon Care: toque nos detalhes da foto</strong></a></li>
+          <li><a href="#teste"><b>pág. 06</b><strong>Teste: qual presente combina com quem você ama?</strong></a></li>
+          <li><a href="#kit"><b>pág. 07</b><strong>Monte seu kit do seu jeito e mande direto no WhatsApp</strong></a></li>
+        </ul>
+        <div class="capa-actions">
+          <a href="#vitrine" class="btn btn-red"><i class="fa-solid fa-book-open"></i> Folhear a vitrine</a>
+          <a class="btn btn-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de saber valores dos kits a pronta entrega." href="#"><i class="fa-brands fa-whatsapp"></i> Consultar valores</a>
         </div>
-        <div class="p-4 border-t border-gray-100">
-            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20a%20pronta%20entrega%20e%20valores." class="w-full py-3.5 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
-                <i class="fa-brands fa-whatsapp text-lg"></i> (31) 98727-6596
-            </a>
+      </div>
+      <div class="capa-foto">
+        <div class="frame"><img src="img/cesta-nativa-spa.jpg" alt="Cesta presente O Boticário Nativa SPA com laço vermelho sobre a toalha de bolinhas da banca" fetchpriority="high"></div>
+        <div class="selo"><div><span>pronta</span>entrega<br>com nota</div></div>
+        <div class="tag-carinho">Com carinho!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toalha ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- CARTA -->
+<section class="page" id="carta" data-page="pág. 03 · Carta da Elisa">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Editorial</span><span class="folio">pág. 03</span></div>
+    <div class="carta reveal">
+      <aside>
+        <h2>Carta da Elisa</h2>
+        <div class="marcas"><span>O Boticário</span><span>Natura</span><span>Avon</span></div>
+      </aside>
+      <div>
+        <div class="carta-text">
+          <p>Todo domingo eu monto a banca na Feira do Palmital com a toalha vermelha de bolinhas e uma mesa cheia de presentes. Cada kit é escolhido e embalado por mim: a caixinha com visor, o papel celofane, o laço e a etiqueta escrita "com carinho".</p>
+          <p>Trabalho com produtos O Boticário, Natura e Avon a pronta entrega. Tudo é original, sai com Nota Fiscal, e você pode pagar no Pix, no cartão de crédito ou débito, ou em dinheiro.</p>
+          <p>Fiz esta revista para você folhear com calma antes de passar na feira. Gostou de alguma coisa? Me chame no WhatsApp, que eu mando foto, valor e já separo o seu para domingo.</p>
         </div>
-    </aside>
+        <div class="assinatura">Elisa</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Cabeçalho Oficial Estilo FeiraMinas -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
-            <!-- Botão dos Três Tracinhos (Menu) -->
-            <button type="button" onclick="openMenu()" class="w-11 h-11 rounded-md bg-gray-100 active:bg-gray-200 hover:bg-gray-200/80 flex flex-col items-center justify-center gap-1.5 transition cursor-pointer shrink-0" aria-label="Abrir menu">
-                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
-                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
-                <span class="w-5 h-0.5 bg-gray-800 rounded-full pointer-events-none"></span>
-            </button>
+<!-- MATÉRIA DE CAPA -->
+<section class="page materia" id="materia" data-page="pág. 04 · Matéria de capa">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Matéria de capa</span><span class="folio">pág. 04</span></div>
+    <div class="materia-grid">
+      <figure class="hot-figure reveal" id="hotFigure" style="margin:0">
+        <img src="img/kit-avon-care.jpg" alt="Kit presente Avon Care com loção de 200 ml e dois sabonetes em caixa com visor, laço azul">
+      </figure>
+      <div class="reveal">
+        <h2>O kit do <em>laço azul</em>, por dentro</h2>
+        <p class="lead" style="margin-top:18px">É o presente que mais sai da banca. Toque nos números da foto para ver cada detalhe.</p>
+        <ul class="hot-list" id="hotList"></ul>
+        <a class="btn btn-wa" style="margin-top:24px" data-wa="Olá Elisa! Vi na revista o Kit Avon Care com laço azul. Qual o valor e ainda tem a pronta entrega?" href="#"><i class="fa-brands fa-whatsapp"></i> Quero este kit</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <a href="#inicio" class="flex items-center gap-2 sm:gap-2.5 group">
-                <div class="flex items-center">
-                    <svg class="w-7 h-6 sm:w-8 sm:h-7 text-feiraRed" viewBox="0 0 36 28" fill="currentColor">
-                        <polygon points="10,4 2,24 18,24" />
-                        <polygon points="24,6 15,24 33,24" opacity="0.88" />
-                        <circle cx="17" cy="11" r="2.2" fill="#FFFFFF" />
-                    </svg>
-                </div>
-                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5 leading-none">
-                    <span class="text-lg sm:text-2xl font-extrabold tracking-tight text-feiraRed uppercase">ELISA</span>
-                    <span class="text-[10px] sm:text-sm font-bold tracking-widest text-gray-800 uppercase">COSMÉTICOS</span>
-                </div>
-            </a>
+<!-- VITRINE -->
+<section class="page" id="vitrine" data-page="pág. 05 · Vitrine">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Vitrine · pronta entrega</span><span class="folio">pág. 05</span></div>
+    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:14px">Direto da banca</h2>
+    <p class="lead" style="margin-bottom:28px">Fotos reais da mesa de domingo. Toque num presente para ver o que vem dentro e pedir o valor.</p>
+    <div class="filtros" role="group" aria-label="Filtrar por marca" id="filtros">
+      <button class="chip" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="chip" aria-pressed="false" data-f="boticario">O Boticário</button>
+      <button class="chip" aria-pressed="false" data-f="natura">Natura</button>
+      <button class="chip" aria-pressed="false" data-f="avon">Avon</button>
+      <button class="chip" aria-pressed="false" data-f="kits">Kits e cestas</button>
+    </div>
+    <div class="vitrine" id="vitrineGrid"></div>
+  </div>
+</section>
 
-            <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20oficial%20e%20gostaria%20de%20consultar%20valores%20e%20produtos%20dispon%C3%ADveis." class="bg-feiraGreen hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-sm hover:shadow transition shrink-0">
-                <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
-                <span>Fale Conosco</span>
-            </a>
+<dialog class="modal" id="modal" aria-labelledby="mTitle">
+  <button class="modal-close" id="mClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+  <div class="modal-grid">
+    <img id="mImg" src="" alt="">
+    <div class="modal-body">
+      <span class="kicker" id="mBrand"></span>
+      <h3 id="mTitle"></h3>
+      <p id="mDesc" style="color:var(--muted)"></p>
+      <ul class="checks" id="mChecks"></ul>
+      <a class="btn btn-wa" id="mWa" href="#"><i class="fa-brands fa-whatsapp"></i> Saber valor no WhatsApp</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- TESTE -->
+<section class="page teste" id="teste" data-page="pág. 06 · Teste">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Teste da revista</span><span class="folio">pág. 06</span></div>
+    <div class="teste-grid">
+      <div>
+        <h2>Qual presente <em>combina</em> com quem você ama?</h2>
+        <p style="margin-top:18px;color:rgba(255,255,255,.75)">Três perguntas rápidas. No final eu indico um presente da banca e você já pode me chamar para reservar.</p>
+      </div>
+      <div class="quiz" id="quiz" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTE SEU KIT -->
+<section class="page" id="kit" data-page="pág. 07 · Monte seu kit">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Faça você mesmo</span><span class="folio">pág. 07</span></div>
+    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:14px">Monte seu kit</h2>
+    <p class="lead" style="margin-bottom:36px">Escolha a embalagem, os produtos, a cor do laço e a frase da etiqueta. Eu recebo tudo pelo WhatsApp e respondo com as opções e o valor.</p>
+    <div class="kit-grid">
+      <form class="kit-form" id="kitForm">
+        <fieldset><legend><span>1</span>Embalagem</legend><div class="opts" id="optBase"></div></fieldset>
+        <fieldset><legend><span>2</span>O que vai dentro</legend><div class="opts" id="optItens"></div></fieldset>
+        <fieldset><legend><span>3</span>Marca preferida</legend><div class="opts" id="optMarca"></div></fieldset>
+        <fieldset><legend><span>4</span>Cor do laço</legend><div class="opts" id="optLaco"></div></fieldset>
+        <fieldset><legend><span>5</span>Frase da etiqueta</legend><div class="opts" id="optTag"></div>
+          <input type="text" id="tagCustom" maxlength="28" placeholder="Ou escreva a sua frase (até 28 letras)" aria-label="Frase personalizada da etiqueta">
+        </fieldset>
+        <fieldset><legend><span>6</span>Como você quer receber</legend><div class="opts" id="optEntrega"></div></fieldset>
+      </form>
+      <aside class="preview" aria-live="polite">
+        <span class="kicker">Seu kit</span>
+        <div class="caixa" id="caixa" style="margin-top:12px">
+          <div class="fita" id="fita"></div>
+          <div class="box" id="box"></div>
+          <span class="laco" id="laco"><i class="fa-solid fa-ribbon"></i></span>
+          <div class="etiqueta" id="etiqueta">Com carinho</div>
         </div>
-    </header>
+        <dl class="resumo" id="resumo"></dl>
+        <a class="btn btn-wa" id="kitWa" href="#"><i class="fa-brands fa-whatsapp"></i> Enviar meu kit para a Elisa</a>
+      </aside>
+    </div>
+  </div>
+</section>
 
-    <!-- Seção Hero Editorial + Carrossel -->
-    <section id="inicio" class="hero-sky-bg relative overflow-hidden pt-8 sm:pt-12 pb-10 sm:pb-14 border-b border-gray-200/70">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-feiraRed text-white shadow-md mb-2">
-                <i class="fa-solid fa-crown text-xs"></i>
-            </div>
-
-            <h1 class="text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none uppercase">
-                <span class="font-extralight text-feiraSage">BELEZA</span><span class="font-normal text-gray-600">&amp;PRESENTE</span>
-            </h1>
-
-            <p class="mt-3 text-[11px] sm:text-sm font-semibold tracking-[0.25em] text-gray-600 uppercase">
-                PRONTA ENTREGA • NOTA FISCAL • AVON, NATURA &amp; O BOTICÁRIO
-            </p>
-
-            <!-- Carrossel Fotográfico de 4 Colunas -->
-            <div class="relative mt-7 sm:mt-9 max-w-5xl mx-auto">
-                <button type="button" onclick="slideHero(-1)" class="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Anterior">
-                    <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
-                </button>
-
-                <div id="heroCarousel" class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 rounded-2xl overflow-hidden shadow-xl bg-white p-1.5 sm:p-2">
-                    <!-- Coluna 1 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Avon%20Care%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20o%20valor%20e%20disponibilidade!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-rose-100 block">
-                        <img data-base="Screenshot_20261108-134316" src="Screenshot_20261108-134316_Gallery.jpg" onerror="tryNextExt(this)" alt="Kit Presente Avon Care com Laço Azul" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            Pronta Entrega
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
-                            <p class="text-[11px] uppercase tracking-wider text-sky-200 font-semibold">Avon Care • Laço Azul</p>
-                            <h3 class="text-sm sm:text-base font-bold leading-tight">Kit Hidratação &amp; Sabonetes</h3>
-                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
-                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
-                            </span>
-                        </div>
-                    </a>
-
-                    <!-- Coluna 2 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Natura%20Ekos%20Maracuj%C3%A1%20e%20o%20Kit%20com%20La%C3%A7o%20Azul%20no%20site.%20Gostaria%20de%20saber%20os%20valores!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-amber-100 block">
-                        <img data-base="Screenshot_20261108-134322" src="Screenshot_20261108-134322_Gallery.jpg" onerror="tryNextExt(this)" alt="Natura Ekos Maracujá e Kit Presente" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute top-2.5 left-2.5 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            Natura &amp; Avon
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
-                            <p class="text-[11px] uppercase tracking-wider text-amber-200 font-semibold">Natura Ekos</p>
-                            <h3 class="text-sm sm:text-base font-bold leading-tight">Sabonetes Maracujá &amp; Kits</h3>
-                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
-                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
-                            </span>
-                        </div>
-                    </a>
-
-                    <!-- Coluna 3 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20Kit%20Presente%20Especial%20com%20La%C3%A7o%20Vermelho%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-red-100 block">
-                        <img data-base="Screenshot_20261108-134335" src="Screenshot_20261108-134335_Gallery.jpg" onerror="tryNextExt(this)" alt="Presente Especial com Laço Vermelho" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute top-2.5 left-2.5 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            Presente Pronto
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
-                            <p class="text-[11px] uppercase tracking-wider text-rose-200 font-semibold">Embalagem Especial</p>
-                            <h3 class="text-sm sm:text-base font-bold leading-tight">Kit Presente com Laço</h3>
-                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
-                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
-                            </span>
-                        </div>
-                    </a>
-
-                    <!-- Coluna 4 -->
-                    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20a%20Cesta%20Luxo%20O%20Botic%C3%A1rio%20Nativa%20SPA%20no%20site.%20Gostaria%20de%20saber%20o%20valor!" class="group relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-xl cursor-pointer bg-emerald-100 block">
-                        <img data-base="Screenshot_20261108-134340" src="Screenshot_20261108-134340_Gallery.jpg" onerror="tryNextExt(this)" alt="Cesta Luxo O Boticário Nativa SPA" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute top-2.5 left-2.5 bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            O Boticário
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left text-white">
-                            <p class="text-[11px] uppercase tracking-wider text-pink-200 font-semibold">Nativa SPA</p>
-                            <h3 class="text-sm sm:text-base font-bold leading-tight">Cesta Luxo com Laço</h3>
-                            <span class="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-300 font-semibold">
-                                <i class="fa-brands fa-whatsapp"></i> Consultar valor
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <button type="button" onclick="slideHero(1)" class="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-feiraRed shadow-lg flex items-center justify-center transition cursor-pointer" aria-label="Próximo">
-                    <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
-                </button>
-            </div>
-
-            <p class="mt-6 sm:mt-8 text-base sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                Temos produtos a <strong class="font-bold text-gray-900">pronta entrega</strong> em estoque! Para saber valores e fazer seu pedido, <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Gostaria%20de%20saber%20valores%20e%20fazer%20um%20pedido." class="font-bold text-feiraGreen underline">chame no WhatsApp (31) 98727-6596</a>.
-            </p>
-
-            <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-700">
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
-                    <i class="fa-solid fa-boxes-stacked text-feiraRed"></i> Produtos Pronta Entrega
-                </span>
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
-                    <i class="fa-solid fa-file-invoice text-feiraRed"></i> Com Nota Fiscal
-                </span>
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
-                    <i class="fa-brands fa-pix text-teal-600"></i> Aceitamos Pix
-                </span>
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-full shadow-xs border border-gray-200/80">
-                    <i class="fa-regular fa-credit-card text-blue-600"></i> Cartão Crédito e Débito
-                </span>
-            </div>
+<!-- NA FEIRA -->
+<section class="toalha feira-band" id="feira" data-page="pág. 08 · Na feira">
+  <div class="wrap">
+    <div class="feira-card reveal">
+      <div>
+        <span class="kicker">pág. 08 · Onde encontrar</span>
+        <h2 style="margin-top:10px">Domingo é dia de feira no Palmital</h2>
+        <div id="contagem"></div>
+        <p style="color:var(--muted)">A banca fica montada nas manhãs de domingo. Quer garantir um kit? Reserve antes pelo WhatsApp e retire na feira.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
+          <a class="btn btn-wa" data-wa="Olá Elisa! Quero reservar um presente para retirar domingo na Feira do Palmital." href="#"><i class="fa-brands fa-whatsapp"></i> Reservar para domingo</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Feira+do+Palmital" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Ver no mapa</a>
         </div>
-    </section>
+      </div>
+      <div class="infos">
+        <div class="info"><span class="ico"><i class="fa-solid fa-boxes-stacked"></i></span><div><strong>Pronta entrega</strong><p>Os produtos estão na banca. Você escolhe de perto e leva na hora.</p></div></div>
+        <div class="info"><span class="ico"><i class="fa-solid fa-file-invoice"></i></span><div><strong>Nota Fiscal</strong><p>Produtos originais O Boticário, Natura e Avon, com Nota Fiscal.</p></div></div>
+        <div class="info"><span class="ico"><i class="fa-regular fa-credit-card"></i></span><div><strong>Pagamento</strong><p>Pix, cartão de crédito, cartão de débito ou dinheiro.</p></div></div>
+        <div class="info"><span class="ico"><i class="fa-solid fa-gift"></i></span><div><strong>Embalagem para presente</strong><p>Celofane, laço e etiqueta "com carinho" já inclusos nos kits.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Seção "// SOBRE NÓS — Nossa Área de Atuação" -->
-    <section id="sobre" class="relative py-16 sm:py-24 bg-white overflow-hidden">
-        <div class="polka-dots w-48 h-64 sm:w-72 sm:h-80 rounded-full opacity-75 absolute -left-12 top-6 pointer-events-none"></div>
-        <div class="polka-dots w-40 h-40 rounded-full opacity-50 absolute right-6 bottom-6 pointer-events-none hidden md:block"></div>
+<!-- PERGUNTAS -->
+<section class="page" id="perguntas" data-page="pág. 09 · Perguntas">
+  <div class="wrap">
+    <div class="page-head"><span class="kicker">Tira-dúvidas</span><span class="folio">pág. 09</span></div>
+    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:24px">Perguntas da freguesia</h2>
+    <div class="faq">
+      <details open><summary>Os produtos são originais?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Sim. Todos são O Boticário, Natura ou Avon, lacrados de fábrica, e saem com Nota Fiscal.</p></details>
+      <details><summary>Por que os preços não aparecem aqui?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Os valores mudam com as promoções das marcas. Pelo WhatsApp eu passo o preço do dia e mando foto do que está disponível.</p></details>
+      <details><summary>Posso reservar e buscar no domingo?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Pode. Me chame durante a semana, eu separo o seu kit e você retira na banca da Feira do Palmital.</p></details>
+      <details><summary>Vocês fazem entrega?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Dá para combinar. Me diga o bairro pelo WhatsApp e a gente acerta a melhor forma.</p></details>
+      <details><summary>Quais as formas de pagamento?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Pix, cartão de crédito, cartão de débito e dinheiro.</p></details>
+    </div>
+  </div>
+</section>
+</main>
 
-        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center relative z-10">
-            <span class="text-xs sm:text-sm font-extrabold tracking-widest text-feiraRed uppercase">
-                // SOBRE NÓS
-            </span>
-            <h2 class="mt-2 text-3xl sm:text-4xl md:text-5xl font-bold text-feiraDark tracking-tight">
-                Nossa Área de Atuação
-            </h2>
-            <p class="mt-6 text-base sm:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                Com atendimento dedicado todos os domingos na tradicional <strong class="text-gray-900">Feira do Palmital</strong>, a <strong class="text-gray-900">ELISA COSMÉTICOS</strong> trabalha com <strong class="text-gray-900">produtos a pronta entrega</strong> das melhores marcas — <strong class="text-gray-900">O Boticário, Natura e Avon</strong> — com procedência 100% original, emissão de <strong class="text-gray-900">Nota Fiscal</strong> e pagamento facilitado no <strong class="text-gray-900">Pix e Cartão</strong>.
-            </p>
+<!-- CONTRACAPA -->
+<footer class="contracapa">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--kraft)">Contracapa</span>
+    <div class="grande">Até <em>domingo!</em></div>
+    <div class="contra-row">
+      <div>
+        <p style="color:rgba(255,255,255,.7);margin-bottom:6px">WhatsApp da Elisa</p>
+        <span class="numero" id="numero">(31) 98727-6596</span><button class="copy-btn" id="copyBtn"><i class="fa-regular fa-copy"></i> Copiar</button>
+      </div>
+      <a class="btn btn-wa" data-wa="Olá Elisa! Terminei de ler a revista e gostaria de fazer um pedido." href="#"><i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp</a>
+    </div>
+    <div class="creditos"><span>Elisa Cosméticos &amp; Presentes · O Boticário · Natura · Avon</span><span>Feira do Palmital · domingos de manhã</span></div>
+  </div>
+</footer>
 
-            <div class="mt-10 pt-8 border-t border-gray-200/80 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center max-w-2xl mx-auto">
-                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-serif font-bold text-lg text-emerald-900 tracking-wide">
-                    O BOTICÁRIO
-                </div>
-                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-sans font-extrabold text-xl text-orange-600 tracking-wider lowercase">
-                    natura
-                </div>
-                <div class="py-3.5 px-5 rounded-xl bg-gray-50 border border-gray-100 font-sans font-extrabold text-lg text-pink-600 tracking-widest uppercase">
-                    AVON
-                </div>
-            </div>
-        </div>
-    </section>
+<a class="fab" data-wa="Olá Elisa! Vi a revista e gostaria de saber mais sobre os produtos e valores." href="#" aria-label="Chamar a Elisa no WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<div class="toast" id="toast" role="status"></div>
 
-    <!-- Seção Vitrine de Produtos Pronta Entrega -->
-    <section id="vitrine" class="py-16 sm:py-20 bg-gray-50 border-t border-gray-200/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-xs sm:text-sm font-extrabold tracking-widest text-feiraRed uppercase">
-                    // PRONTA ENTREGA • ESTOQUE REAL
-                </span>
-                <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-feiraDark">
-                    Nossos Produtos &amp; Kits
-                </h2>
-                <p class="mt-3 text-sm sm:text-base text-gray-600">
-                    Clique em qualquer produto para consultar valores e reservar pelo WhatsApp <strong>(31) 98727-6596</strong>. Todos os itens acompanham <strong>Nota Fiscal</strong>.
-                </p>
-            </div>
+<script>
+(function(){
+const WA = "5531987276596";
+const waUrl = m => "https://api.whatsapp.com/send?phone=" + WA + "&text=" + encodeURIComponent(m);
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-                <div class="flex flex-wrap items-center justify-center gap-2" id="categoryFilters">
-                    <button type="button" onclick="filterProducts('todos', this)" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-feiraRed text-white shadow-xs transition cursor-pointer">
-                        Todos (Pronta Entrega)
-                    </button>
-                    <button type="button" onclick="filterProducts('kits', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
-                        Kits &amp; Cestas
-                    </button>
-                    <button type="button" onclick="filterProducts('boticario', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
-                        O Boticário
-                    </button>
-                    <button type="button" onclick="filterProducts('natura', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
-                        Natura
-                    </button>
-                    <button type="button" onclick="filterProducts('avon', this)" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-feiraRed transition cursor-pointer">
-                        Avon
-                    </button>
-                </div>
+function wireWa(root){
+  (root||document).querySelectorAll("[data-wa]").forEach(a => { a.href = waUrl(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
+}
 
-                <div class="relative w-full md:w-72">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Buscar marca ou produto..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-gray-200 text-sm focus:outline-none focus:border-feiraRed">
-                </div>
-            </div>
+/* edição pelo mês atual */
+const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const hoje = new Date();
+$("#edicao").textContent = (hoje.getMonth() >= 10 ? "Edição de Natal · " : "Edição de ") + meses[hoje.getMonth()] + " " + hoje.getFullYear();
 
-            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Preenchido via JavaScript -->
-            </div>
-        </div>
-    </section>
+/* faixa */
+const selos = ["Pronta entrega","Nota Fiscal","Pix e cartão","O Boticário","Natura","Avon","Kits com laço","Feira do Palmital aos domingos"];
+const t = selos.map(s => '<span><i class="fa-solid fa-circle" style="font-size:6px"></i>' + s + '</span>').join("");
+$("#ticker").innerHTML = t + t;
 
-    <!-- Simulador Rápido de Atendimento -->
-    <section id="simulador" class="py-16 sm:py-20 bg-white border-t border-gray-200/70">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6">
-            <div class="rounded-3xl bg-gradient-to-br from-gray-900 via-neutral-800 to-gray-900 text-white p-6 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-6 space-y-4">
-                        <span class="inline-block text-xs font-extrabold tracking-widest text-rose-400 uppercase">
-                            // ATENDIMENTO DIRETO NO WHATSAPP
-                        </span>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                            Quer saber valores ou montar um kit presente?
-                        </h2>
-                        <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
-                            Temos diversos produtos a <strong>pronta entrega</strong> em estoque! Escolha para quem é o presente ou a marca desejada e chame a Elisa no WhatsApp para receber fotos e valores atualizados.
-                        </p>
-                        <div class="flex flex-wrap gap-3 pt-1 text-xs text-gray-300">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Pronta entrega</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Nota Fiscal inclusa</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-feiraGreen"></i> Pix ou Cartão</span>
-                        </div>
-                    </div>
+/* ---------- produtos ---------- */
+const produtos = [
+  {id:"avon", nome:"Kit Avon Care com laço azul", marca:"Avon", cat:["avon","kits"], img:"img/kit-avon-care.jpg", badge:"Mais pedido",
+   desc:"Caixa com visor, loção desodorante corporal Avon Care Leite de Amêndoas 200 ml e dois sabonetes com etiqueta \"com carinho\".",
+   itens:["Loção Avon Care 200 ml","2 sabonetes embalados","Caixa com visor, celofane e laço azul"]},
+  {id:"ekos", nome:"Natura Ekos Maracujá e kit Avon Care", marca:"Natura · Avon", cat:["natura","avon","kits"], img:"img/kit-ekos-maracuja.jpg", badge:"Combo",
+   desc:"A caixinha amarela de sabonetes Natura Ekos Maracujá junto do kit Avon Care com laço azul. Dá para levar os dois ou só um.",
+   itens:["Caixa Natura Ekos Maracujá","Kit Avon Care com loção e sabonetes","Laço azul e etiqueta"]},
+  {id:"floral", nome:"Presente especial com laço vermelho", marca:"Natura · O Boticário", cat:["natura","boticario","kits"], img:"img/presente-laco-vermelho.jpg", badge:"Presente pronto",
+   desc:"Caixa em papel floral com flores secas, laço vermelho e a etiqueta \"Presente especial pra você\". O conteúdo muda conforme o estoque.",
+   itens:["Produtos lacrados de fábrica","Flores secas decorativas","Etiqueta \"Presente especial pra você\""]},
+  {id:"nativa", nome:"Cesta luxo Nativa SPA", marca:"O Boticário", cat:["boticario","kits"], img:"img/cesta-nativa-spa.jpg", badge:"Cesta luxo",
+   desc:"Cesta com alça, hidratante O Boticário Nativa SPA, esponja de banho felpuda, flores secas e etiqueta \"Você é especial\".",
+   itens:["Hidratante Nativa SPA","Esponja de banho","Cesta com alça, celofane e laço vermelho"]}
+];
+$("#vitrineGrid").innerHTML = produtos.map(p => `
+  <button class="produto reveal" data-id="${p.id}" data-cat="${p.cat.join(" ")}">
+    <div class="ph"><img src="${p.img}" alt="${esc(p.nome)}" loading="lazy"><span class="badge">${p.badge}</span></div>
+    <span class="marca">${p.marca}</span>
+    <h3>${p.nome}</h3>
+    <span class="ver">Ver detalhes <i class="fa-solid fa-arrow-right"></i></span>
+  </button>`).join("");
 
-                    <div class="lg:col-span-6 bg-white text-gray-900 rounded-2xl p-5 sm:p-6 shadow-lg space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">1. O que você procura?</label>
-                            <select id="giftInterest" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
-                                <option value="Kit ou Cesta de Presente pronta">Kit ou Cesta de Presente pronta</option>
-                                <option value="Perfumes e Colônias">Perfumes e Colônias</option>
-                                <option value="Hidratantes e Sabonetes">Hidratantes e Sabonetes</option>
-                                <option value="Desodorantes Roll-on e uso diário">Desodorantes Roll-on e uso diário</option>
-                            </select>
-                        </div>
+$("#filtros").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  $$("#filtros .chip").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+  const f = b.dataset.f;
+  $$(".produto").forEach(el => { el.hidden = f !== "todos" && !el.dataset.cat.split(" ").includes(f); });
+});
 
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">2. Marca de preferência</label>
-                            <select id="giftBrand" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
-                                <option value="O Boticário">O Boticário</option>
-                                <option value="Natura">Natura</option>
-                                <option value="Avon">Avon</option>
-                                <option value="Todas (O Boticário, Natura e Avon)">Todas (O Boticário, Natura e Avon)</option>
-                            </select>
-                        </div>
+const modal = $("#modal");
+function abrir(id){
+  const p = produtos.find(x => x.id === id);
+  $("#mImg").src = p.img; $("#mImg").alt = p.nome;
+  $("#mBrand").textContent = p.marca; $("#mTitle").textContent = p.nome; $("#mDesc").textContent = p.desc;
+  $("#mChecks").innerHTML = p.itens.concat(["Pronta entrega com Nota Fiscal"]).map(i => '<li><span class="ico"><i class="fa-solid fa-check"></i></span>' + esc(i) + '</li>').join("");
+  $("#mWa").href = waUrl("Olá Elisa! Vi na revista: *" + p.nome + "* (" + p.marca + "). Qual o valor e ainda tem a pronta entrega?");
+  $("#mWa").target = "_blank";
+  if (modal.showModal) modal.showModal(); else modal.setAttribute("open","");
+}
+$("#vitrineGrid").addEventListener("click", e => { const b = e.target.closest(".produto"); if(b) abrir(b.dataset.id); });
+$("#mClose").addEventListener("click", () => modal.close());
+modal.addEventListener("click", e => { if(e.target === modal) modal.close(); });
 
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">3. Como prefere retirar/receber?</label>
-                            <select id="giftDelivery" onchange="updateSimulatorLink()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-feiraRed">
-                                <option value="Retirar domingo na Feira do Palmital">Retirar domingo na Feira do Palmital</option>
-                                <option value="Combinar entrega / reserva antecipada">Combinar entrega / reserva antecipada</option>
-                            </select>
-                        </div>
+/* ---------- hotspots ---------- */
+const hots = [
+  {x:29,y:56,t:"Loção Avon Care 200 ml",d:"Leite de Amêndoas, 6 em 1, com hidratação profunda por até 48 horas segundo o rótulo."},
+  {x:57,y:46,t:"Sabonetes embalados um a um",d:"Dois sabonetes em papel azul, cada um com o adesivo \"Com carinho\"."},
+  {x:50,y:24,t:"Laço azul de puxar",d:"Laço de fita metalizada que fecha o celofane. Também tenho vermelho, rosa e dourado."},
+  {x:34,y:17,t:"Cartão em forma de coração",d:"Espaço para você escrever o nome de quem vai receber."},
+  {x:76,y:82,t:"Caixa com visor",d:"Caixa branca com janela, para o presente aparecer sem precisar abrir."}
+];
+const fig = $("#hotFigure");
+hots.forEach((h,i) => {
+  const b = document.createElement("button");
+  b.className = "hot"; b.style.left = h.x + "%"; b.style.top = h.y + "%";
+  b.textContent = i+1; b.setAttribute("aria-label", "Detalhe " + (i+1) + ": " + h.t); b.setAttribute("aria-pressed","false");
+  b.addEventListener("click", () => ativarHot(i));
+  fig.appendChild(b);
+});
+$("#hotList").innerHTML = hots.map((h,i) => `<li><button data-i="${i}"><span>${i+1}</span><div><strong>${h.t}</strong><small>${h.d}</small></div></button></li>`).join("");
+$("#hotList").addEventListener("click", e => { const b = e.target.closest("button"); if(b) ativarHot(+b.dataset.i); });
+function ativarHot(i){
+  $$("#hotList button").forEach((b,j) => b.classList.toggle("on", i === j));
+  $$(".hot").forEach((b,j) => b.setAttribute("aria-pressed", i === j ? "true" : "false"));
+}
+ativarHot(0);
 
-                        <a id="simulatorWaLink" href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20valores%20e%20op%C3%A7%C3%B5es%20a%20pronta%20entrega!" class="w-full py-3.5 px-5 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Valores no WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* ---------- teste ---------- */
+const perguntas = [
+  {q:"Para quem é o presente?", o:[
+    {t:"Mãe ou avó", i:"fa-heart", s:{nativa:2,floral:1}},
+    {t:"Amiga ou colega", i:"fa-user-group", s:{avon:2,ekos:1}},
+    {t:"Namorada ou esposa", i:"fa-face-kiss-wink-heart", s:{nativa:2,floral:2}},
+    {t:"Amigo secreto", i:"fa-gift", s:{ekos:2,avon:2}}]},
+  {q:"Qual cheirinho tem a cara dela?", o:[
+    {t:"Doce e marcante", i:"fa-candy-cane", s:{nativa:2}},
+    {t:"Suave, de pele limpa", i:"fa-feather", s:{avon:2}},
+    {t:"Frutado e fresco", i:"fa-lemon", s:{ekos:3}},
+    {t:"Surpresa, ela gosta de tudo", i:"fa-wand-magic-sparkles", s:{floral:3}}]},
+  {q:"Como você quer entregar?", o:[
+    {t:"Cesta caprichada", i:"fa-basket-shopping", s:{nativa:3}},
+    {t:"Caixinha com visor", i:"fa-box-open", s:{avon:2,ekos:1}},
+    {t:"Embrulho surpresa", i:"fa-scroll", s:{floral:3}},
+    {t:"Algo simples e útil", i:"fa-pump-soap", s:{ekos:2,avon:1}}]}
+];
+let passo = 0, pontos = {}, escolhas = [];
+function renderQuiz(){
+  const quiz = $("#quiz");
+  if (passo < perguntas.length){
+    const p = perguntas[passo];
+    quiz.innerHTML = `<div class="q-bar"><div style="width:${(passo/perguntas.length)*100}%"></div></div>
+      <div class="q-step">Pergunta ${passo+1} de ${perguntas.length}</div>
+      <div class="q-title">${p.q}</div>
+      <div class="q-opts">${p.o.map((o,i) => `<button data-i="${i}"><span class="ico"><i class="fa-solid ${o.i}"></i></span>${o.t}</button>`).join("")}</div>`;
+    quiz.querySelectorAll(".q-opts button").forEach(b => b.addEventListener("click", () => {
+      const o = p.o[+b.dataset.i]; escolhas.push(o.t);
+      for (const k in o.s) pontos[k] = (pontos[k]||0) + o.s[k];
+      passo++; renderQuiz();
+    }));
+  } else {
+    const best = produtos.slice().sort((a,b) => (pontos[b.id]||0) - (pontos[a.id]||0))[0];
+    const msg = "Olá Elisa! Fiz o teste da revista (" + escolhas.join(" / ") + ") e deu: *" + best.nome + "*. Qual o valor e ainda tem?";
+    quiz.innerHTML = `<div class="q-bar"><div style="width:100%"></div></div>
+      <div class="q-result"><img src="${best.img}" alt="${esc(best.nome)}">
+      <div><div class="q-step">O presente ideal é</div><h3>${best.nome}</h3><p style="color:var(--muted);font-size:15px">${best.desc}</p>
+      <div class="q-actions"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msg)}"><i class="fa-brands fa-whatsapp"></i> Reservar este</a>
+      <button class="btn btn-ghost" id="refazer"><i class="fa-solid fa-rotate-left"></i> Refazer</button></div></div></div>`;
+    $("#refazer").addEventListener("click", () => { passo = 0; pontos = {}; escolhas = []; renderQuiz(); });
+  }
+}
+renderQuiz();
 
-    <!-- Seção Onde Encontrar: Feira do Palmital -->
-    <section id="localizacao" class="py-16 bg-gray-50 border-t border-gray-200/70">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
-                    <div class="w-11 h-11 rounded-xl bg-red-50 text-feiraRed flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-gray-900">Feira do Palmital</h3>
-                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                        Atendimento presencial todos os <strong>domingos pela manhã</strong>. Produtos a pronta entrega para você escolher de perto!
-                    </p>
-                </div>
+/* ---------- monte seu kit ---------- */
+const kit = {
+  base:{tipo:"radio", el:"#optBase", ops:["Caixa com visor","Cesta com alça","Embrulho floral"], def:0},
+  itens:{tipo:"checkbox", el:"#optItens", ops:["Hidratante corporal","Sabonetes","Colônia ou perfume","Body splash","Desodorante roll-on","Esponja de banho"], def:[0,1]},
+  marca:{tipo:"radio", el:"#optMarca", ops:["O Boticário","Natura","Avon","Tanto faz"], def:3},
+  laco:{tipo:"radio", el:"#optLaco", ops:["Azul","Vermelho","Rosa","Dourado"], def:0, cores:["#1F4FB5","#C81E2B","#E0457B","#D4A62A"]},
+  tag:{tipo:"radio", el:"#optTag", ops:["Com carinho","Presente especial pra você","Você é especial","Feliz Natal"], def:0},
+  entrega:{tipo:"radio", el:"#optEntrega", ops:["Retirar domingo na feira","Combinar entrega"], def:0}
+};
+for (const k in kit){
+  const g = kit[k];
+  $(g.el).innerHTML = g.ops.map((o,i) => {
+    const id = "k-" + k + "-" + i;
+    const chk = Array.isArray(g.def) ? g.def.includes(i) : g.def === i;
+    const sw = g.cores ? `<span class="swatch" style="background:${g.cores[i]}"></span>` : "";
+    return `<span class="opt"><input type="${g.tipo}" name="${k}" id="${id}" value="${esc(o)}" ${chk?"checked":""}><label for="${id}">${sw}${o}</label></span>`;
+  }).join("");
+}
+function lerKit(){
+  const v = n => { const e = document.querySelector(`input[name="${n}"]:checked`); return e ? e.value : ""; };
+  const itens = $$('input[name="itens"]:checked').map(e => e.value);
+  const custom = $("#tagCustom").value.trim();
+  return {base:v("base"), itens, marca:v("marca"), laco:v("laco"), tag: custom || v("tag"), entrega:v("entrega")};
+}
+function atualizarKit(){
+  const k = lerKit();
+  const cor = kit.laco.cores[kit.laco.ops.indexOf(k.laco)] || "#1F4FB5";
+  const caixa = $("#caixa");
+  caixa.className = "caixa" + (k.base === "Cesta com alça" ? " cesta" : k.base === "Embrulho floral" ? " floral" : "");
+  $("#laco").style.color = cor; $("#fita").style.background = cor;
+  $("#etiqueta").textContent = k.tag;
+  const alturas = [70,50,60,64,44,36];
+  $("#box").innerHTML = k.itens.map(i => `<span class="item" style="height:${alturas[kit.itens.ops.indexOf(i)]}%"></span>`).join("");
+  const linhas = [["Embalagem",k.base],["Produtos",k.itens.join(", ") || "A Elisa escolhe"],["Marca",k.marca],["Laço",k.laco],["Etiqueta","“" + k.tag + "”"],["Receber",k.entrega]];
+  $("#resumo").innerHTML = linhas.map(l => `<div><dt>${l[0]}</dt><dd>${esc(l[1])}</dd></div>`).join("");
+  const msg = "Olá Elisa! Montei um kit na revista:\n• *Embalagem:* " + k.base + "\n• *Produtos:* " + (k.itens.join(", ") || "você escolhe") + "\n• *Marca:* " + k.marca + "\n• *Laço:* " + k.laco + "\n• *Etiqueta:* " + k.tag + "\n• *Receber:* " + k.entrega + "\nQual fica o valor?";
+  $("#kitWa").href = waUrl(msg); $("#kitWa").target = "_blank"; $("#kitWa").rel = "noopener";
+}
+$("#kitForm").addEventListener("input", atualizarKit);
+$("#kitForm").addEventListener("submit", e => e.preventDefault());
+atualizarKit();
 
-                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
-                    <div class="w-11 h-11 rounded-xl bg-emerald-50 text-feiraGreen flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-gray-900">Garantia e Nota Fiscal</h3>
-                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                        100% dos produtos são originais de fábrica (<strong>O Boticário, Natura e Avon</strong>) com emissão de <strong>Nota Fiscal</strong>.
-                    </p>
-                </div>
+/* ---------- contagem para domingo ---------- */
+function contagem(){
+  const now = new Date();
+  const el = $("#contagem");
+  if (now.getDay() === 0 && now.getHours() < 13){ el.innerHTML = '<p class="hoje">Hoje tem feira! Estou na banca até o meio-dia.</p>'; return; }
+  const alvo = new Date(now); alvo.setHours(7,0,0,0);
+  alvo.setDate(now.getDate() + ((7 - now.getDay()) % 7 || 7));
+  let s = Math.max(0, Math.floor((alvo - now)/1000));
+  const d = Math.floor(s/86400); s %= 86400; const h = Math.floor(s/3600); s %= 3600; const m = Math.floor(s/60);
+  el.innerHTML = `<p style="font-weight:600">Faltam para a próxima feira:</p><div class="contagem"><div><b>${d}</b><small>dias</small></div><div><b>${String(h).padStart(2,"0")}</b><small>horas</small></div><div><b>${String(m).padStart(2,"0")}</b><small>min</small></div></div>`;
+}
+contagem(); setInterval(contagem, 30000);
 
-                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
-                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-credit-card"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-gray-900">Pagamento Facilitado</h3>
-                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                        Pague com total praticidade no <strong>Pix</strong>, <strong>Cartão de Crédito</strong>, <strong>Cartão de Débito</strong> ou dinheiro.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+/* ---------- sumário, menu e progresso ---------- */
+const paginas = $$("[data-page]");
+$("#sumario").innerHTML = paginas.map(p => {
+  const [n, nome] = p.dataset.page.includes("·") ? p.dataset.page.split(" · ") : ["", p.dataset.page];
+  return `<li><a href="#${p.id}"><span>${n.replace("pág. ","") || "—"}</span>${nome}</a></li>`;
+}).join("");
+const body = document.body, mb = $("#menuBtn");
+const abrirMenu = v => { body.classList.toggle("menu-open", v); mb.setAttribute("aria-expanded", v); };
+mb.addEventListener("click", () => abrirMenu(true));
+$("#closeMenu").addEventListener("click", () => abrirMenu(false));
+$("#drawerBg").addEventListener("click", () => abrirMenu(false));
+$("#drawer").addEventListener("click", e => { if (e.target.closest("a[href^='#']")) abrirMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") abrirMenu(false); });
 
-    <!-- Rodapé Oficial -->
-    <footer class="bg-feiraDark text-gray-300 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left">
-                <div class="flex items-center justify-center md:justify-start gap-2">
-                    <span class="font-extrabold text-xl text-white tracking-tight">ELISA COSMÉTICOS</span>
-                    <span class="text-xs bg-feiraRed text-white px-2 py-0.5 rounded font-bold">PRONTA ENTREGA</span>
-                </div>
-                <p class="mt-2 text-xs sm:text-sm text-gray-400">
-                    O Boticário • Natura • Avon — Produtos Originais com Nota Fiscal
-                </p>
-                <p class="mt-1 text-xs text-gray-500">
-                    Todos os domingos na Feira do Palmital | Aceitamos Cartão e Pix
-                </p>
-            </div>
+const ind = $("#pageIndicator"), prog = $("#progress");
+function onScroll(){
+  const h = document.documentElement;
+  prog.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100) + "%";
+  let atual = paginas[0];
+  for (const p of paginas) if (p.getBoundingClientRect().top < innerHeight * .4) atual = p;
+  ind.textContent = atual.dataset.page;
+}
+addEventListener("scroll", onScroll, {passive:true}); onScroll();
 
-            <div class="flex flex-col sm:flex-row items-center gap-3">
-                <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Gostaria%20de%20falar%20com%20voc%C3%AA%20pelo%20WhatsApp%20para%20saber%20mais%20sobre%20os%20produtos." class="bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-sm px-6 py-3 rounded-full flex items-center gap-2 shadow-lg transition">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp: (31) 98727-6596
-                </a>
-            </div>
-        </div>
-    </footer>
+/* revelar ao rolar: o conteúdo já está visível, só desliza */
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
+  $$(".reveal").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+}
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://api.whatsapp.com/send?phone=5531987276596&text=Ol%C3%A1%20Elisa!%20Vi%20o%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20e%20valores." class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-105" aria-label="Chamar no WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+/* copiar número */
+$("#copyBtn").addEventListener("click", () => {
+  const ok = () => toast("Número copiado");
+  try { navigator.clipboard.writeText("31987276596").then(ok, selecionar); } catch(e){ selecionar(); }
+  function selecionar(){ const r = document.createRange(); r.selectNodeContents($("#numero")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Número selecionado, é só copiar"); }
+});
+function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); }
 
-    <script>
-        const WHATSAPP_NUMBER = "5531987276596";
-
-        function openMenu() {
-            document.getElementById("navDrawer").classList.add("open");
-            document.getElementById("menuBackdrop").classList.add("open");
-        }
-
-        function closeMenu() {
-            document.getElementById("navDrawer").classList.remove("open");
-            document.getElementById("menuBackdrop").classList.remove("open");
-        }
-
-        // Tenta todas as variações comuns de nomes de Screenshot no Android
-        function tryNextExt(img) {
-            const base = img.getAttribute("data-base");
-            const step = parseInt(img.getAttribute("data-step") || "0", 10);
-            const variants = [
-                `${base}_Gallery.png`,
-                `${base}_Chrome.jpg`,
-                `${base}_Chrome.png`,
-                `${base}.jpg`,
-                `${base}.png`,
-                `${base}_WhatsApp.jpg`
-            ];
-            if (step < variants.length) {
-                img.setAttribute("data-step", step + 1);
-                img.src = variants[step];
-            } else {
-                img.style.display = "none";
-            }
-        }
-
-        function buildWaUrl(message) {
-            return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
-        }
-
-        const products = [
-            {
-                id: 1,
-                name: "Kit Presente Avon Care com Laço Azul",
-                brand: "Avon",
-                categories: ["kits", "avon"],
-                badge: "Pronta Entrega",
-                description: "Loção Desodorante Corporal Leite de Amêndoas 200ml + sabonetes embalados com carinho e laço.",
-                base: "Screenshot_20261108-134316"
-            },
-            {
-                id: 2,
-                name: "Sabonetes Natura Ekos Maracujá & Kit Presente",
-                brand: "Natura / Avon",
-                categories: ["kits", "natura", "avon"],
-                badge: "Pronta Entrega",
-                description: "Caixa de sabonetes cremosos Natura Ekos Maracujá e kits presenteáveis com laço pronto.",
-                base: "Screenshot_20261108-134322"
-            },
-            {
-                id: 3,
-                name: "Kit Presente Especial com Laço Vermelho",
-                brand: "Natura / O Boticário",
-                categories: ["kits", "natura", "boticario"],
-                badge: "Presente Pronto",
-                description: "Embalagem presenteável decorada com flores secas, laço vermelho e produtos originais lacrados.",
-                base: "Screenshot_20261108-134335"
-            },
-            {
-                id: 4,
-                name: "Cesta Luxo Nativa SPA com Laço",
-                brand: "O Boticário",
-                categories: ["kits", "boticario"],
-                badge: "Cesta Luxo",
-                description: "Cesta especial O Boticário Nativa SPA com hidratante, esponja de banho e acabamento presenteável.",
-                base: "Screenshot_20261108-134340"
-            }
-        ];
-
-        let currentCategory = "todos";
-
-        function renderProducts() {
-            const grid = document.getElementById("productsGrid");
-            const searchTerm = document.getElementById("searchInput").value.toLowerCase().trim();
-
-            const filtered = products.filter(item => {
-                const matchesCategory = currentCategory === "todos" || item.categories.includes(currentCategory);
-                const matchesSearch = item.name.toLowerCase().includes(searchTerm) ||
-                                      item.brand.toLowerCase().includes(searchTerm) ||
-                                      item.description.toLowerCase().includes(searchTerm);
-                return matchesCategory && matchesSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-200">
-                        <p class="text-gray-600 font-medium">Nenhum produto encontrado para essa busca.</p>
-                        <a href="${buildWaUrl('Olá Elisa! Procuro um produto específico (Avon, Natura ou O Boticário) e gostaria de saber se você tem a pronta entrega.')}" class="inline-block mt-4 px-5 py-2.5 rounded-full bg-feiraGreen text-white text-sm font-bold">
-                            Consultar no WhatsApp
-                        </a>
-                    </div>
-                `;
-                return;
-            }
-
-            grid.innerHTML = filtered.map(product => {
-                const waLink = buildWaUrl(`Olá Elisa! Tenho interesse no produto: *${product.name}* (${product.brand}). Gostaria de saber o valor e disponibilidade!`);
-                return `
-                    <article class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-lg transition flex flex-col justify-between group">
-                        <div>
-                            <a href="${waLink}" class="block relative h-72 overflow-hidden bg-rose-50">
-                                <img data-base="${product.base}" src="${product.base}_Gallery.jpg" onerror="tryNextExt(this)" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <span class="absolute top-3 left-3 bg-feiraRed text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
-                                    ${product.badge}
-                                </span>
-                                <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-gray-800 text-[10px] font-bold px-2.5 py-1 rounded shadow-xs">
-                                    <i class="fa-solid fa-file-invoice text-feiraRed mr-1"></i>Nota Fiscal
-                                </span>
-                            </a>
-                            <div class="p-5">
-                                <span class="text-[11px] font-extrabold uppercase tracking-wider text-feiraRed">${product.brand}</span>
-                                <h3 class="mt-1 text-base font-bold text-gray-900 leading-snug">${product.name}</h3>
-                                <p class="mt-2 text-xs text-gray-600 leading-relaxed">${product.description}</p>
-                            </div>
-                        </div>
-                        <div class="px-5 pb-5 pt-2">
-                            <div class="flex items-center justify-between text-[11px] text-gray-500 mb-3 pt-2 border-t border-gray-100">
-                                <span><i class="fa-brands fa-pix text-teal-600 mr-1"></i>Pix / Cartão</span>
-                                <span class="font-semibold text-gray-700">Pronta Entrega</span>
-                            </div>
-                            <a href="${waLink}" class="w-full py-3 px-4 rounded-full bg-feiraGreen hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xs">
-                                <i class="fa-brands fa-whatsapp text-base"></i> Saber Valor no WhatsApp
-                            </a>
-                        </div>
-                    </article>
-                `;
-            }).join("");
-        }
-
-        function filterProducts(category, btnElement) {
-            currentCategory = category;
-            document.querySelectorAll(".filter-btn").forEach(btn => {
-                btn.classList.remove("bg-feiraRed", "text-white", "font-bold");
-                btn.classList.add("bg-white", "text-gray-700", "font-semibold", "border", "border-gray-200");
-            });
-            btnElement.classList.remove("bg-white", "text-gray-700", "font-semibold", "border", "border-gray-200");
-            btnElement.classList.add("bg-feiraRed", "text-white", "font-bold");
-            renderProducts();
-        }
-
-        function searchProducts() {
-            renderProducts();
-        }
-
-        function updateSimulatorLink() {
-            const interest = document.getElementById("giftInterest").value;
-            const brand = document.getElementById("giftBrand").value;
-            const delivery = document.getElementById("giftDelivery").value;
-            const message = `Olá Elisa! Vim pelo site e gostaria de saber mais valores e opções a pronta entrega:\n• *Interesse:* ${interest}\n• *Marca:* ${brand}\n• *Retirada/Entrega:* ${delivery}`;
-            document.getElementById("simulatorWaLink").href = buildWaUrl(message);
-        }
-
-        function slideHero(direction) {
-            const carousel = document.getElementById("heroCarousel");
-            const cards = Array.from(carousel.children);
-            if (direction > 0) {
-                carousel.appendChild(cards[0]);
-            } else {
-                carousel.insertBefore(cards[cards.length - 1], cards[0]);
-            }
-        }
-
-        renderProducts();
-        updateSimulatorLink();
-    </script>
+wireWa();
+})();
+</script>
 </body>
 </html>
