@@ -145,7 +145,7 @@ create policy "elisa altera fotos" on storage.objects for update to authenticate
 create policy "elisa apaga fotos"  on storage.objects for delete to authenticated using (bucket_id = 'fotos' and public.is_admin());
 
 -- 5. E-mail da Elisa (TROQUE AQUI) --------------------------------------
-insert into public.admins (email) values ('email-da-elisa@exemplo.com')
+insert into public.admins (email) values ('snemele@gmail.com')
 on conflict do nothing;
 
 -- 6. Dados iniciais -----------------------------------------------------
