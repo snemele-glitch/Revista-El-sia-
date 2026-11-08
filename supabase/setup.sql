@@ -92,6 +92,17 @@ create trigger pedido_confere before insert on public.pedidos
   for each row execute function public.pedido_confere();
 
 -- 3. Regras de acesso (RLS) --------------------------------------------
+-- Permissões básicas (funciona com "Expor automaticamente novas tabelas" ligado ou desligado;
+-- quem decide o que cada um vê são as políticas RLS logo abaixo)
+grant usage on schema public to anon, authenticated;
+grant select on public.produtos to anon, authenticated;
+grant insert, update, delete on public.produtos to authenticated;
+grant insert on public.pedidos to anon, authenticated;
+grant select, update, delete on public.pedidos to authenticated;
+grant select on public.ajustes to anon, authenticated;
+grant insert, update, delete on public.ajustes to authenticated;
+grant execute on function public.is_admin() to anon, authenticated;
+
 alter table public.produtos enable row level security;
 alter table public.pedidos  enable row level security;
 alter table public.ajustes  enable row level security;

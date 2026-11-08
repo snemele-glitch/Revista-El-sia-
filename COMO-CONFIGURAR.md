@@ -21,7 +21,8 @@ Os produtos ficam guardados no **Supabase**, um serviço com plano gratuito
 1. **Criar a conta**: acesse <https://supabase.com>, clique em *Start your project* e entre com uma conta
    do GitHub ou e-mail.
 2. **Criar o projeto**: *New project* → nome `loja-elisa` → crie uma senha do banco (guarde) →
-   região **South America (São Paulo)** → *Create new project*. Espere uns 2 minutos.
+   região **Américas** (ou South America / São Paulo, se aparecer) → deixe as opções de Segurança como vierem
+   (API de Dados ligada; o script já liga a proteção RLS) → *Criar projeto*. Espere uns 2 minutos.
 3. **Criar as tabelas**: no menu da esquerda, *SQL Editor* → *New query*. Abra o arquivo
    [`supabase/setup.sql`](supabase/setup.sql), copie tudo e cole. **Troque `email-da-elisa@exemplo.com`
    pelo e-mail real da Elisa** (seção 5 do arquivo) e clique em *Run*. Deve aparecer "Success".
