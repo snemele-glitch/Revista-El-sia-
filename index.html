@@ -282,6 +282,71 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
 @media (max-width:560px){.fab span{display:none}.fab{width:52px;padding:0;justify-content:center}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:var(--bg);padding:12px 22px;font-size:14px;z-index:100;transition:transform .3s}
 .toast.show{transform:translate(-50%,0);visibility:visible}
+
+/* ---------- loja: preço, sacola, finalização ---------- */
+.prod{position:relative}
+.prod .open{all:unset;cursor:pointer;display:grid;gap:12px;align-content:start}
+.prod .open:focus-visible{outline:2px solid var(--wine);outline-offset:4px}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.price b{font-family:var(--f-display);font-size:24px;font-weight:600;color:var(--ink)}
+.price s{font-size:13.5px;color:var(--muted)}
+.price .ask{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--wine)}
+.prod .add{margin-top:4px;padding:12px 16px;width:100%}
+.prod .add.done{background:var(--wine);color:var(--wine-ink)}
+.grid-msg{grid-column:1/-1;color:var(--muted);padding:40px 0;text-align:center;border-block:1px solid var(--line)}
+.demo-note{font-size:12.5px;color:var(--muted);border:1px dashed var(--line);padding:10px 14px;margin:-20px 0 32px}
+.modal .price b{font-size:30px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);height:46px}
+.qty button{width:42px;height:100%;background:none;border:0;font-size:18px;color:var(--ink)}
+.qty span{min-width:28px;text-align:center;font-variant-numeric:tabular-nums}
+.buy-row{display:flex;gap:10px;flex-wrap:wrap}
+.buy-row .btn{flex:1;min-width:180px}
+
+.bag-btn{position:relative;width:44px;height:44px;border:1px solid var(--line);background:transparent;border-radius:2px;display:grid;place-items:center}
+.bag-btn .badge{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--wine);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.bag-btn .badge[hidden]{display:none}
+.bag-btn.pulse{animation:pulse .5s}
+@keyframes pulse{50%{transform:scale(1.15)}}
+
+.cart{position:fixed;top:0;bottom:0;right:0;width:min(440px,100vw);background:var(--bg);z-index:90;transform:translateX(100%);transition:transform .35s ease;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+body.cart-open .cart{transform:none}
+body.cart-open .drawer-bg{opacity:1;pointer-events:auto}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.cart-head h2{font-size:30px}
+.cart-body{flex:1;overflow-y:auto;padding:8px 24px 24px}
+.cart-foot{border-top:1px solid var(--line);padding:20px 24px calc(20px + env(safe-area-inset-bottom,0px));display:grid;gap:12px}
+.cart-foot .btn{width:100%}
+.line{display:grid;grid-template-columns:72px 1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start}
+.line img{width:72px;height:90px;object-fit:cover;background:var(--surface)}
+.line h3{font-size:20px;line-height:1.15}
+.line .meta{font-size:13px;color:var(--muted);margin:2px 0 10px}
+.line .qty{height:36px}.line .qty button{width:34px}
+.line .sub{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.line .rm{background:none;border:0;color:var(--muted);font-size:12px;text-decoration:underline;padding:0;margin-top:8px}
+.tot{display:flex;justify-content:space-between;align-items:baseline}
+.tot span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tot b{font-family:var(--f-display);font-size:32px;font-weight:600;font-variant-numeric:tabular-nums}
+.empty{text-align:center;padding:60px 0;color:var(--muted);display:grid;gap:18px;justify-items:center}
+.empty svg.i{width:40px;height:40px;color:var(--line)}
+.ck{display:grid;gap:22px;padding-top:16px}
+.ck label.f{display:grid;gap:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ck input[type=text],.ck input[type=tel],.ck textarea{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 0;font:inherit;font-size:16px;letter-spacing:0;text-transform:none}
+.ck input:focus,.ck textarea:focus{outline:none;border-color:var(--ink)}
+.ck textarea{resize:vertical;min-height:44px}
+.ck fieldset legend{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px}
+.ck .opts{display:grid;gap:8px}
+.ck .opt label{width:100%;justify-content:space-between}
+.ck .err{color:#B3202E;font-size:14px}
+.back{background:none;border:0;padding:0;font-size:13px;color:var(--muted);display:inline-flex;gap:6px;align-items:center}
+.back svg.i{width:16px;height:16px;transform:rotate(180deg)}
+.ok-box{display:grid;gap:18px;padding-top:20px}
+.ok-box h3{font-size:34px}
+.ok-box .code{font-family:var(--f-display);font-size:22px;color:var(--wine)}
+.pixbox{border:1px solid var(--line);padding:18px;display:grid;gap:12px;justify-items:center;text-align:center}
+.pixbox #qr img,.pixbox #qr canvas{width:180px;height:180px;background:#fff;padding:8px}
+.pixbox code{display:block;width:100%;font-size:11.5px;word-break:break-all;background:var(--surface);padding:10px;text-align:left;max-height:84px;overflow:auto}
+.resumo-ped{font-size:14px;border-top:1px solid var(--line)}
+.resumo-ped div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -298,7 +363,8 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
       <a href="#duvidas">Dúvidas</a>
     </nav>
     <div style="display:flex;gap:10px;align-items:center">
-      <a class="btn btn-primary top-cta" data-wa="Olá Elisa! Vim pelo site e gostaria de saber valores e produtos a pronta entrega." href="#">Fazer pedido</a>
+      <a class="btn btn-primary top-cta" href="#colecao">Comprar</a>
+      <button class="bag-btn" id="bagBtn" aria-label="Abrir sacola" aria-controls="cart"><svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span class="badge" id="bagCount" hidden>0</span></button>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
     </div>
   </div>
@@ -323,7 +389,7 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
       <h1>Presentes que encantam, <em>prontos</em> para levar.</h1>
       <p class="lead">Kits e cestas montados à mão com produtos originais O Boticário, Natura e Avon. Pronta entrega com Nota Fiscal, aos domingos na Feira do Palmital.</p>
       <div class="actions">
-        <a href="#colecao" class="btn btn-primary">Ver a coleção</a>
+        <a href="#colecao" class="btn btn-primary">Comprar agora</a>
         <a class="btn btn-line" data-wa="Olá Elisa! Vim pelo site e gostaria de saber os valores dos kits a pronta entrega." href="#">Consultar valores</a>
       </div>
       <div class="hero-facts">
@@ -373,7 +439,7 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
       <h2 class="h2" style="margin:16px 0 18px">Kit Avon Care, em detalhes</h2>
       <p class="lead">O presente mais pedido da banca. Toque nos pontos da foto para conhecer cada item.</p>
       <ul class="hot-list" id="hotList"></ul>
-      <a class="btn btn-primary" data-wa="Olá Elisa! Vi no site o Kit Avon Care. Qual o valor e ainda tem a pronta entrega?" href="#">Quero este kit</a>
+      <a class="btn btn-primary" id="destBtn" data-wa="Olá Elisa! Vi no site o Kit Avon Care. Qual o valor e ainda tem a pronta entrega?" href="#">Quero este kit</a>
     </div>
   </div>
 </section>
@@ -384,16 +450,14 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
       <div class="left">
         <span class="eyebrow">Coleção · <span class="folio">pág. 04</span></span>
         <h2 class="h2">Pronta entrega</h2>
-        <p class="lead">Selecione um presente para ver o que vem dentro e consultar o valor.</p>
+        <p class="lead">Escolha seus presentes, coloque na sacola e finalize com Pix, cartão ou dinheiro. Retire na feira ou combine a entrega.</p>
       </div>
     </div>
     <div class="tabs" role="group" aria-label="Filtrar por marca" id="tabs">
       <button class="tab" aria-pressed="true" data-f="todos">Todos</button>
-      <button class="tab" aria-pressed="false" data-f="boticario">O Boticário</button>
-      <button class="tab" aria-pressed="false" data-f="natura">Natura</button>
-      <button class="tab" aria-pressed="false" data-f="avon">Avon</button>
     </div>
-    <div class="grid4" id="grid"></div>
+    <div id="demoNote"></div>
+    <div class="grid4" id="grid"><p class="grid-msg">Carregando a coleção…</p></div>
   </div>
 </section>
 
@@ -405,8 +469,13 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
       <span class="eyebrow" id="mBrand"></span>
       <h3 id="mTitle"></h3>
       <p id="mDesc" style="color:var(--muted)"></p>
+      <div class="price" id="mPrice"></div>
       <ul class="checks" id="mChecks"></ul>
-      <a class="btn btn-wa" id="mWa" href="#">Consultar valor no WhatsApp</a>
+      <div class="buy-row" id="mBuy">
+        <div class="qty" aria-label="Quantidade"><button type="button" id="mMenos" aria-label="Diminuir">−</button><span id="mQtd">1</span><button type="button" id="mMais" aria-label="Aumentar">+</button></div>
+        <button class="btn btn-primary" id="mAdd" type="button">Adicionar à sacola</button>
+      </div>
+      <a class="btn btn-line" id="mWa" href="#">Tirar dúvida no WhatsApp</a>
     </div>
   </div>
 </dialog>
@@ -482,7 +551,7 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
     </div>
     <div class="faq">
       <details open><summary>Os produtos são originais?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sim. Todos são O Boticário, Natura ou Avon, lacrados de fábrica, e acompanham Nota Fiscal.</p></details>
-      <details><summary>Por que os preços não aparecem no site?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Os valores acompanham as promoções das marcas e mudam com frequência. Pelo WhatsApp a Elisa informa o preço do dia e envia fotos do que está disponível.</p></details>
+      <details><summary>Como funciona a compra pelo site?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Coloque os presentes na sacola, informe seu nome e WhatsApp e escolha retirar na feira ou receber em casa. Se pagar no Pix, o código aparece na hora. A Elisa recebe o pedido e confirma com você pelo WhatsApp. Itens sem preço no site são consultados direto com ela.</p></details>
       <details><summary>Posso reservar e retirar no domingo?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Pode. Envie uma mensagem durante a semana, a Elisa separa o seu kit e você retira na banca da Feira do Palmital.</p></details>
       <details><summary>Vocês fazem entrega?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>A entrega é combinada pelo WhatsApp, de acordo com o bairro.</p></details>
       <details><summary>Quais as formas de pagamento?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Pix, cartão de crédito, cartão de débito e dinheiro.</p></details>
@@ -518,12 +587,24 @@ legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:va
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script src="js/config.js"></script>
+<script src="js/loja.js"></script>
 <a class="fab" data-wa="Olá Elisa! Vim pelo site e gostaria de saber mais sobre os produtos e valores." href="#" aria-label="Falar com a Elisa no WhatsApp"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg><span>WhatsApp</span></a>
+<aside class="cart" id="cart" aria-label="Sacola de compras" aria-hidden="true">
+  <div class="cart-head">
+    <h2 id="cartTitle">Sua sacola</h2>
+    <button class="menu-btn" style="display:grid" id="cartClose" aria-label="Fechar sacola"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot"></div>
+</aside>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 (function(){
-const WA = "5531987276596";
+let WA = (window.Loja && Loja.cfg.whatsapp) || "5531987276596";
 const waUrl = m => "https://api.whatsapp.com/send?phone=" + WA + "&text=" + encodeURIComponent(m);
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
@@ -536,8 +617,8 @@ const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Ag
 const hoje = new Date();
 $("#edicao").textContent = meses[hoje.getMonth()] + " " + hoje.getFullYear();
 
-/* coleção */
-const produtos = [
+/* sugestões do teste (ligadas aos produtos da loja pelo campo slug) */
+const sugestoes = [
   {id:"avon", nome:"Kit Avon Care", marca:"Avon", cat:["avon"], img:"img/kit-avon-care.jpg", tag:"Mais pedido",
    desc:"Caixa com visor com a loção desodorante corporal Avon Care Leite de Amêndoas 200 ml e dois sabonetes embalados.",
    itens:["Loção Avon Care 200 ml","2 sabonetes embalados","Caixa com visor, celofane e laço"]},
@@ -551,33 +632,193 @@ const produtos = [
    desc:"Cesta com alça, hidratante O Boticário Nativa SPA, esponja de banho e flores secas.",
    itens:["Hidratante Nativa SPA","Esponja de banho","Cesta com alça, celofane e laço"]}
 ];
-$("#grid").innerHTML = produtos.map(p => `
-  <button class="prod reveal" data-id="${p.id}" data-cat="${p.cat.join(" ")}">
-    <div class="ph"><img src="${p.img}" alt="${esc(p.nome)}" loading="lazy"><span class="tag">${p.tag}</span></div>
-    <span class="brand">${p.marca}</span>
-    <h3>${p.nome}</h3>
-    <span class="more">Ver detalhes</span>
-  </button>`).join("");
-
+/* coleção (vem do painel da Elisa) */
+let catalogo = [], filtro = "todos";
+const fotoDe = p => p.foto_url || "img/cesta-nativa-spa.jpg";
+const temPreco = p => p && p.preco != null && Number(p.preco) > 0;
+function precoHtml(p){
+  if (!temPreco(p)) return '<span class="ask">Consultar valor</span>';
+  return "<b>" + Loja.moeda(p.preco) + "</b>" + (Number(p.preco_de) > Number(p.preco) ? "<s>" + Loja.moeda(p.preco_de) + "</s>" : "");
+}
+function renderGrid(){
+  const nomes = {}; Loja.MARCAS.forEach(m => nomes[m.id] = m.nome);
+  const usadas = Loja.MARCAS.map(m => m.id).filter(id => catalogo.some(p => (p.categorias||[]).includes(id)));
+  if (filtro !== "todos" && !usadas.includes(filtro)) filtro = "todos";
+  $("#tabs").innerHTML = ["todos"].concat(usadas).map(id => `<button class="tab" aria-pressed="${id === filtro}" data-f="${id}">${id === "todos" ? "Todos" : nomes[id]}</button>`).join("");
+  const lista = catalogo.filter(p => filtro === "todos" || (p.categorias||[]).includes(filtro));
+  if (!lista.length){ $("#grid").innerHTML = '<p class="grid-msg">Novidades chegando. Fale com a Elisa pelo WhatsApp para ver o que tem hoje.</p>'; return; }
+  $("#grid").innerHTML = lista.map(p => `
+  <article class="prod" data-id="${esc(p.id)}">
+    <button class="open" type="button" aria-label="Ver detalhes de ${esc(p.nome)}">
+      <div class="ph"><img src="${esc(fotoDe(p))}" alt="${esc(p.nome)}" loading="lazy">${p.selo ? `<span class="tag">${esc(p.selo)}</span>` : ""}</div>
+      <span class="brand">${esc(p.marca || "")}</span>
+      <h3>${esc(p.nome)}</h3>
+    </button>
+    <div class="price">${precoHtml(p)}</div>
+    ${temPreco(p) ? `<button class="btn btn-line add" type="button" data-add="${esc(p.id)}">Adicionar à sacola</button>` : `<a class="btn btn-line add" target="_blank" rel="noopener" href="${waUrl("Olá Elisa! Vi no site: *" + p.nome + "*. Qual o valor e ainda tem a pronta entrega?")}">Consultar no WhatsApp</a>`}
+  </article>`).join("");
+}
 $("#tabs").addEventListener("click", e => {
   const b = e.target.closest(".tab"); if (!b) return;
-  $$("#tabs .tab").forEach(t => t.setAttribute("aria-pressed", t === b ? "true" : "false"));
-  const f = b.dataset.f;
-  $$(".prod").forEach(el => { el.hidden = f !== "todos" && !el.dataset.cat.split(" ").includes(f); });
+  filtro = b.dataset.f; renderGrid();
 });
 
 const modal = $("#modal");
-$("#grid").addEventListener("click", e => {
-  const b = e.target.closest(".prod"); if (!b) return;
-  const p = produtos.find(x => x.id === b.dataset.id);
-  $("#mImg").src = p.img; $("#mImg").alt = p.nome;
-  $("#mBrand").textContent = p.marca; $("#mTitle").textContent = p.nome; $("#mDesc").textContent = p.desc;
-  $("#mChecks").innerHTML = p.itens.concat(["Pronta entrega com Nota Fiscal"]).map(i => "<li>" + CHECK + esc(i) + "</li>").join("");
-  const a = $("#mWa"); a.href = waUrl("Olá Elisa! Vi no site: *" + p.nome + "* (" + p.marca + "). Qual o valor e ainda tem a pronta entrega?"); a.target = "_blank"; a.rel = "noopener";
+let mProd = null, mQtd = 1;
+function abrirProduto(p){
+  mProd = p; mQtd = 1; $("#mQtd").textContent = "1";
+  $("#mImg").src = fotoDe(p); $("#mImg").alt = p.nome;
+  $("#mBrand").textContent = p.marca || ""; $("#mTitle").textContent = p.nome; $("#mDesc").textContent = p.descricao || "";
+  $("#mPrice").innerHTML = precoHtml(p);
+  $("#mChecks").innerHTML = (p.itens || []).concat(["Pronta entrega com Nota Fiscal"]).map(i => "<li>" + CHECK + esc(i) + "</li>").join("");
+  $("#mBuy").hidden = !temPreco(p);
+  const a = $("#mWa"); a.href = waUrl("Olá Elisa! Vi no site: *" + p.nome + "*" + (p.marca ? " (" + p.marca + ")" : "") + ". " + (temPreco(p) ? "Tenho uma dúvida:" : "Qual o valor e ainda tem a pronta entrega?")); a.target = "_blank"; a.rel = "noopener";
+  a.textContent = temPreco(p) ? "Tirar dúvida no WhatsApp" : "Consultar valor no WhatsApp";
+  a.className = temPreco(p) ? "btn btn-line" : "btn btn-wa";
   if (modal.showModal) modal.showModal(); else modal.setAttribute("open", "");
+}
+$("#grid").addEventListener("click", e => {
+  const add = e.target.closest("[data-add]");
+  if (add){ addSacola(add.dataset.add, 1); add.textContent = "Adicionado ✓"; add.classList.add("done"); setTimeout(() => { add.textContent = "Adicionar à sacola"; add.classList.remove("done"); }, 1400); return; }
+  const b = e.target.closest(".open"); if (!b) return;
+  const p = catalogo.find(x => x.id === b.closest(".prod").dataset.id); if (p) abrirProduto(p);
 });
+$("#mMenos").addEventListener("click", () => { mQtd = Math.max(1, mQtd - 1); $("#mQtd").textContent = mQtd; });
+$("#mMais").addEventListener("click", () => { mQtd = Math.min(20, mQtd + 1); $("#mQtd").textContent = mQtd; });
+$("#mAdd").addEventListener("click", () => { if (!mProd) return; addSacola(mProd.id, mQtd); modal.close(); });
 $("#mClose").addEventListener("click", () => modal.close());
 modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+
+/* sacola */
+let sacola = Loja.ls.get("elisa-sacola", []);  // [{id, qtd}]
+let etapa = "itens", ultimoPedido = null, ajustes = {};
+const guardar = () => Loja.ls.set("elisa-sacola", sacola);
+const itensSacola = () => sacola.map(i => { const p = catalogo.find(x => x.id === i.id); return p && temPreco(p) ? {id:p.id, nome:p.nome, marca:p.marca, foto:fotoDe(p), preco:Number(p.preco), qtd:i.qtd} : null; }).filter(Boolean);
+const totalSacola = () => itensSacola().reduce((s,i) => s + i.preco * i.qtd, 0);
+function addSacola(id, qtd){
+  const it = sacola.find(i => i.id === id);
+  if (it) it.qtd = Math.min(20, it.qtd + qtd); else sacola.push({id, qtd});
+  guardar(); contador();
+  const b = $("#bagBtn"); b.classList.remove("pulse"); void b.offsetWidth; b.classList.add("pulse");
+  toast("Adicionado à sacola");
+}
+function contador(){
+  const n = itensSacola().reduce((s,i) => s + i.qtd, 0);
+  const c = $("#bagCount"); c.textContent = n; c.hidden = n === 0;
+  $("#bagBtn").setAttribute("aria-label", "Abrir sacola, " + n + (n === 1 ? " item" : " itens"));
+}
+const BAG = '<svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>';
+function sacolaAberta(v){
+  document.body.classList.toggle("cart-open", v); $("#cart").setAttribute("aria-hidden", !v);
+  if (v){ if (etapa === "ok" && !ultimoPedido) etapa = "itens"; renderSacola(); }
+}
+function renderSacola(){
+  const body = $("#cartBody"), foot = $("#cartFoot"), itens = itensSacola();
+  sacola = sacola.filter(i => itens.some(x => x.id === i.id)); guardar();
+  if (etapa === "ok" && ultimoPedido) return renderOk();
+  if (!itens.length){
+    etapa = "itens"; $("#cartTitle").textContent = "Sua sacola";
+    body.innerHTML = `<div class="empty">${BAG}<p>Sua sacola está vazia.</p><a class="btn btn-line" href="#colecao" id="verColecao">Ver a coleção</a></div>`;
+    foot.innerHTML = ""; $("#verColecao").addEventListener("click", () => sacolaAberta(false)); return;
+  }
+  if (etapa === "itens"){
+    $("#cartTitle").textContent = "Sua sacola";
+    body.innerHTML = itens.map(i => `<div class="line" data-id="${esc(i.id)}"><img src="${esc(i.foto)}" alt="">
+      <div><h3>${esc(i.nome)}</h3><p class="meta">${esc(i.marca || "")} · ${Loja.moeda(i.preco)}</p>
+      <div class="qty"><button type="button" data-q="-1" aria-label="Diminuir">−</button><span>${i.qtd}</span><button type="button" data-q="1" aria-label="Aumentar">+</button></div><br>
+      <button type="button" class="rm">Remover</button></div>
+      <div class="sub">${Loja.moeda(i.preco * i.qtd)}</div></div>`).join("");
+    foot.innerHTML = `<div class="tot"><span>Total</span><b>${Loja.moeda(totalSacola())}</b></div><button class="btn btn-primary" id="irCk" type="button">Finalizar compra</button><small style="color:var(--muted);font-size:13px;text-align:center">Pix, cartão ou dinheiro · retirada na feira ou entrega</small>`;
+    $("#irCk").addEventListener("click", () => { etapa = "dados"; renderSacola(); });
+    return;
+  }
+  /* etapa: dados do cliente */
+  $("#cartTitle").textContent = "Finalizar";
+  const d = Loja.ls.get("elisa-cliente", {});
+  body.innerHTML = `<form class="ck" id="ck" novalidate>
+    <button type="button" class="back" id="voltar">${ARROW} Voltar para a sacola</button>
+    <label class="f">Seu nome<input type="text" name="nome" autocomplete="name" required maxlength="80" value="${esc(d.nome || "")}"></label>
+    <label class="f">WhatsApp com DDD<input type="tel" name="telefone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="(31) 9 0000-0000" value="${esc(d.telefone || "")}"></label>
+    <fieldset><legend>Como prefere receber</legend><div class="opts">
+      <span class="opt"><input type="radio" name="entrega" id="e1" value="Retirar na Feira do Palmital (domingo)" checked><label for="e1">Retirar na feira, domingo</label></span>
+      <span class="opt"><input type="radio" name="entrega" id="e2" value="Entrega a combinar"><label for="e2">Entrega no meu endereço</label></span>
+    </div></fieldset>
+    <label class="f" id="endBox" hidden>Endereço e bairro<textarea name="endereco" rows="2" maxlength="200" autocomplete="street-address">${esc(d.endereco || "")}</textarea></label>
+    <fieldset><legend>Pagamento</legend><div class="opts">
+      <span class="opt"><input type="radio" name="pagamento" id="p1" value="Pix" checked><label for="p1">Pix</label></span>
+      <span class="opt"><input type="radio" name="pagamento" id="p2" value="Cartão (crédito ou débito)"><label for="p2">Cartão de crédito ou débito</label></span>
+      <span class="opt"><input type="radio" name="pagamento" id="p3" value="Dinheiro"><label for="p3">Dinheiro</label></span>
+    </div></fieldset>
+    <label class="f">Observação (opcional)<textarea name="observacao" rows="2" maxlength="300" placeholder="Cor do laço, mensagem do cartão…"></textarea></label>
+    <p class="err" id="ckErr" role="alert"></p>
+  </form>`;
+  foot.innerHTML = `<div class="tot"><span>Total</span><b>${Loja.moeda(totalSacola())}</b></div><button class="btn btn-primary" id="enviar" type="submit" form="ck">Confirmar pedido</button>`;
+  $("#voltar").addEventListener("click", () => { etapa = "itens"; renderSacola(); });
+  const form = $("#ck");
+  const end = () => { $("#endBox").hidden = !$("#e2").checked; };
+  form.addEventListener("change", end); end();
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(form));
+    const err = $("#ckErr"); err.textContent = "";
+    if ((f.nome || "").trim().length < 2) return err.textContent = "Informe seu nome.";
+    if ((f.telefone || "").replace(/\D/g, "").length < 10) return err.textContent = "Informe seu WhatsApp com DDD.";
+    if (f.entrega.startsWith("Entrega") && (f.endereco || "").trim().length < 5) return err.textContent = "Informe o endereço e o bairro para a entrega.";
+    Loja.ls.set("elisa-cliente", {nome:f.nome, telefone:f.telefone, endereco:f.endereco});
+    const btn = $("#enviar"); btn.disabled = true; btn.textContent = "Enviando…";
+    try {
+      const itens = itensSacola();
+      const ped = await Loja.criarPedido({nome:f.nome.trim(), telefone:f.telefone.trim(), entrega:f.entrega, endereco:f.entrega.startsWith("Entrega") ? f.endereco.trim() : "", pagamento:f.pagamento, observacao:(f.observacao || "").trim(), itens});
+      ultimoPedido = Object.assign({}, ped, {itensView:itens, nome:f.nome.trim(), entregaTxt:f.entrega, enderecoTxt:f.endereco, pagamentoTxt:f.pagamento, obs:f.observacao});
+      sacola = []; guardar(); contador(); etapa = "ok"; renderSacola();
+    } catch(ex){
+      console.error(ex);
+      err.textContent = "Não foi possível registrar o pedido agora. Use o botão abaixo para enviar direto no WhatsApp.";
+      btn.disabled = false; btn.textContent = "Tentar de novo";
+      const itens = itensSacola();
+      foot.insertAdjacentHTML("beforeend", `<a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msgPedido({codigo:"", itensView:itens, total:totalSacola(), nome:f.nome, entregaTxt:f.entrega, enderecoTxt:f.endereco, pagamentoTxt:f.pagamento, obs:f.observacao}))}">Enviar pelo WhatsApp</a>`);
+    }
+  });
+}
+function msgPedido(p){
+  const l = ["Olá Elisa! Fiz um pedido pelo site" + (p.codigo ? " (nº " + p.codigo + ")" : "") + ":"];
+  p.itensView.forEach(i => l.push("• " + i.qtd + "x " + i.nome + " — " + Loja.moeda(i.preco * i.qtd)));
+  l.push("*Total: " + Loja.moeda(p.total) + "*", "", "Nome: " + p.nome, "Receber: " + p.entregaTxt);
+  if (p.entregaTxt.startsWith("Entrega") && p.enderecoTxt) l.push("Endereço: " + p.enderecoTxt);
+  l.push("Pagamento: " + p.pagamentoTxt);
+  if (p.obs) l.push("Obs.: " + p.obs);
+  return l.join("\n");
+}
+function renderOk(){
+  const p = ultimoPedido;
+  $("#cartTitle").textContent = "Pedido feito";
+  const pixCode = p.pagamentoTxt === "Pix" ? Loja.pix(ajustes, p.total, p.codigo) : "";
+  $("#cartBody").innerHTML = `<div class="ok-box">
+    <span class="eyebrow">Obrigada, ${esc(p.nome.split(" ")[0])}!</span>
+    <h3>Seu pedido foi registrado.</h3>
+    <span class="code">Pedido nº ${esc(p.codigo)}</span>
+    <p style="color:var(--muted)">Envie a mensagem pelo WhatsApp para a Elisa confirmar a disponibilidade e combinar a ${p.entregaTxt.startsWith("Entrega") ? "entrega" : "retirada"}.</p>
+    <div class="resumo-ped">${p.itensView.map(i => `<div><span>${i.qtd}x ${esc(i.nome)}</span><span>${Loja.moeda(i.preco * i.qtd)}</span></div>`).join("")}<div><b>Total</b><b>${Loja.moeda(p.total)}</b></div></div>
+    ${pixCode ? `<div class="pixbox"><span class="eyebrow">Pague com Pix</span><div id="qr"></div><code id="pixCode">${esc(pixCode)}</code><button class="btn btn-line" type="button" id="copiaPix">Copiar código Pix</button><small style="color:var(--muted)">Depois de pagar, envie o comprovante no WhatsApp.</small></div>` : (p.pagamentoTxt === "Pix" ? `<p style="color:var(--muted)">A Elisa envia a chave Pix pelo WhatsApp.</p>` : "")}
+  </div>`;
+  $("#cartFoot").innerHTML = `<a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msgPedido(p))}">Enviar pedido no WhatsApp</a><button class="btn btn-line" type="button" id="novaCompra">Continuar comprando</button>`;
+  $("#novaCompra").addEventListener("click", () => { ultimoPedido = null; etapa = "itens"; sacolaAberta(false); });
+  if (pixCode){
+    $("#copiaPix").addEventListener("click", () => { try { navigator.clipboard.writeText(pixCode).then(() => toast("Código Pix copiado"), () => toast("Selecione e copie o código")); } catch(e){ toast("Selecione e copie o código"); } });
+    if (window.QRCode){ try { new QRCode($("#qr"), {text:pixCode, width:360, height:360, correctLevel:QRCode.CorrectLevel.M}); } catch(e){} }
+  }
+}
+$("#cartBody").addEventListener("click", e => {
+  const line = e.target.closest(".line"); if (!line) return;
+  const it = sacola.find(i => i.id === line.dataset.id); if (!it) return;
+  const q = e.target.closest("[data-q]");
+  if (q) it.qtd = Math.max(0, Math.min(20, it.qtd + Number(q.dataset.q)));
+  else if (e.target.closest(".rm")) it.qtd = 0;
+  else return;
+  sacola = sacola.filter(i => i.qtd > 0); guardar(); contador(); renderSacola();
+});
+$("#bagBtn").addEventListener("click", () => sacolaAberta(true));
+$("#cartClose").addEventListener("click", () => sacolaAberta(false));
 
 /* destaque */
 const hots = [
@@ -629,14 +870,18 @@ function quiz(){
       passo++; quiz();
     }));
   } else {
-    const best = produtos.slice().sort((a,b) => (pontos[b.id]||0) - (pontos[a.id]||0))[0];
-    const msg = "Olá Elisa! Fiz o teste do presente ideal no site (" + escolhas.join(" / ") + ") e a sugestão foi: *" + best.nome + "*. Qual o valor e ainda tem?";
+    const best = sugestoes.slice().sort((a,b) => (pontos[b.id]||0) - (pontos[a.id]||0))[0];
+    const naLoja = catalogo.find(p => p.slug === best.id);
+    const v = naLoja ? {nome:naLoja.nome, marca:naLoja.marca || "", img:fotoDe(naLoja), desc:naLoja.descricao || ""} : best;
+    const msg = "Olá Elisa! Fiz o teste do presente ideal no site (" + escolhas.join(" / ") + ") e a sugestão foi: *" + v.nome + "*. Qual o valor e ainda tem?";
+    const comprar = naLoja && temPreco(naLoja);
     el.innerHTML = `<div class="q-top"><span>Resultado</span><span>Presente ideal</span></div>
       <div class="q-bar"><div style="width:100%"></div></div>
-      <div class="q-res"><img src="${best.img}" alt="${esc(best.nome)}">
-      <div><span class="eyebrow">${best.marca}</span><h3>${best.nome}</h3><p>${best.desc}</p>
-      <div class="q-actions"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msg)}">Reservar</a>
+      <div class="q-res"><img src="${esc(v.img)}" alt="${esc(v.nome)}">
+      <div><span class="eyebrow">${esc(v.marca)}</span><h3>${esc(v.nome)}</h3>${comprar ? `<div class="price" style="margin-bottom:10px">${precoHtml(naLoja)}</div>` : ""}<p>${esc(v.desc)}</p>
+      <div class="q-actions">${comprar ? `<button class="btn btn-primary" id="qAdd">Adicionar à sacola</button>` : `<a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msg)}">Reservar</a>`}
       <button class="btn btn-line" id="refazer">Refazer</button></div></div></div>`;
+    if (comprar) $("#qAdd").addEventListener("click", () => addSacola(naLoja.id, 1));
     $("#refazer").addEventListener("click", () => { passo = 0; pontos = {}; escolhas = []; quiz(); });
   }
 }
@@ -693,9 +938,9 @@ const mb = $("#menuBtn");
 const menu = v => { document.body.classList.toggle("menu-open", v); mb.setAttribute("aria-expanded", v); };
 mb.addEventListener("click", () => menu(true));
 $("#closeMenu").addEventListener("click", () => menu(false));
-$("#drawerBg").addEventListener("click", () => menu(false));
+$("#drawerBg").addEventListener("click", () => { menu(false); sacolaAberta(false); });
 $("#drawer").addEventListener("click", e => { if (e.target.closest("a[href^='#']")) menu(false); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") menu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape"){ menu(false); sacolaAberta(false); } });
 
 const prog = $("#progress"), navLinks = $$("#nav a");
 function onScroll(){
@@ -719,6 +964,25 @@ $("#copyBtn").addEventListener("click", () => {
 function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); }
 
 wireWa();
+
+/* carrega ajustes e produtos do painel da Elisa */
+(async function iniciar(){
+  try {
+    ajustes = await Loja.ajustes();
+    if (ajustes.whatsapp){ WA = ajustes.whatsapp.replace(/\D/g, ""); if (WA.length <= 11) WA = "55" + WA; wireWa(); }
+  } catch(e){ console.warn(e); }
+  try {
+    catalogo = await Loja.produtos();
+    if (Loja.modo === "demo") $("#demoNote").innerHTML = '<p class="demo-note">Prévia da loja: produtos e preços de exemplo. A Elisa cadastra os dela pelo painel.</p>';
+  } catch(e){
+    console.error(e);
+    $("#grid").innerHTML = '<p class="grid-msg">Não foi possível carregar a coleção agora. Fale com a Elisa pelo WhatsApp.</p>';
+    return;
+  }
+  renderGrid(); contador();
+  const avon = catalogo.find(p => p.slug === "avon" && temPreco(p));
+  if (avon){ const b = $("#destBtn"); b.textContent = "Adicionar à sacola"; b.removeAttribute("data-wa"); b.removeAttribute("target"); b.href = "#"; b.addEventListener("click", e => { e.preventDefault(); addSacola(avon.id, 1); }); }
+})();
 })();
 </script>
 </body>
