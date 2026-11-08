@@ -5,538 +5,520 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Revista Elisa</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Revista Elisa Cosméticos & Presentes: kits e produtos O Boticário, Natura e Avon a pronta entrega, com Nota Fiscal, todo domingo na Feira do Palmital. Peça pelo WhatsApp (31) 98727-6596.">
+<meta name="description" content="Elisa Cosméticos & Presentes: kits e produtos O Boticário, Natura e Avon a pronta entrega, com Nota Fiscal, aos domingos na Feira do Palmital. Pedidos pelo WhatsApp (31) 98727-6596.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Jost:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout: uma revista impressa. Capa, sumário e páginas numeradas, com faixas da toalha vermelha de bolinhas da banca da feira separando as editorias. */
+/* Layout: página de marca de beleza. Muito branco, fotos grandes em formato retrato, linhas finas e um vinho profundo como única cor forte. Estrutura de revista discreta (edição e número de página). */
 :root{
-  --paper:#FFFBFA;        /* papel da revista */
-  --paper-2:#FBEFEC;      /* papel rosado (página alternada) */
-  --ink:#24171A;          /* tinta */
-  --muted:#6E5A5E;        /* texto secundário */
-  --line:#EAD9D6;
-  --red:#C81E2B;          /* toalha da banca */
-  --red-deep:#9E1520;
-  --ribbon:#1F4FB5;       /* laço azul */
-  --kraft:#E5B42C;        /* caixa Ekos Maracujá */
-  --green:#1E9E5A;        /* WhatsApp */
-  --on-red:#FFFFFF;
+  --bg:#FFFFFF;
+  --surface:#F5F2F0;      /* porcelana */
+  --ink:#1B1718;
+  --muted:#6F6668;
+  --line:#E4DEDC;
+  --wine:#6E1A2A;         /* cor da marca */
+  --wine-ink:#FFFFFF;
+  --gold:#A9875A;         /* detalhes finos */
+  --wa:#1C8C55;
   --card:#FFFFFF;
-  --shadow:rgba(60,20,25,.16);
+  --shadow:rgba(40,15,20,.10);
 
-  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
-  --f-body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
-  --f-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --f-display:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
 
-  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
-  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  --gl:max(20px, env(safe-area-inset-left, 0px));
+  --gr:max(20px, env(safe-area-inset-right, 0px));
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#1A1214; --paper-2:#221719; --ink:#F6ECEA; --muted:#BFA9AC; --line:#3B2A2D;
-    --red:#D9323F; --red-deep:#B32330; --ribbon:#6F96F0; --kraft:#EBC14A; --green:#25B46A;
-    --card:#271B1E; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+    --bg:#141112; --surface:#1D191A; --ink:#F3EEEC; --muted:#B3A8AA; --line:#332C2E;
+    --wine:#B8475C; --gold:#C8A673; --wa:#24A866; --card:#1D191A; --shadow:rgba(0,0,0,.4); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#1A1214; --paper-2:#221719; --ink:#F6ECEA; --muted:#BFA9AC; --line:#3B2A2D;
-  --red:#D9323F; --red-deep:#B32330; --ribbon:#6F96F0; --kraft:#EBC14A; --green:#25B46A;
-  --card:#271B1E; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+  --bg:#141112; --surface:#1D191A; --ink:#F3EEEC; --muted:#B3A8AA; --line:#332C2E;
+  --wine:#B8475C; --gold:#C8A673; --wa:#24A866; --card:#1D191A; --shadow:rgba(0,0,0,.4); color-scheme:dark;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.05;margin:0;text-wrap:balance}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
 p{margin:0}
-:focus-visible{outline:3px solid var(--ribbon);outline-offset:3px;border-radius:4px}
 button{font:inherit;color:inherit;cursor:pointer}
-.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
-.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
-.folio{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--muted)}
-.page{padding-block:88px;position:relative}
-.page-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:40px}
-.lead{font-size:clamp(18px,2.1vw,21px);color:var(--muted);max-width:60ch}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* faixa da toalha de bolinhas */
-.toalha{
-  background-color:var(--red);
-  background-image:radial-gradient(rgba(255,255,255,.92) 18%, transparent 19%),radial-gradient(rgba(255,255,255,.6) 10%, transparent 11%);
-  background-size:42px 42px, 42px 42px;background-position:0 0, 21px 21px;
-}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.section{padding-block:clamp(72px,9vw,120px)}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{color:var(--wine);font-weight:600}
+.h2{font-size:clamp(38px,4.6vw,60px)}
+.lead{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:56ch}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.sec-head .left{display:grid;gap:14px;max-width:640px}
+.folio{font-family:var(--f-display);font-style:italic;font-size:16px;color:var(--muted);text-transform:none;letter-spacing:0}
 
-/* botões */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s, background .2s, box-shadow .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-wa{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px var(--green)}
-.btn-ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
-.btn-red{background:var(--red);color:var(--on-red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid transparent;border-radius:2px;padding:15px 28px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--wine);color:var(--wine-ink)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--bg)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{filter:brightness(1.08)}
 
-/* ---------- barra superior ---------- */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
-.mast-mini{font-family:var(--f-display);font-weight:900;font-size:26px;letter-spacing:.06em;text-decoration:none;color:var(--red);line-height:1}
-.mast-mini small{display:block;font-family:var(--f-body);font-weight:500;font-size:9px;letter-spacing:.3em;color:var(--muted);margin-top:3px}
-.top-actions{display:flex;align-items:center;gap:8px}
-.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-size:17px}
-.top-wa{padding:10px 18px;font-size:14px}
-.progress{position:absolute;left:0;bottom:-1px;height:3px;background:var(--red);width:0}
-.page-indicator{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-@media (max-width:620px){.page-indicator,.top-wa span{display:none}.top-wa{padding:10px 14px}}
+/* ---------- topo ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo{text-decoration:none;display:grid;line-height:1}
+.logo strong{font-family:var(--f-display);font-weight:500;font-size:28px;letter-spacing:.32em}
+.logo span{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.nav{display:flex;gap:30px}
+.nav a{font-size:13px;letter-spacing:.08em;text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a.on{color:var(--ink)}
+.top-cta{padding:12px 20px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);background:transparent;border-radius:2px;place-items:center}
+.progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--wine);width:0}
+@media (max-width:980px){.nav{display:none}.menu-btn{display:grid}}
+@media (max-width:560px){.top-cta{display:none}}
 
-/* menu / sumário lateral */
-.drawer-bg{position:fixed;inset:0;background:rgba(20,8,10,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
-.drawer{position:fixed;top:0;bottom:0;right:0;width:min(380px,90vw);background:var(--paper);z-index:90;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 24px;overflow-y:auto}
+.drawer-bg{position:fixed;inset:0;background:rgba(15,8,10,.5);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer{position:fixed;top:0;bottom:0;right:0;width:min(380px,88vw);background:var(--bg);z-index:90;transform:translateX(100%);transition:transform .35s ease;padding:calc(24px + env(safe-area-inset-top,0px)) calc(28px + env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) 28px;display:flex;flex-direction:column;gap:24px;overflow-y:auto}
 body.menu-open .drawer{transform:none}
 body.menu-open .drawer-bg{opacity:1;pointer-events:auto}
-.drawer h2{font-size:34px;font-style:italic;font-weight:400}
-.drawer ol{list-style:none;padding:0;margin:20px 0;display:grid}
-.drawer li a{display:grid;grid-template-columns:44px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
-.drawer li a span{font-family:var(--f-display);font-style:italic;color:var(--red);font-variant-numeric:tabular-nums}
-.drawer li a:hover{color:var(--red)}
+.drawer ol{list-style:none;padding:0;margin:0}
+.drawer li a{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--f-display);font-size:24px}
+.drawer li a span{font-family:var(--f-body);font-size:12px;color:var(--muted);letter-spacing:.1em;align-self:center}
 
-/* ---------- CAPA ---------- */
-.capa{position:relative;overflow:hidden;padding-block:28px 56px;background:var(--paper)}
-.capa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.capa-meta{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:8px 0}
-.masthead{font-family:var(--f-display);font-weight:900;font-size:clamp(96px,17vw,230px);line-height:.82;letter-spacing:-.02em;color:var(--red);margin:22px 0 6px}
-.masthead em{font-style:italic;font-weight:400}
-.mast-sub{font-size:13px;letter-spacing:.42em;text-transform:uppercase;font-weight:600}
-.capa h1{font-size:clamp(34px,4.6vw,58px);margin-top:28px;font-weight:400}
-.capa h1 i{color:var(--red)}
-.chamadas{display:grid;gap:14px;margin-top:28px;padding:0;list-style:none}
-.chamadas a{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;text-decoration:none;border-top:1px solid var(--line);padding-top:12px}
-.chamadas b{font-family:var(--f-display);font-style:italic;font-weight:400;color:var(--red);font-size:15px;white-space:nowrap}
-.chamadas strong{font-weight:600}
-.chamadas a:hover strong{color:var(--red)}
-.capa-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.capa-foto{position:relative;max-width:520px;justify-self:center;width:100%}
-.capa-foto .frame{border-radius:240px 240px 18px 18px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -20px var(--shadow);border:10px solid var(--card);max-width:100%}
-.capa-foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s ease}
-.capa-foto:hover img{transform:scale(1.09)}
-.selo{position:absolute;left:-26px;bottom:60px;width:128px;height:128px;border-radius:50%;background:var(--kraft);color:#2a1a05;display:grid;place-items:center;text-align:center;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;line-height:1.25;transform:rotate(-12deg);box-shadow:0 12px 24px -10px var(--shadow)}
-.selo span{font-family:var(--f-display);font-style:italic;font-size:26px;text-transform:none;letter-spacing:0;display:block}
-.tag-carinho{position:absolute;right:-8px;top:46px;background:var(--card);color:var(--red);font-family:var(--f-hand);font-size:28px;padding:6px 20px 8px;border-radius:999px;border:2px dashed var(--red);transform:rotate(8deg);box-shadow:0 8px 18px -8px var(--shadow)}
-@media (max-width:860px){
-  .capa-grid{grid-template-columns:1fr}
-  .capa-foto{max-width:420px}
-  .selo{left:0;width:108px;height:108px;font-size:11px}
-  .tag-carinho{right:0}
-}
-
-/* entrada da capa */
+/* ---------- abertura ---------- */
+.hero{padding-block:clamp(40px,6vw,80px) clamp(56px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.hero h1{font-size:clamp(48px,6.6vw,92px);font-weight:400;margin:22px 0 26px}
+.hero h1 em{font-style:italic;color:var(--wine)}
+.hero .lead{margin-bottom:36px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.hero-facts b{display:block;font-family:var(--f-display);font-size:30px;font-weight:500;line-height:1}
+.hero-facts span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hero-img .ph{aspect-ratio:4/5;overflow:hidden;background:var(--surface);max-width:100%}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:13px;color:var(--muted)}
+.hero-img figcaption em{font-family:var(--f-display);font-size:17px;color:var(--ink)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-img{order:-1}.hero-facts{grid-template-columns:repeat(3,1fr);gap:16px}.hero-facts b{font-size:24px}}
 @media (prefers-reduced-motion:no-preference){
-  .masthead{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-  .capa h1{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
-  .chamadas li{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
-  .chamadas li:nth-child(1){animation-delay:.22s}.chamadas li:nth-child(2){animation-delay:.3s}.chamadas li:nth-child(3){animation-delay:.38s}
-  .capa-foto{animation:fade 1.2s .1s ease both}
-  .selo{animation:spinIn 1s .6s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes rise{from{transform:translateY(24px)}to{transform:none}}
-  @keyframes fade{from{opacity:.4;transform:scale(.97)}to{opacity:1;transform:none}}
-  @keyframes spinIn{from{transform:rotate(-80deg) scale(.6)}to{transform:rotate(-12deg)}}
-  .reveal{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  .reveal.pre{transform:translateY(28px)}
+  .hero h1,.hero .lead,.hero .actions{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero .lead{animation-delay:.08s}.hero .actions{animation-delay:.16s}
+  .hero-img .ph img{animation:zoom 1.6s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes up{from{transform:translateY(18px)}to{transform:none}}
+  @keyframes zoom{from{transform:scale(1.06)}to{transform:none}}
+  .reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.pre{transform:translateY(24px)}
 }
 
-/* faixa de selos */
-.ticker{color:var(--on-red);overflow:hidden;padding-block:14px}
-.ticker-track{display:flex;gap:44px;width:max-content;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
-.ticker-track span{display:inline-flex;gap:10px;align-items:center;background:var(--red);padding:4px 12px;border-radius:999px}
-@media (prefers-reduced-motion:no-preference){.ticker-track{animation:tick 38s linear infinite}@keyframes tick{to{transform:translateX(-50%)}}}
+/* ---------- vantagens ---------- */
+.benefits{border-block:1px solid var(--line)}
+.benefits .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.benefit{display:flex;gap:16px;align-items:flex-start;padding:30px 24px;border-left:1px solid var(--line)}
+.benefit:first-child{border-left:0;padding-left:0}
+.benefit svg.i{width:28px;height:28px;color:var(--wine);margin-top:2px}
+.benefit strong{display:block;font-weight:600;font-size:15px}
+.benefit span{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.benefits .wrap{grid-template-columns:1fr 1fr}.benefit{padding:24px 16px}.benefit:nth-child(3){border-left:0;padding-left:0}.benefit:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:480px){.benefits .wrap{grid-template-columns:1fr}.benefit,.benefit:nth-child(n){border-left:0;padding-left:0}.benefit+.benefit{border-top:1px solid var(--line)}}
 
-/* ---------- CARTA DA ELISA ---------- */
-.carta{display:grid;grid-template-columns:280px 1fr;gap:56px}
-.carta aside{border-right:1px solid var(--line);padding-right:32px}
-.carta aside h2{font-size:clamp(40px,5vw,60px);font-style:italic;font-weight:400}
-.carta-text{columns:2 300px;column-gap:44px;color:var(--ink)}
-.carta-text p{margin-bottom:1em;break-inside:avoid-column}
-.carta-text p:first-child::first-letter{font-family:var(--f-display);font-weight:900;float:left;font-size:88px;line-height:.78;padding:8px 10px 0 0;color:var(--red)}
-.assinatura{font-family:var(--f-hand);font-size:44px;color:var(--red);line-height:1;margin-top:8px}
-.marcas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.marcas span{border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:14px;font-weight:500;background:var(--card)}
-@media (max-width:860px){.carta{grid-template-columns:1fr;gap:28px}.carta aside{border-right:0;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:20px}}
+/* ---------- sobre ---------- */
+.sobre{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,7vw,110px)}
+.sobre h2{font-size:clamp(34px,3.8vw,50px);font-weight:400}
+.sobre h2 em{color:var(--wine)}
+.sobre-text{display:grid;gap:18px;color:var(--muted);max-width:60ch}
+.sobre-text p:first-child{color:var(--ink);font-size:18px}
+.marcas{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:8px;padding-top:24px;border-top:1px solid var(--line)}
+.marcas span{font-family:var(--f-display);font-size:24px;color:var(--ink)}
+.assin{font-family:var(--f-display);font-style:italic;font-size:22px;color:var(--ink)}
+@media (max-width:860px){.sobre{grid-template-columns:1fr}}
 
-/* ---------- MATÉRIA DE CAPA (hotspots) ---------- */
-.materia{background:var(--paper-2)}
-.materia-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.materia h2{font-size:clamp(40px,5.5vw,76px)}
-.materia h2 em{color:var(--ribbon);font-weight:400}
-.hot-figure{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -24px var(--shadow);max-width:540px;width:100%;justify-self:center}
-.hot-figure img{width:100%;aspect-ratio:994/1436;object-fit:cover}
-.hot{position:absolute;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:0;background:var(--card);color:var(--red);font-weight:700;font-family:var(--f-display);font-size:17px;box-shadow:0 0 0 6px rgba(255,255,255,.35),0 6px 14px rgba(0,0,0,.35);transition:transform .2s, background .2s}
-.hot:hover,.hot[aria-pressed="true"]{transform:scale(1.15);background:var(--red);color:var(--on-red)}
-@media (prefers-reduced-motion:no-preference){.hot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:pulse 2.2s infinite}@keyframes pulse{from{transform:scale(.8);opacity:1}to{transform:scale(1.6);opacity:0}}}
-.hot-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:4px;counter-reset:h}
-.hot-list button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:36px 1fr;gap:14px;padding:14px 16px;border-radius:12px;width:100%}
-.hot-list button:focus-visible{outline:3px solid var(--ribbon)}
-.hot-list button span{font-family:var(--f-display);font-style:italic;font-size:22px;color:var(--red);line-height:1.2}
-.hot-list button strong{display:block;font-weight:600}
-.hot-list button small{display:block;color:var(--muted);font-size:15px;max-height:0;overflow:hidden;transition:max-height .35s ease}
-.hot-list button.on{background:var(--card);box-shadow:0 10px 24px -14px var(--shadow)}
-.hot-list button.on small{max-height:140px}
-@media (max-width:860px){.materia-grid{grid-template-columns:1fr;gap:36px}}
+/* ---------- destaque ---------- */
+.destaque{background:var(--surface)}
+.dest-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.hot-fig{position:relative;margin:0;max-width:540px;width:100%;justify-self:center}
+.hot-fig img{width:100%;aspect-ratio:994/1436;object-fit:cover}
+.hot{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:1px solid rgba(255,255,255,.9);background:rgba(27,23,24,.6);backdrop-filter:blur(4px);color:#fff;font-size:12px;font-weight:600;transition:background .2s,transform .2s}
+.hot:hover,.hot[aria-pressed="true"]{background:var(--wine);transform:scale(1.12)}
+.hot-list{list-style:none;padding:0;margin:32px 0;border-top:1px solid var(--line)}
+.hot-list button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:40px 1fr;gap:8px;width:100%;padding:18px 0;border-bottom:1px solid var(--line)}
+.hot-list button:focus-visible{outline:2px solid var(--wine)}
+.hot-list .n{font-family:var(--f-display);font-size:20px;color:var(--muted)}
+.hot-list strong{font-weight:500}
+.hot-list small{display:block;color:var(--muted);font-size:14.5px;max-height:0;overflow:hidden;transition:max-height .4s ease,margin .4s}
+.hot-list button.on .n{color:var(--wine)}
+.hot-list button.on small{max-height:120px;margin-top:6px}
+@media (max-width:860px){.dest-grid{grid-template-columns:1fr}}
 
-/* ---------- VITRINE ---------- */
-.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:8px 18px;font-size:14px;font-weight:500}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.vitrine{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.produto{background:none;border:0;padding:0;text-align:left;display:flex;flex-direction:column;gap:12px}
-.produto .ph{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--paper-2)}
-.produto img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.produto:hover img{transform:scale(1.06)}
-.produto .badge{position:absolute;top:10px;left:10px;background:var(--card);color:var(--red);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:999px}
-.produto .marca{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.produto h3{font-size:22px}
-.produto .ver{font-size:14px;font-weight:600;color:var(--red);display:inline-flex;gap:8px;align-items:center}
-.produto[hidden]{display:none}
-@media (max-width:980px){.vitrine{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:460px){.vitrine{grid-template-columns:1fr}}
+/* ---------- coleção ---------- */
+.tabs{display:flex;flex-wrap:wrap;gap:6px 28px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.tab{background:none;border:0;padding:0 0 14px;font-size:14px;color:var(--muted);border-bottom:1px solid transparent;margin-bottom:-1px;letter-spacing:.04em}
+.tab[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px}
+.prod{background:none;border:0;padding:0;text-align:left;display:grid;gap:12px;align-content:start}
+.prod .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--surface);max-width:100%;margin-bottom:4px}
+.prod img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.prod:hover img{transform:scale(1.04)}
+.prod .tag{position:absolute;top:12px;left:12px;background:var(--bg);color:var(--ink);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px}
+.prod .brand{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.prod h3{font-size:24px;line-height:1.15}
+.prod .more{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--wine)}
+.prod[hidden]{display:none}
+@media (max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.grid4{grid-template-columns:1fr}}
 
-/* modal */
-.modal{border:0;padding:0;border-radius:20px;max-width:min(860px,calc(100vw - 32px));width:100%;background:var(--paper);color:var(--ink);box-shadow:0 40px 80px -20px rgba(0,0,0,.5)}
-.modal::backdrop{background:rgba(20,8,10,.6)}
+.modal{border:0;padding:0;max-width:min(920px,calc(100vw - 32px));width:100%;background:var(--bg);color:var(--ink);box-shadow:0 40px 80px -24px rgba(0,0,0,.45)}
+.modal::backdrop{background:rgba(15,8,10,.55)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr}
-.modal-grid img{width:100%;height:100%;object-fit:cover;max-height:80vh}
-.modal-body{padding:32px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.modal-body h3{font-size:32px}
-.modal-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);box-shadow:0 4px 12px var(--shadow)}
-.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:15px}
-.checks .ico{color:var(--green);margin-right:8px}
-@media (max-width:700px){.modal-grid{grid-template-columns:1fr}.modal-grid img{max-height:44vh}.modal-body{padding:22px}}
+.modal-grid img{width:100%;height:100%;object-fit:cover;max-height:82vh}
+.modal-body{padding:44px 40px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.modal-body h3{font-size:36px}
+.modal-x{position:absolute;top:14px;right:14px;width:40px;height:40px;border:0;background:var(--bg);display:grid;place-items:center}
+.checks{list-style:none;padding:0;margin:4px 0 8px;border-top:1px solid var(--line)}
+.checks li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:12px;align-items:center}
+.checks svg.i{width:16px;height:16px;color:var(--wine)}
+@media (max-width:720px){.modal-grid{grid-template-columns:1fr}.modal-grid img{max-height:42vh}.modal-body{padding:26px 22px}}
 
-/* ---------- TESTE ---------- */
-.teste{background:var(--ink);color:var(--paper)}
-.teste .page-head{border-color:rgba(255,255,255,.18)}
-.teste .folio{color:rgba(255,255,255,.6)}
-.teste .kicker{color:var(--kraft)}
-.teste h2{font-size:clamp(38px,5vw,66px)}
-.teste h2 em{color:var(--kraft);font-weight:400}
-.teste-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
-.quiz{background:var(--paper);color:var(--ink);border-radius:20px;padding:30px;min-width:0}
-.q-step{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.q-title{font-family:var(--f-display);font-size:28px;margin:6px 0 18px;line-height:1.15}
-.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.q-opts button{border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:16px;text-align:left;font-weight:500;display:flex;gap:12px;align-items:center;transition:border-color .2s, transform .2s}
-.q-opts button .ico{color:var(--red);width:20px;text-align:center;flex:none}
-.q-opts button:hover{border-color:var(--red);transform:translateY(-2px)}
-.q-bar{height:4px;background:var(--line);border-radius:4px;margin-bottom:22px;overflow:hidden}
-.q-bar div{height:100%;background:var(--red);transition:width .4s}
-.q-result{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
-.q-result img{border-radius:14px;aspect-ratio:3/4;object-fit:cover;width:100%}
-.q-result h3{font-size:28px;margin:4px 0 8px}
-.q-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.q-actions .btn{padding:11px 18px;font-size:14px}
-@media (max-width:860px){.teste-grid{grid-template-columns:1fr;gap:28px}}
-@media (max-width:520px){.q-opts{grid-template-columns:1fr}.q-result{grid-template-columns:1fr}.q-result img{max-width:180px}.quiz{padding:22px}}
+/* ---------- presente ideal ---------- */
+.teste{background:var(--wine);color:#fff}
+.teste .eyebrow,.teste .folio{color:rgba(255,255,255,.72)}
+.teste-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,96px);align-items:start}
+.teste h2{font-size:clamp(40px,4.8vw,64px);font-weight:400}
+.teste p.sub{color:rgba(255,255,255,.8);margin-top:20px;max-width:44ch}
+.quiz{background:var(--bg);color:var(--ink);padding:clamp(24px,4vw,44px);min-width:0}
+.q-top{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.q-bar{height:1px;background:var(--line);margin:14px 0 28px}
+.q-bar div{height:1px;background:var(--wine);transition:width .5s}
+.q-title{font-family:var(--f-display);font-size:32px;line-height:1.1;margin-bottom:24px}
+.q-opts{display:grid;gap:10px}
+.q-opts button{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;background:transparent;border:1px solid var(--line);padding:18px 20px;font-size:15.5px;transition:border-color .2s,background .2s}
+.q-opts button:hover{border-color:var(--ink);background:var(--surface)}
+.q-opts svg.i{width:16px;height:16px;color:var(--muted)}
+.q-res{display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:start}
+.q-res img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.q-res h3{font-size:32px;margin:8px 0 10px}
+.q-res p{color:var(--muted);font-size:15px}
+.q-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+@media (max-width:860px){.teste-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.q-res{grid-template-columns:1fr}.q-res img{max-width:200px}}
 
-/* ---------- MONTE SEU KIT ---------- */
-.kit-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
-.kit-form{display:grid;gap:30px;min-width:0}
+/* ---------- monte o seu ---------- */
+.kit-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,80px);align-items:start}
+.kit-form{display:grid;gap:36px;min-width:0}
 fieldset{border:0;padding:0;margin:0;min-width:0}
-legend{font-family:var(--f-display);font-size:24px;font-weight:700;margin-bottom:12px;padding:0}
-legend span{font-style:italic;font-weight:400;color:var(--red);margin-right:8px}
-.opts{display:flex;flex-wrap:wrap;gap:10px}
+legend{display:flex;gap:14px;align-items:baseline;padding:0;margin-bottom:14px;font-size:15px;font-weight:600}
+legend span{font-family:var(--f-display);font-size:20px;font-weight:500;color:var(--wine);min-width:24px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
 .opt input{position:absolute;opacity:0;pointer-events:none}
-.opt label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:10px 18px;font-size:15px;cursor:pointer;transition:all .2s}
-.opt input:checked + label{border-color:var(--red);background:var(--red);color:var(--on-red)}
-.opt input:focus-visible + label{outline:3px solid var(--ribbon);outline-offset:2px}
-.swatch{width:16px;height:16px;border-radius:50%;display:inline-block;border:2px solid rgba(255,255,255,.7);box-shadow:0 0 0 1px var(--line)}
-.kit-form input[type=text]{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px 14px;font:inherit;margin-top:10px}
-.preview{position:sticky;top:90px;background:var(--card);border-radius:22px;padding:26px;box-shadow:0 30px 60px -28px var(--shadow);border:1px solid var(--line);min-width:0}
-.caixa{position:relative;height:230px;border-radius:14px;display:grid;place-items:center;overflow:hidden;background:var(--paper-2)}
-.caixa .box{width:62%;height:64%;border-radius:10px;background:var(--paper);border:3px solid var(--line);position:relative;display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:12px;transition:all .4s}
-.caixa.cesta .box{border-radius:0 0 60px 60px;background:var(--kraft);border-color:color-mix(in srgb,var(--kraft) 70%,#000)}
-.caixa.cesta .box::before{content:"";position:absolute;left:8%;right:8%;top:-70%;height:110%;border:6px solid color-mix(in srgb,var(--kraft) 70%,#000);border-bottom:0;border-radius:200px 200px 0 0}
-.caixa.floral .box{background:repeating-radial-gradient(circle at 30% 30%,#E46A6A 0 6px,#5A6E3A 7px 13px,#3a2b2b 14px 20px)}
-.caixa .item{width:20px;border-radius:6px 6px 3px 3px;background:var(--ink);opacity:.85;transition:height .3s}
-.laco{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:44px;transition:color .3s}
-.fita{position:absolute;left:50%;top:40px;bottom:0;width:6px;transform:translateX(-50%);transition:background .3s;opacity:.85}
-.etiqueta{position:absolute;right:12%;bottom:22px;background:#fff;color:#C81E2B;font-family:var(--f-hand);font-size:20px;padding:4px 14px;border-radius:999px;border:2px dashed #C81E2B;transform:rotate(-6deg);max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.resumo{margin:20px 0;display:grid;gap:8px;font-size:15px}
-.resumo div{display:grid;grid-template-columns:96px 1fr;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px}
-.resumo dt{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-.resumo dd{margin:0;font-weight:500;min-width:0}
-.preview .btn{width:100%}
-@media (max-width:900px){.kit-grid{grid-template-columns:1fr}.preview{position:static}}
+.opt label{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:11px 18px;font-size:14.5px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.opt label:hover{border-color:var(--ink)}
+.opt input:checked + label{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.opt input:focus-visible + label{outline:2px solid var(--wine);outline-offset:2px}
+.sw{width:12px;height:12px;border-radius:50%;display:inline-block;box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 0 2px var(--line)}
+.kit-form input[type=text]{width:100%;margin-top:10px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:12px 0;font:inherit}
+.kit-form input[type=text]:focus{outline:none;border-color:var(--ink)}
+.order{position:sticky;top:96px;border:1px solid var(--line);padding:32px;min-width:0;background:var(--card)}
+.order h3{font-size:30px;margin:10px 0 20px}
+.order dl{margin:0 0 26px;border-top:1px solid var(--line)}
+.order dl div{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.order dt{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding-top:2px}
+.order dd{margin:0;min-width:0}
+.order .btn{width:100%}
+.order small{display:block;margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:900px){.kit-grid{grid-template-columns:1fr}.order{position:static}}
 
-/* ---------- NA FEIRA ---------- */
-.feira-band{color:var(--on-red);padding-block:80px}
-.feira-card{background:var(--paper);color:var(--ink);border-radius:24px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
-.feira-card h2{font-size:clamp(38px,5vw,64px)}
-.contagem{display:flex;gap:12px;margin:22px 0}
-.contagem div{background:var(--paper-2);border-radius:14px;padding:12px 16px;text-align:center;min-width:78px}
-.contagem b{display:block;font-family:var(--f-display);font-size:40px;line-height:1;font-variant-numeric:tabular-nums;color:var(--red)}
-.contagem small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.hoje{font-family:var(--f-hand);font-size:34px;color:var(--red)}
-.infos{display:grid;gap:18px;align-content:start}
-.info{display:grid;grid-template-columns:44px 1fr;gap:14px}
-.info .ico{width:44px;height:44px;border-radius:12px;background:var(--paper-2);color:var(--red);display:grid;place-items:center;font-size:18px}
-.info strong{display:block}
-.info p{color:var(--muted);font-size:15px}
-@media (max-width:860px){.feira-card{grid-template-columns:1fr}}
+/* ---------- feira ---------- */
+.feira{background:var(--surface)}
+.feira-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+.count{display:flex;margin:32px 0;border:1px solid var(--line);width:max-content;max-width:100%;background:var(--bg)}
+.count div{padding:18px 26px;text-align:center;border-left:1px solid var(--line)}
+.count div:first-child{border-left:0}
+.count b{display:block;font-family:var(--f-display);font-weight:500;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.count small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.today{font-family:var(--f-display);font-style:italic;font-size:30px;color:var(--wine);margin:28px 0}
+.info-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.info-list li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.info-list svg.i{width:24px;height:24px;color:var(--wine)}
+.info-list strong{display:block;font-weight:600}
+.info-list span{color:var(--muted);font-size:15px}
+@media (max-width:860px){.feira-grid{grid-template-columns:1fr}.count div{padding:14px 18px}.count b{font-size:36px}}
 
-/* ---------- PERGUNTAS ---------- */
-.faq{max-width:820px}
+/* ---------- dúvidas ---------- */
+.faq-grid{display:grid;grid-template-columns:4fr 7fr;gap:clamp(32px,6vw,96px)}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-family:var(--f-display);font-size:22px;font-weight:700}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:24px 0;font-family:var(--f-display);font-size:24px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary .ico{color:var(--red);transition:transform .3s;margin-top:4px;flex:none}
-.faq details[open] summary .ico{transform:rotate(45deg)}
-.faq details p{padding:0 0 22px;color:var(--muted);max-width:62ch}
+.faq summary svg.i{transition:transform .3s;margin-top:6px;color:var(--muted)}
+.faq details[open] summary svg.i{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px;color:var(--muted);max-width:60ch}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}}
 
-/* ---------- CONTRACAPA ---------- */
-.contracapa{background:var(--ink);color:var(--paper);padding-block:72px calc(40px + env(safe-area-inset-bottom,0px))}
-.contracapa .grande{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,13vw,170px);line-height:.85;color:var(--red)}
-.contracapa .grande em{font-weight:400;color:var(--paper)}
-.contra-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end;margin-top:28px}
-.numero{font-size:clamp(22px,3vw,32px);font-weight:600;letter-spacing:.04em;user-select:all}
-.copy-btn{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--paper);border-radius:999px;padding:8px 14px;font-size:13px;margin-left:10px}
-.creditos{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;color:rgba(255,255,255,.6);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+/* ---------- rodapé ---------- */
+.foot{background:#141011;color:#EDE6E4;padding-block:80px calc(40px + env(safe-area-inset-bottom,0px))}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px}
+.foot h2{font-size:clamp(36px,4vw,54px);font-weight:400}
+.foot h2 em{color:#D7A3AE}
+.foot .eyebrow{color:#9C9092}
+.foot p,.foot li{color:#B9AEB0;font-size:15px}
+.foot ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.num{font-family:var(--f-display);font-size:30px;color:#fff;user-select:all;display:block;margin:12px 0 6px}
+.copy{background:none;border:0;border-bottom:1px solid #6d6264;color:#B9AEB0;padding:0 0 2px;font-size:13px}
+.legal{margin-top:64px;padding-top:24px;border-top:1px solid #2b2426;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12.5px;color:#857a7c}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr}}
 
-.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:30px;text-decoration:none;box-shadow:0 14px 30px -8px rgba(0,0,0,.45)}
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:999px;font-size:14px;z-index:100;transition:transform .3s}
+.fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;height:52px;padding:0 20px;border-radius:26px;background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.06em;box-shadow:0 12px 28px -10px rgba(0,0,0,.4)}
+.fab svg.i{width:20px;height:20px}
+@media (max-width:560px){.fab span{display:none}.fab{width:52px;padding:0;justify-content:center}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:var(--bg);padding:12px 22px;font-size:14px;z-index:100;transition:transform .3s}
 .toast.show{transform:translate(-50%,0);visibility:visible}
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<header class="top">
   <div class="wrap">
-    <a href="#capa" class="mast-mini">ELISA<small>COSMÉTICOS &amp; PRESENTES</small></a>
-    <div class="top-actions">
-      <span class="page-indicator" id="pageIndicator">Capa</span>
-      <a class="btn btn-wa top-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de saber valores e produtos a pronta entrega." href="#"><i class="fa-brands fa-whatsapp"></i><span>Fale com a Elisa</span></a>
-      <button class="icon-btn" id="menuBtn" aria-label="Abrir sumário" aria-expanded="false" aria-controls="drawer"><i class="fa-solid fa-bars"></i></button>
+    <a href="#inicio" class="logo"><strong>ELISA</strong><span>Cosméticos &amp; Presentes</span></a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#colecao">Coleção</a>
+      <a href="#destaque">Destaque</a>
+      <a href="#teste">Presente ideal</a>
+      <a href="#monte">Monte o seu</a>
+      <a href="#feira">Na feira</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="btn btn-primary top-cta" data-wa="Olá Elisa! Vim pelo site e gostaria de saber valores e produtos a pronta entrega." href="#">Fazer pedido</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
     </div>
   </div>
   <div class="progress" id="progress"></div>
 </header>
 
 <div class="drawer-bg" id="drawerBg"></div>
-<nav class="drawer" id="drawer" aria-label="Sumário">
+<nav class="drawer" id="drawer" aria-label="Menu">
   <div style="display:flex;justify-content:space-between;align-items:center">
-    <span class="kicker">Nesta edição</span>
-    <button class="icon-btn" id="closeMenu" aria-label="Fechar sumário"><i class="fa-solid fa-xmark"></i></button>
+    <span class="eyebrow">Nesta edição</span>
+    <button class="menu-btn" style="display:grid" id="closeMenu" aria-label="Fechar menu"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <h2>Sumário</h2>
   <ol id="sumario"></ol>
-  <a class="btn btn-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de fazer um pedido." href="#"><i class="fa-brands fa-whatsapp"></i>(31) 98727-6596</a>
+  <a class="btn btn-wa" data-wa="Olá Elisa! Vim pelo site e gostaria de fazer um pedido." href="#">WhatsApp (31) 98727-6596</a>
 </nav>
 
 <main>
-<!-- CAPA -->
-<section class="capa" id="capa" data-page="Capa">
+<section class="hero" id="inicio" data-page="Abertura" data-n="01">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><b>Edição</b> · <span id="edicao">Novembro 2026</span></span>
+      <h1>Presentes que encantam, <em>prontos</em> para levar.</h1>
+      <p class="lead">Kits e cestas montados à mão com produtos originais O Boticário, Natura e Avon. Pronta entrega com Nota Fiscal, aos domingos na Feira do Palmital.</p>
+      <div class="actions">
+        <a href="#colecao" class="btn btn-primary">Ver a coleção</a>
+        <a class="btn btn-line" data-wa="Olá Elisa! Vim pelo site e gostaria de saber os valores dos kits a pronta entrega." href="#">Consultar valores</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>3</b><span>marcas originais</span></div>
+        <div><b>NF</b><span>em toda compra</span></div>
+        <div><b>Dom.</b><span>Feira do Palmital</span></div>
+      </div>
+    </div>
+    <figure class="hero-img" style="margin:0">
+      <div class="ph"><img src="img/cesta-nativa-spa.jpg" alt="Cesta presente O Boticário Nativa SPA com laço vermelho" fetchpriority="high"></div>
+      <figcaption><em>Cesta Nativa SPA</em><span>O Boticário · pronta entrega</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="benefits" aria-label="Vantagens">
   <div class="wrap">
-    <div class="capa-meta"><span id="edicao">Edição de Natal</span><span>Feira do Palmital · Domingos</span></div>
-    <div class="capa-grid">
-      <div>
-        <div class="masthead">Elisa<em>.</em></div>
-        <div class="mast-sub">Cosméticos &amp; Presentes</div>
-        <h1>Presentes prontos, <i>com laço</i> e com carinho, esperando por você no domingo.</h1>
-        <ul class="chamadas">
-          <li><a href="#materia"><b>pág. 04</b><strong>Por dentro do kit Avon Care: toque nos detalhes da foto</strong></a></li>
-          <li><a href="#teste"><b>pág. 06</b><strong>Teste: qual presente combina com quem você ama?</strong></a></li>
-          <li><a href="#kit"><b>pág. 07</b><strong>Monte seu kit do seu jeito e mande direto no WhatsApp</strong></a></li>
-        </ul>
-        <div class="capa-actions">
-          <a href="#vitrine" class="btn btn-red"><i class="fa-solid fa-book-open"></i> Folhear a vitrine</a>
-          <a class="btn btn-wa" data-wa="Olá Elisa! Vim pela revista e gostaria de saber valores dos kits a pronta entrega." href="#"><i class="fa-brands fa-whatsapp"></i> Consultar valores</a>
-        </div>
-      </div>
-      <div class="capa-foto">
-        <div class="frame"><img src="img/cesta-nativa-spa.jpg" alt="Cesta presente O Boticário Nativa SPA com laço vermelho sobre a toalha de bolinhas da banca" fetchpriority="high"></div>
-        <div class="selo"><div><span>pronta</span>entrega<br>com nota</div></div>
-        <div class="tag-carinho">Com carinho!</div>
-      </div>
+    <div class="benefit"><svg class="i" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><div><strong>Pronta entrega</strong><span>Escolha e leve na hora</span></div></div>
+    <div class="benefit"><svg class="i" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h8M9 17h6"/></svg><div><strong>Nota Fiscal</strong><span>Produtos originais de fábrica</span></div></div>
+    <div class="benefit"><svg class="i" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M2.5 10h19M6 15h4"/></svg><div><strong>Pix e cartão</strong><span>Crédito, débito ou dinheiro</span></div></div>
+    <div class="benefit"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12"/><path d="M2 9h20M12 9v12M12 9c-2-4-6-5-6-2s6 2 6 2zm0 0c2-4 6-5 6-2s-6 2-6 2z"/></svg><div><strong>Pronto para presentear</strong><span>Embalagem, laço e cartão</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="sobre" data-page="Sobre a Elisa" data-n="02">
+  <div class="wrap sobre reveal">
+    <div style="display:grid;gap:18px;align-content:start">
+      <span class="eyebrow">Sobre · <span class="folio">pág. 02</span></span>
+      <h2>Cada presente é escolhido e embalado <em>por mim</em>, um a um.</h2>
+    </div>
+    <div class="sobre-text">
+      <p>Todo domingo eu monto a banca na Feira do Palmital com kits prontos e produtos a pronta entrega das marcas que você já conhece e confia.</p>
+      <p>Trabalho só com itens originais, lacrados de fábrica e com Nota Fiscal. Você pode pagar no Pix, no cartão de crédito ou débito, ou em dinheiro. Se preferir, reserve pelo WhatsApp durante a semana e retire no domingo.</p>
+      <p class="assin">Elisa</p>
+      <div class="marcas"><span>O Boticário</span><span>Natura</span><span>Avon</span></div>
     </div>
   </div>
 </section>
 
-<div class="toalha ticker" aria-hidden="true">
-  <div class="ticker-track" id="ticker"></div>
-</div>
-
-<!-- CARTA -->
-<section class="page" id="carta" data-page="pág. 03 · Carta da Elisa">
-  <div class="wrap">
-    <div class="page-head"><span class="kicker">Editorial</span><span class="folio">pág. 03</span></div>
-    <div class="carta reveal">
-      <aside>
-        <h2>Carta da Elisa</h2>
-        <div class="marcas"><span>O Boticário</span><span>Natura</span><span>Avon</span></div>
-      </aside>
-      <div>
-        <div class="carta-text">
-          <p>Todo domingo eu monto a banca na Feira do Palmital com a toalha vermelha de bolinhas e uma mesa cheia de presentes. Cada kit é escolhido e embalado por mim: a caixinha com visor, o papel celofane, o laço e a etiqueta escrita "com carinho".</p>
-          <p>Trabalho com produtos O Boticário, Natura e Avon a pronta entrega. Tudo é original, sai com Nota Fiscal, e você pode pagar no Pix, no cartão de crédito ou débito, ou em dinheiro.</p>
-          <p>Fiz esta revista para você folhear com calma antes de passar na feira. Gostou de alguma coisa? Me chame no WhatsApp, que eu mando foto, valor e já separo o seu para domingo.</p>
-        </div>
-        <div class="assinatura">Elisa</div>
-      </div>
+<section class="section destaque" id="destaque" data-page="Destaque da edição" data-n="03">
+  <div class="wrap dest-grid">
+    <figure class="hot-fig reveal" id="hotFig">
+      <img src="img/kit-avon-care.jpg" alt="Kit presente Avon Care com loção de 200 ml e dois sabonetes em caixa com visor e laço azul">
+    </figure>
+    <div class="reveal">
+      <span class="eyebrow">Destaque da edição · <span class="folio">pág. 03</span></span>
+      <h2 class="h2" style="margin:16px 0 18px">Kit Avon Care, em detalhes</h2>
+      <p class="lead">O presente mais pedido da banca. Toque nos pontos da foto para conhecer cada item.</p>
+      <ul class="hot-list" id="hotList"></ul>
+      <a class="btn btn-primary" data-wa="Olá Elisa! Vi no site o Kit Avon Care. Qual o valor e ainda tem a pronta entrega?" href="#">Quero este kit</a>
     </div>
   </div>
 </section>
 
-<!-- MATÉRIA DE CAPA -->
-<section class="page materia" id="materia" data-page="pág. 04 · Matéria de capa">
+<section class="section" id="colecao" data-page="Coleção" data-n="04">
   <div class="wrap">
-    <div class="page-head"><span class="kicker">Matéria de capa</span><span class="folio">pág. 04</span></div>
-    <div class="materia-grid">
-      <figure class="hot-figure reveal" id="hotFigure" style="margin:0">
-        <img src="img/kit-avon-care.jpg" alt="Kit presente Avon Care com loção de 200 ml e dois sabonetes em caixa com visor, laço azul">
-      </figure>
-      <div class="reveal">
-        <h2>O kit do <em>laço azul</em>, por dentro</h2>
-        <p class="lead" style="margin-top:18px">É o presente que mais sai da banca. Toque nos números da foto para ver cada detalhe.</p>
-        <ul class="hot-list" id="hotList"></ul>
-        <a class="btn btn-wa" style="margin-top:24px" data-wa="Olá Elisa! Vi na revista o Kit Avon Care com laço azul. Qual o valor e ainda tem a pronta entrega?" href="#"><i class="fa-brands fa-whatsapp"></i> Quero este kit</a>
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow">Coleção · <span class="folio">pág. 04</span></span>
+        <h2 class="h2">Pronta entrega</h2>
+        <p class="lead">Selecione um presente para ver o que vem dentro e consultar o valor.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- VITRINE -->
-<section class="page" id="vitrine" data-page="pág. 05 · Vitrine">
-  <div class="wrap">
-    <div class="page-head"><span class="kicker">Vitrine · pronta entrega</span><span class="folio">pág. 05</span></div>
-    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:14px">Direto da banca</h2>
-    <p class="lead" style="margin-bottom:28px">Fotos reais da mesa de domingo. Toque num presente para ver o que vem dentro e pedir o valor.</p>
-    <div class="filtros" role="group" aria-label="Filtrar por marca" id="filtros">
-      <button class="chip" aria-pressed="true" data-f="todos">Todos</button>
-      <button class="chip" aria-pressed="false" data-f="boticario">O Boticário</button>
-      <button class="chip" aria-pressed="false" data-f="natura">Natura</button>
-      <button class="chip" aria-pressed="false" data-f="avon">Avon</button>
-      <button class="chip" aria-pressed="false" data-f="kits">Kits e cestas</button>
+    <div class="tabs" role="group" aria-label="Filtrar por marca" id="tabs">
+      <button class="tab" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="tab" aria-pressed="false" data-f="boticario">O Boticário</button>
+      <button class="tab" aria-pressed="false" data-f="natura">Natura</button>
+      <button class="tab" aria-pressed="false" data-f="avon">Avon</button>
     </div>
-    <div class="vitrine" id="vitrineGrid"></div>
+    <div class="grid4" id="grid"></div>
   </div>
 </section>
 
 <dialog class="modal" id="modal" aria-labelledby="mTitle">
-  <button class="modal-close" id="mClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+  <button class="modal-x" id="mClose" aria-label="Fechar"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="modal-grid">
     <img id="mImg" src="" alt="">
     <div class="modal-body">
-      <span class="kicker" id="mBrand"></span>
+      <span class="eyebrow" id="mBrand"></span>
       <h3 id="mTitle"></h3>
       <p id="mDesc" style="color:var(--muted)"></p>
       <ul class="checks" id="mChecks"></ul>
-      <a class="btn btn-wa" id="mWa" href="#"><i class="fa-brands fa-whatsapp"></i> Saber valor no WhatsApp</a>
+      <a class="btn btn-wa" id="mWa" href="#">Consultar valor no WhatsApp</a>
     </div>
   </div>
 </dialog>
 
-<!-- TESTE -->
-<section class="page teste" id="teste" data-page="pág. 06 · Teste">
-  <div class="wrap">
-    <div class="page-head"><span class="kicker">Teste da revista</span><span class="folio">pág. 06</span></div>
-    <div class="teste-grid">
-      <div>
-        <h2>Qual presente <em>combina</em> com quem você ama?</h2>
-        <p style="margin-top:18px;color:rgba(255,255,255,.75)">Três perguntas rápidas. No final eu indico um presente da banca e você já pode me chamar para reservar.</p>
-      </div>
-      <div class="quiz" id="quiz" aria-live="polite"></div>
+<section class="section teste" id="teste" data-page="Presente ideal" data-n="05">
+  <div class="wrap teste-grid">
+    <div>
+      <span class="eyebrow">Presente ideal · <span class="folio">pág. 05</span></span>
+      <h2 style="margin-top:16px">Qual presente combina com <em>quem você ama?</em></h2>
+      <p class="sub">Responda três perguntas e receba uma sugestão da coleção, com a mensagem pronta para reservar.</p>
     </div>
+    <div class="quiz" id="quiz" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- MONTE SEU KIT -->
-<section class="page" id="kit" data-page="pág. 07 · Monte seu kit">
+<section class="section" id="monte" data-page="Monte o seu kit" data-n="06">
   <div class="wrap">
-    <div class="page-head"><span class="kicker">Faça você mesmo</span><span class="folio">pág. 07</span></div>
-    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:14px">Monte seu kit</h2>
-    <p class="lead" style="margin-bottom:36px">Escolha a embalagem, os produtos, a cor do laço e a frase da etiqueta. Eu recebo tudo pelo WhatsApp e respondo com as opções e o valor.</p>
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow">Sob medida · <span class="folio">pág. 06</span></span>
+        <h2 class="h2">Monte o seu kit</h2>
+        <p class="lead">Escolha embalagem, produtos e acabamento. O pedido chega pronto no WhatsApp da Elisa, que responde com as opções disponíveis e o valor.</p>
+      </div>
+    </div>
     <div class="kit-grid">
       <form class="kit-form" id="kitForm">
-        <fieldset><legend><span>1</span>Embalagem</legend><div class="opts" id="optBase"></div></fieldset>
-        <fieldset><legend><span>2</span>O que vai dentro</legend><div class="opts" id="optItens"></div></fieldset>
-        <fieldset><legend><span>3</span>Marca preferida</legend><div class="opts" id="optMarca"></div></fieldset>
-        <fieldset><legend><span>4</span>Cor do laço</legend><div class="opts" id="optLaco"></div></fieldset>
-        <fieldset><legend><span>5</span>Frase da etiqueta</legend><div class="opts" id="optTag"></div>
-          <input type="text" id="tagCustom" maxlength="28" placeholder="Ou escreva a sua frase (até 28 letras)" aria-label="Frase personalizada da etiqueta">
+        <fieldset><legend><span>I</span>Embalagem</legend><div class="opts" id="o-base"></div></fieldset>
+        <fieldset><legend><span>II</span>Produtos</legend><div class="opts" id="o-itens"></div></fieldset>
+        <fieldset><legend><span>III</span>Marca de preferência</legend><div class="opts" id="o-marca"></div></fieldset>
+        <fieldset><legend><span>IV</span>Cor do laço</legend><div class="opts" id="o-laco"></div></fieldset>
+        <fieldset><legend><span>V</span>Mensagem do cartão</legend><div class="opts" id="o-tag"></div>
+          <input type="text" id="tagCustom" maxlength="40" placeholder="Ou escreva a sua mensagem" aria-label="Mensagem personalizada do cartão">
         </fieldset>
-        <fieldset><legend><span>6</span>Como você quer receber</legend><div class="opts" id="optEntrega"></div></fieldset>
+        <fieldset><legend><span>VI</span>Entrega</legend><div class="opts" id="o-entrega"></div></fieldset>
       </form>
-      <aside class="preview" aria-live="polite">
-        <span class="kicker">Seu kit</span>
-        <div class="caixa" id="caixa" style="margin-top:12px">
-          <div class="fita" id="fita"></div>
-          <div class="box" id="box"></div>
-          <span class="laco" id="laco"><i class="fa-solid fa-ribbon"></i></span>
-          <div class="etiqueta" id="etiqueta">Com carinho</div>
-        </div>
-        <dl class="resumo" id="resumo"></dl>
-        <a class="btn btn-wa" id="kitWa" href="#"><i class="fa-brands fa-whatsapp"></i> Enviar meu kit para a Elisa</a>
+      <aside class="order" aria-live="polite">
+        <span class="eyebrow">Resumo</span>
+        <h3>Seu kit</h3>
+        <dl id="resumo"></dl>
+        <a class="btn btn-wa" id="kitWa" href="#">Enviar pedido pelo WhatsApp</a>
+        <small>Sem compromisso. O valor é confirmado pela Elisa.</small>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- NA FEIRA -->
-<section class="toalha feira-band" id="feira" data-page="pág. 08 · Na feira">
-  <div class="wrap">
-    <div class="feira-card reveal">
-      <div>
-        <span class="kicker">pág. 08 · Onde encontrar</span>
-        <h2 style="margin-top:10px">Domingo é dia de feira no Palmital</h2>
-        <div id="contagem"></div>
-        <p style="color:var(--muted)">A banca fica montada nas manhãs de domingo. Quer garantir um kit? Reserve antes pelo WhatsApp e retire na feira.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
-          <a class="btn btn-wa" data-wa="Olá Elisa! Quero reservar um presente para retirar domingo na Feira do Palmital." href="#"><i class="fa-brands fa-whatsapp"></i> Reservar para domingo</a>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Feira+do+Palmital" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Ver no mapa</a>
-        </div>
-      </div>
-      <div class="infos">
-        <div class="info"><span class="ico"><i class="fa-solid fa-boxes-stacked"></i></span><div><strong>Pronta entrega</strong><p>Os produtos estão na banca. Você escolhe de perto e leva na hora.</p></div></div>
-        <div class="info"><span class="ico"><i class="fa-solid fa-file-invoice"></i></span><div><strong>Nota Fiscal</strong><p>Produtos originais O Boticário, Natura e Avon, com Nota Fiscal.</p></div></div>
-        <div class="info"><span class="ico"><i class="fa-regular fa-credit-card"></i></span><div><strong>Pagamento</strong><p>Pix, cartão de crédito, cartão de débito ou dinheiro.</p></div></div>
-        <div class="info"><span class="ico"><i class="fa-solid fa-gift"></i></span><div><strong>Embalagem para presente</strong><p>Celofane, laço e etiqueta "com carinho" já inclusos nos kits.</p></div></div>
+<section class="section feira" id="feira" data-page="Na feira" data-n="07">
+  <div class="wrap feira-grid">
+    <div class="reveal">
+      <span class="eyebrow">Onde encontrar · <span class="folio">pág. 07</span></span>
+      <h2 class="h2" style="margin-top:16px">Domingo, na Feira do Palmital</h2>
+      <div id="contagem"></div>
+      <p class="lead" style="margin-bottom:28px">A banca funciona nas manhãs de domingo. Para garantir seu presente, reserve antes pelo WhatsApp.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-wa="Olá Elisa! Quero reservar um presente para retirar domingo na Feira do Palmital." href="#">Reservar para domingo</a>
+        <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Feira+do+Palmital" target="_blank" rel="noopener">Ver no mapa</a>
       </div>
     </div>
+    <ul class="info-list reveal">
+      <li><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Feira do Palmital</strong><span>Todos os domingos, pela manhã.</span></div></li>
+      <li><svg class="i" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3.2-6.9"/><path d="M21 4v5h-5"/></svg><div><strong>Reserva antecipada</strong><span>Separe seu kit durante a semana e retire no domingo.</span></div></li>
+      <li><svg class="i" viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><div><strong>Entrega a combinar</strong><span>Informe o bairro pelo WhatsApp.</span></div></li>
+      <li><svg class="i" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M2.5 10h19"/></svg><div><strong>Pagamento</strong><span>Pix, cartão de crédito, débito ou dinheiro.</span></div></li>
+    </ul>
   </div>
 </section>
 
-<!-- PERGUNTAS -->
-<section class="page" id="perguntas" data-page="pág. 09 · Perguntas">
-  <div class="wrap">
-    <div class="page-head"><span class="kicker">Tira-dúvidas</span><span class="folio">pág. 09</span></div>
-    <h2 style="font-size:clamp(38px,5vw,64px);margin-bottom:24px">Perguntas da freguesia</h2>
+<section class="section" id="duvidas" data-page="Dúvidas" data-n="08">
+  <div class="wrap faq-grid">
+    <div style="display:grid;gap:16px;align-content:start">
+      <span class="eyebrow">Dúvidas · <span class="folio">pág. 08</span></span>
+      <h2 class="h2">Perguntas frequentes</h2>
+    </div>
     <div class="faq">
-      <details open><summary>Os produtos são originais?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Sim. Todos são O Boticário, Natura ou Avon, lacrados de fábrica, e saem com Nota Fiscal.</p></details>
-      <details><summary>Por que os preços não aparecem aqui?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Os valores mudam com as promoções das marcas. Pelo WhatsApp eu passo o preço do dia e mando foto do que está disponível.</p></details>
-      <details><summary>Posso reservar e buscar no domingo?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Pode. Me chame durante a semana, eu separo o seu kit e você retira na banca da Feira do Palmital.</p></details>
-      <details><summary>Vocês fazem entrega?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Dá para combinar. Me diga o bairro pelo WhatsApp e a gente acerta a melhor forma.</p></details>
-      <details><summary>Quais as formas de pagamento?<span class="ico"><i class="fa-solid fa-plus"></i></span></summary><p>Pix, cartão de crédito, cartão de débito e dinheiro.</p></details>
+      <details open><summary>Os produtos são originais?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sim. Todos são O Boticário, Natura ou Avon, lacrados de fábrica, e acompanham Nota Fiscal.</p></details>
+      <details><summary>Por que os preços não aparecem no site?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Os valores acompanham as promoções das marcas e mudam com frequência. Pelo WhatsApp a Elisa informa o preço do dia e envia fotos do que está disponível.</p></details>
+      <details><summary>Posso reservar e retirar no domingo?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Pode. Envie uma mensagem durante a semana, a Elisa separa o seu kit e você retira na banca da Feira do Palmital.</p></details>
+      <details><summary>Vocês fazem entrega?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>A entrega é combinada pelo WhatsApp, de acordo com o bairro.</p></details>
+      <details><summary>Quais as formas de pagamento?<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><p>Pix, cartão de crédito, cartão de débito e dinheiro.</p></details>
     </div>
   </div>
 </section>
 </main>
 
-<!-- CONTRACAPA -->
-<footer class="contracapa">
+<footer class="foot">
   <div class="wrap">
-    <span class="kicker" style="color:var(--kraft)">Contracapa</span>
-    <div class="grande">Até <em>domingo!</em></div>
-    <div class="contra-row">
+    <div class="foot-grid">
       <div>
-        <p style="color:rgba(255,255,255,.7);margin-bottom:6px">WhatsApp da Elisa</p>
-        <span class="numero" id="numero">(31) 98727-6596</span><button class="copy-btn" id="copyBtn"><i class="fa-regular fa-copy"></i> Copiar</button>
+        <h2>Encontre o presente certo <em>com a Elisa.</em></h2>
+        <a class="btn btn-wa" style="margin-top:28px" data-wa="Olá Elisa! Vim pelo site e gostaria de fazer um pedido." href="#">Falar no WhatsApp</a>
       </div>
-      <a class="btn btn-wa" data-wa="Olá Elisa! Terminei de ler a revista e gostaria de fazer um pedido." href="#"><i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp</a>
+      <div>
+        <span class="eyebrow">Contato</span>
+        <span class="num" id="numero">(31) 98727-6596</span>
+        <button class="copy" id="copyBtn">Copiar número</button>
+        <p style="margin-top:18px">Feira do Palmital<br>Domingos, pela manhã</p>
+      </div>
+      <div>
+        <span class="eyebrow">Navegue</span>
+        <ul>
+          <li><a href="#colecao">Coleção</a></li>
+          <li><a href="#teste">Presente ideal</a></li>
+          <li><a href="#monte">Monte o seu kit</a></li>
+          <li><a href="#duvidas">Perguntas frequentes</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="creditos"><span>Elisa Cosméticos &amp; Presentes · O Boticário · Natura · Avon</span><span>Feira do Palmital · domingos de manhã</span></div>
+    <div class="legal"><span>Elisa Cosméticos &amp; Presentes · Revendedora O Boticário, Natura e Avon</span><span>Produtos originais com Nota Fiscal</span></div>
   </div>
 </footer>
 
-<a class="fab" data-wa="Olá Elisa! Vi a revista e gostaria de saber mais sobre os produtos e valores." href="#" aria-label="Chamar a Elisa no WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<a class="fab" data-wa="Olá Elisa! Vim pelo site e gostaria de saber mais sobre os produtos e valores." href="#" aria-label="Falar com a Elisa no WhatsApp"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg><span>WhatsApp</span></a>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -546,224 +528,193 @@ const waUrl = m => "https://api.whatsapp.com/send?phone=" + WA + "&text=" + enco
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ARROW = '<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const CHECK = '<svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>';
+function wireWa(){ $$("[data-wa]").forEach(a => { a.href = waUrl(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; }); }
 
-function wireWa(root){
-  (root||document).querySelectorAll("[data-wa]").forEach(a => { a.href = waUrl(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
-}
-
-/* edição pelo mês atual */
 const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 const hoje = new Date();
-$("#edicao").textContent = (hoje.getMonth() >= 10 ? "Edição de Natal · " : "Edição de ") + meses[hoje.getMonth()] + " " + hoje.getFullYear();
+$("#edicao").textContent = meses[hoje.getMonth()] + " " + hoje.getFullYear();
 
-/* faixa */
-const selos = ["Pronta entrega","Nota Fiscal","Pix e cartão","O Boticário","Natura","Avon","Kits com laço","Feira do Palmital aos domingos"];
-const t = selos.map(s => '<span><i class="fa-solid fa-circle" style="font-size:6px"></i>' + s + '</span>').join("");
-$("#ticker").innerHTML = t + t;
-
-/* ---------- produtos ---------- */
+/* coleção */
 const produtos = [
-  {id:"avon", nome:"Kit Avon Care com laço azul", marca:"Avon", cat:["avon","kits"], img:"img/kit-avon-care.jpg", badge:"Mais pedido",
-   desc:"Caixa com visor, loção desodorante corporal Avon Care Leite de Amêndoas 200 ml e dois sabonetes com etiqueta \"com carinho\".",
-   itens:["Loção Avon Care 200 ml","2 sabonetes embalados","Caixa com visor, celofane e laço azul"]},
-  {id:"ekos", nome:"Natura Ekos Maracujá e kit Avon Care", marca:"Natura · Avon", cat:["natura","avon","kits"], img:"img/kit-ekos-maracuja.jpg", badge:"Combo",
-   desc:"A caixinha amarela de sabonetes Natura Ekos Maracujá junto do kit Avon Care com laço azul. Dá para levar os dois ou só um.",
-   itens:["Caixa Natura Ekos Maracujá","Kit Avon Care com loção e sabonetes","Laço azul e etiqueta"]},
-  {id:"floral", nome:"Presente especial com laço vermelho", marca:"Natura · O Boticário", cat:["natura","boticario","kits"], img:"img/presente-laco-vermelho.jpg", badge:"Presente pronto",
-   desc:"Caixa em papel floral com flores secas, laço vermelho e a etiqueta \"Presente especial pra você\". O conteúdo muda conforme o estoque.",
-   itens:["Produtos lacrados de fábrica","Flores secas decorativas","Etiqueta \"Presente especial pra você\""]},
-  {id:"nativa", nome:"Cesta luxo Nativa SPA", marca:"O Boticário", cat:["boticario","kits"], img:"img/cesta-nativa-spa.jpg", badge:"Cesta luxo",
-   desc:"Cesta com alça, hidratante O Boticário Nativa SPA, esponja de banho felpuda, flores secas e etiqueta \"Você é especial\".",
-   itens:["Hidratante Nativa SPA","Esponja de banho","Cesta com alça, celofane e laço vermelho"]}
+  {id:"avon", nome:"Kit Avon Care", marca:"Avon", cat:["avon"], img:"img/kit-avon-care.jpg", tag:"Mais pedido",
+   desc:"Caixa com visor com a loção desodorante corporal Avon Care Leite de Amêndoas 200 ml e dois sabonetes embalados.",
+   itens:["Loção Avon Care 200 ml","2 sabonetes embalados","Caixa com visor, celofane e laço"]},
+  {id:"ekos", nome:"Ekos Maracujá e Avon Care", marca:"Natura · Avon", cat:["natura","avon"], img:"img/kit-ekos-maracuja.jpg", tag:"Combinação",
+   desc:"A caixa de sabonetes Natura Ekos Maracujá junto do kit Avon Care. Leve os dois juntos ou escolha um deles.",
+   itens:["Caixa Natura Ekos Maracujá","Kit Avon Care com loção e sabonetes","Laço e cartão"]},
+  {id:"floral", nome:"Presente Especial", marca:"Natura · O Boticário", cat:["natura","boticario"], img:"img/presente-laco-vermelho.jpg", tag:"Embrulho floral",
+   desc:"Caixa em papel floral com flores secas, laço e cartão. O conteúdo varia conforme o estoque da semana.",
+   itens:["Produtos lacrados de fábrica","Flores secas decorativas","Cartão “Presente especial pra você”"]},
+  {id:"nativa", nome:"Cesta Nativa SPA", marca:"O Boticário", cat:["boticario"], img:"img/cesta-nativa-spa.jpg", tag:"Cesta",
+   desc:"Cesta com alça, hidratante O Boticário Nativa SPA, esponja de banho e flores secas.",
+   itens:["Hidratante Nativa SPA","Esponja de banho","Cesta com alça, celofane e laço"]}
 ];
-$("#vitrineGrid").innerHTML = produtos.map(p => `
-  <button class="produto reveal" data-id="${p.id}" data-cat="${p.cat.join(" ")}">
-    <div class="ph"><img src="${p.img}" alt="${esc(p.nome)}" loading="lazy"><span class="badge">${p.badge}</span></div>
-    <span class="marca">${p.marca}</span>
+$("#grid").innerHTML = produtos.map(p => `
+  <button class="prod reveal" data-id="${p.id}" data-cat="${p.cat.join(" ")}">
+    <div class="ph"><img src="${p.img}" alt="${esc(p.nome)}" loading="lazy"><span class="tag">${p.tag}</span></div>
+    <span class="brand">${p.marca}</span>
     <h3>${p.nome}</h3>
-    <span class="ver">Ver detalhes <i class="fa-solid fa-arrow-right"></i></span>
+    <span class="more">Ver detalhes</span>
   </button>`).join("");
 
-$("#filtros").addEventListener("click", e => {
-  const b = e.target.closest(".chip"); if(!b) return;
-  $$("#filtros .chip").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+$("#tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  $$("#tabs .tab").forEach(t => t.setAttribute("aria-pressed", t === b ? "true" : "false"));
   const f = b.dataset.f;
-  $$(".produto").forEach(el => { el.hidden = f !== "todos" && !el.dataset.cat.split(" ").includes(f); });
+  $$(".prod").forEach(el => { el.hidden = f !== "todos" && !el.dataset.cat.split(" ").includes(f); });
 });
 
 const modal = $("#modal");
-function abrir(id){
-  const p = produtos.find(x => x.id === id);
+$("#grid").addEventListener("click", e => {
+  const b = e.target.closest(".prod"); if (!b) return;
+  const p = produtos.find(x => x.id === b.dataset.id);
   $("#mImg").src = p.img; $("#mImg").alt = p.nome;
   $("#mBrand").textContent = p.marca; $("#mTitle").textContent = p.nome; $("#mDesc").textContent = p.desc;
-  $("#mChecks").innerHTML = p.itens.concat(["Pronta entrega com Nota Fiscal"]).map(i => '<li><span class="ico"><i class="fa-solid fa-check"></i></span>' + esc(i) + '</li>').join("");
-  $("#mWa").href = waUrl("Olá Elisa! Vi na revista: *" + p.nome + "* (" + p.marca + "). Qual o valor e ainda tem a pronta entrega?");
-  $("#mWa").target = "_blank";
-  if (modal.showModal) modal.showModal(); else modal.setAttribute("open","");
-}
-$("#vitrineGrid").addEventListener("click", e => { const b = e.target.closest(".produto"); if(b) abrir(b.dataset.id); });
+  $("#mChecks").innerHTML = p.itens.concat(["Pronta entrega com Nota Fiscal"]).map(i => "<li>" + CHECK + esc(i) + "</li>").join("");
+  const a = $("#mWa"); a.href = waUrl("Olá Elisa! Vi no site: *" + p.nome + "* (" + p.marca + "). Qual o valor e ainda tem a pronta entrega?"); a.target = "_blank"; a.rel = "noopener";
+  if (modal.showModal) modal.showModal(); else modal.setAttribute("open", "");
+});
 $("#mClose").addEventListener("click", () => modal.close());
-modal.addEventListener("click", e => { if(e.target === modal) modal.close(); });
+modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
 
-/* ---------- hotspots ---------- */
+/* destaque */
 const hots = [
-  {x:29,y:56,t:"Loção Avon Care 200 ml",d:"Leite de Amêndoas, 6 em 1, com hidratação profunda por até 48 horas segundo o rótulo."},
-  {x:57,y:46,t:"Sabonetes embalados um a um",d:"Dois sabonetes em papel azul, cada um com o adesivo \"Com carinho\"."},
-  {x:50,y:24,t:"Laço azul de puxar",d:"Laço de fita metalizada que fecha o celofane. Também tenho vermelho, rosa e dourado."},
-  {x:34,y:17,t:"Cartão em forma de coração",d:"Espaço para você escrever o nome de quem vai receber."},
-  {x:76,y:82,t:"Caixa com visor",d:"Caixa branca com janela, para o presente aparecer sem precisar abrir."}
+  {x:29,y:56,t:"Loção Avon Care 200 ml",d:"Leite de Amêndoas, 6 em 1, com hidratação de até 48 horas segundo o fabricante."},
+  {x:57,y:46,t:"Dois sabonetes embalados",d:"Cada sabonete vem em papel com selo “Com carinho”."},
+  {x:50,y:25,t:"Laço de fita",d:"Disponível em azul, vermelho, rosa ou dourado."},
+  {x:35,y:19,t:"Cartão para dedicatória",d:"Espaço para o nome de quem vai receber."},
+  {x:76,y:82,t:"Caixa com visor",d:"Caixa branca com janela que mostra o presente sem abrir."}
 ];
-const fig = $("#hotFigure");
+const fig = $("#hotFig");
 hots.forEach((h,i) => {
   const b = document.createElement("button");
-  b.className = "hot"; b.style.left = h.x + "%"; b.style.top = h.y + "%";
-  b.textContent = i+1; b.setAttribute("aria-label", "Detalhe " + (i+1) + ": " + h.t); b.setAttribute("aria-pressed","false");
-  b.addEventListener("click", () => ativarHot(i));
-  fig.appendChild(b);
+  b.className = "hot"; b.style.left = h.x + "%"; b.style.top = h.y + "%"; b.textContent = i + 1;
+  b.setAttribute("aria-label", "Detalhe " + (i+1) + ": " + h.t); b.setAttribute("aria-pressed", "false");
+  b.addEventListener("click", () => ativar(i)); fig.appendChild(b);
 });
-$("#hotList").innerHTML = hots.map((h,i) => `<li><button data-i="${i}"><span>${i+1}</span><div><strong>${h.t}</strong><small>${h.d}</small></div></button></li>`).join("");
-$("#hotList").addEventListener("click", e => { const b = e.target.closest("button"); if(b) ativarHot(+b.dataset.i); });
-function ativarHot(i){
+$("#hotList").innerHTML = hots.map((h,i) => `<li><button data-i="${i}"><span class="n">0${i+1}</span><div><strong>${h.t}</strong><small>${h.d}</small></div></button></li>`).join("");
+$("#hotList").addEventListener("click", e => { const b = e.target.closest("button"); if (b) ativar(+b.dataset.i); });
+function ativar(i){
   $$("#hotList button").forEach((b,j) => b.classList.toggle("on", i === j));
   $$(".hot").forEach((b,j) => b.setAttribute("aria-pressed", i === j ? "true" : "false"));
 }
-ativarHot(0);
+ativar(0);
 
-/* ---------- teste ---------- */
+/* presente ideal */
 const perguntas = [
   {q:"Para quem é o presente?", o:[
-    {t:"Mãe ou avó", i:"fa-heart", s:{nativa:2,floral:1}},
-    {t:"Amiga ou colega", i:"fa-user-group", s:{avon:2,ekos:1}},
-    {t:"Namorada ou esposa", i:"fa-face-kiss-wink-heart", s:{nativa:2,floral:2}},
-    {t:"Amigo secreto", i:"fa-gift", s:{ekos:2,avon:2}}]},
-  {q:"Qual cheirinho tem a cara dela?", o:[
-    {t:"Doce e marcante", i:"fa-candy-cane", s:{nativa:2}},
-    {t:"Suave, de pele limpa", i:"fa-feather", s:{avon:2}},
-    {t:"Frutado e fresco", i:"fa-lemon", s:{ekos:3}},
-    {t:"Surpresa, ela gosta de tudo", i:"fa-wand-magic-sparkles", s:{floral:3}}]},
-  {q:"Como você quer entregar?", o:[
-    {t:"Cesta caprichada", i:"fa-basket-shopping", s:{nativa:3}},
-    {t:"Caixinha com visor", i:"fa-box-open", s:{avon:2,ekos:1}},
-    {t:"Embrulho surpresa", i:"fa-scroll", s:{floral:3}},
-    {t:"Algo simples e útil", i:"fa-pump-soap", s:{ekos:2,avon:1}}]}
+    {t:"Mãe ou avó", s:{nativa:2,floral:1}}, {t:"Amiga ou colega de trabalho", s:{avon:2,ekos:1}},
+    {t:"Namorada ou esposa", s:{nativa:2,floral:2}}, {t:"Amigo secreto", s:{ekos:2,avon:2}}]},
+  {q:"Qual fragrância combina com ela?", o:[
+    {t:"Doce e marcante", s:{nativa:2}}, {t:"Suave, de pele limpa", s:{avon:2}},
+    {t:"Frutada e fresca", s:{ekos:3}}, {t:"Prefiro uma surpresa", s:{floral:3}}]},
+  {q:"Como você prefere entregar?", o:[
+    {t:"Cesta com alça", s:{nativa:3}}, {t:"Caixa com visor", s:{avon:2,ekos:1}},
+    {t:"Embrulho fechado", s:{floral:3}}, {t:"Algo simples e útil", s:{ekos:2,avon:1}}]}
 ];
 let passo = 0, pontos = {}, escolhas = [];
-function renderQuiz(){
-  const quiz = $("#quiz");
+function quiz(){
+  const el = $("#quiz");
   if (passo < perguntas.length){
     const p = perguntas[passo];
-    quiz.innerHTML = `<div class="q-bar"><div style="width:${(passo/perguntas.length)*100}%"></div></div>
-      <div class="q-step">Pergunta ${passo+1} de ${perguntas.length}</div>
+    el.innerHTML = `<div class="q-top"><span>Pergunta ${passo+1} de ${perguntas.length}</span><span>Presente ideal</span></div>
+      <div class="q-bar"><div style="width:${(passo/perguntas.length)*100}%"></div></div>
       <div class="q-title">${p.q}</div>
-      <div class="q-opts">${p.o.map((o,i) => `<button data-i="${i}"><span class="ico"><i class="fa-solid ${o.i}"></i></span>${o.t}</button>`).join("")}</div>`;
-    quiz.querySelectorAll(".q-opts button").forEach(b => b.addEventListener("click", () => {
+      <div class="q-opts">${p.o.map((o,i) => `<button data-i="${i}">${o.t}${ARROW}</button>`).join("")}</div>`;
+    el.querySelectorAll(".q-opts button").forEach(b => b.addEventListener("click", () => {
       const o = p.o[+b.dataset.i]; escolhas.push(o.t);
       for (const k in o.s) pontos[k] = (pontos[k]||0) + o.s[k];
-      passo++; renderQuiz();
+      passo++; quiz();
     }));
   } else {
     const best = produtos.slice().sort((a,b) => (pontos[b.id]||0) - (pontos[a.id]||0))[0];
-    const msg = "Olá Elisa! Fiz o teste da revista (" + escolhas.join(" / ") + ") e deu: *" + best.nome + "*. Qual o valor e ainda tem?";
-    quiz.innerHTML = `<div class="q-bar"><div style="width:100%"></div></div>
-      <div class="q-result"><img src="${best.img}" alt="${esc(best.nome)}">
-      <div><div class="q-step">O presente ideal é</div><h3>${best.nome}</h3><p style="color:var(--muted);font-size:15px">${best.desc}</p>
-      <div class="q-actions"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msg)}"><i class="fa-brands fa-whatsapp"></i> Reservar este</a>
-      <button class="btn btn-ghost" id="refazer"><i class="fa-solid fa-rotate-left"></i> Refazer</button></div></div></div>`;
-    $("#refazer").addEventListener("click", () => { passo = 0; pontos = {}; escolhas = []; renderQuiz(); });
+    const msg = "Olá Elisa! Fiz o teste do presente ideal no site (" + escolhas.join(" / ") + ") e a sugestão foi: *" + best.nome + "*. Qual o valor e ainda tem?";
+    el.innerHTML = `<div class="q-top"><span>Resultado</span><span>Presente ideal</span></div>
+      <div class="q-bar"><div style="width:100%"></div></div>
+      <div class="q-res"><img src="${best.img}" alt="${esc(best.nome)}">
+      <div><span class="eyebrow">${best.marca}</span><h3>${best.nome}</h3><p>${best.desc}</p>
+      <div class="q-actions"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(msg)}">Reservar</a>
+      <button class="btn btn-line" id="refazer">Refazer</button></div></div></div>`;
+    $("#refazer").addEventListener("click", () => { passo = 0; pontos = {}; escolhas = []; quiz(); });
   }
 }
-renderQuiz();
+quiz();
 
-/* ---------- monte seu kit ---------- */
+/* monte o seu */
 const kit = {
-  base:{tipo:"radio", el:"#optBase", ops:["Caixa com visor","Cesta com alça","Embrulho floral"], def:0},
-  itens:{tipo:"checkbox", el:"#optItens", ops:["Hidratante corporal","Sabonetes","Colônia ou perfume","Body splash","Desodorante roll-on","Esponja de banho"], def:[0,1]},
-  marca:{tipo:"radio", el:"#optMarca", ops:["O Boticário","Natura","Avon","Tanto faz"], def:3},
-  laco:{tipo:"radio", el:"#optLaco", ops:["Azul","Vermelho","Rosa","Dourado"], def:0, cores:["#1F4FB5","#C81E2B","#E0457B","#D4A62A"]},
-  tag:{tipo:"radio", el:"#optTag", ops:["Com carinho","Presente especial pra você","Você é especial","Feliz Natal"], def:0},
-  entrega:{tipo:"radio", el:"#optEntrega", ops:["Retirar domingo na feira","Combinar entrega"], def:0}
+  base:{t:"radio", ops:["Caixa com visor","Cesta com alça","Embrulho floral"], def:0},
+  itens:{t:"checkbox", ops:["Hidratante corporal","Sabonetes","Colônia ou perfume","Body splash","Desodorante roll-on","Esponja de banho"], def:[0,1]},
+  marca:{t:"radio", ops:["O Boticário","Natura","Avon","Sem preferência"], def:3},
+  laco:{t:"radio", ops:["Azul","Vermelho","Rosa","Dourado"], def:1, cores:["#1F4FB5","#B3202E","#D9567F","#C7A055"]},
+  tag:{t:"radio", ops:["Com carinho","Presente especial pra você","Você é especial","Feliz Natal"], def:0},
+  entrega:{t:"radio", ops:["Retirar na feira, domingo","Combinar entrega"], def:0}
 };
 for (const k in kit){
   const g = kit[k];
-  $(g.el).innerHTML = g.ops.map((o,i) => {
+  $("#o-" + k).innerHTML = g.ops.map((o,i) => {
     const id = "k-" + k + "-" + i;
-    const chk = Array.isArray(g.def) ? g.def.includes(i) : g.def === i;
-    const sw = g.cores ? `<span class="swatch" style="background:${g.cores[i]}"></span>` : "";
-    return `<span class="opt"><input type="${g.tipo}" name="${k}" id="${id}" value="${esc(o)}" ${chk?"checked":""}><label for="${id}">${sw}${o}</label></span>`;
+    const on = Array.isArray(g.def) ? g.def.includes(i) : g.def === i;
+    const sw = g.cores ? `<span class="sw" style="background:${g.cores[i]}"></span>` : "";
+    return `<span class="opt"><input type="${g.t}" name="${k}" id="${id}" value="${esc(o)}"${on ? " checked" : ""}><label for="${id}">${sw}${o}</label></span>`;
   }).join("");
 }
-function lerKit(){
+function atualizar(){
   const v = n => { const e = document.querySelector(`input[name="${n}"]:checked`); return e ? e.value : ""; };
   const itens = $$('input[name="itens"]:checked').map(e => e.value);
-  const custom = $("#tagCustom").value.trim();
-  return {base:v("base"), itens, marca:v("marca"), laco:v("laco"), tag: custom || v("tag"), entrega:v("entrega")};
-}
-function atualizarKit(){
-  const k = lerKit();
-  const cor = kit.laco.cores[kit.laco.ops.indexOf(k.laco)] || "#1F4FB5";
-  const caixa = $("#caixa");
-  caixa.className = "caixa" + (k.base === "Cesta com alça" ? " cesta" : k.base === "Embrulho floral" ? " floral" : "");
-  $("#laco").style.color = cor; $("#fita").style.background = cor;
-  $("#etiqueta").textContent = k.tag;
-  const alturas = [70,50,60,64,44,36];
-  $("#box").innerHTML = k.itens.map(i => `<span class="item" style="height:${alturas[kit.itens.ops.indexOf(i)]}%"></span>`).join("");
-  const linhas = [["Embalagem",k.base],["Produtos",k.itens.join(", ") || "A Elisa escolhe"],["Marca",k.marca],["Laço",k.laco],["Etiqueta","“" + k.tag + "”"],["Receber",k.entrega]];
+  const k = {base:v("base"), itens:itens.join(", ") || "A Elisa sugere", marca:v("marca"), laco:v("laco"), tag:$("#tagCustom").value.trim() || v("tag"), entrega:v("entrega")};
+  const linhas = [["Embalagem",k.base],["Produtos",k.itens],["Marca",k.marca],["Laço",k.laco],["Cartão","“" + k.tag + "”"],["Entrega",k.entrega]];
   $("#resumo").innerHTML = linhas.map(l => `<div><dt>${l[0]}</dt><dd>${esc(l[1])}</dd></div>`).join("");
-  const msg = "Olá Elisa! Montei um kit na revista:\n• *Embalagem:* " + k.base + "\n• *Produtos:* " + (k.itens.join(", ") || "você escolhe") + "\n• *Marca:* " + k.marca + "\n• *Laço:* " + k.laco + "\n• *Etiqueta:* " + k.tag + "\n• *Receber:* " + k.entrega + "\nQual fica o valor?";
-  $("#kitWa").href = waUrl(msg); $("#kitWa").target = "_blank"; $("#kitWa").rel = "noopener";
+  const msg = "Olá Elisa! Montei um kit pelo site:\n• *Embalagem:* " + k.base + "\n• *Produtos:* " + k.itens + "\n• *Marca:* " + k.marca + "\n• *Laço:* " + k.laco + "\n• *Cartão:* " + k.tag + "\n• *Entrega:* " + k.entrega + "\nPode me passar as opções e o valor?";
+  const a = $("#kitWa"); a.href = waUrl(msg); a.target = "_blank"; a.rel = "noopener";
 }
-$("#kitForm").addEventListener("input", atualizarKit);
+$("#kitForm").addEventListener("input", atualizar);
 $("#kitForm").addEventListener("submit", e => e.preventDefault());
-atualizarKit();
+atualizar();
 
-/* ---------- contagem para domingo ---------- */
+/* contagem */
 function contagem(){
-  const now = new Date();
-  const el = $("#contagem");
-  if (now.getDay() === 0 && now.getHours() < 13){ el.innerHTML = '<p class="hoje">Hoje tem feira! Estou na banca até o meio-dia.</p>'; return; }
+  const now = new Date(), el = $("#contagem");
+  if (now.getDay() === 0 && now.getHours() < 13){ el.innerHTML = '<p class="today">Hoje tem feira. A banca está montada até o meio-dia.</p>'; return; }
   const alvo = new Date(now); alvo.setHours(7,0,0,0);
   alvo.setDate(now.getDate() + ((7 - now.getDay()) % 7 || 7));
-  let s = Math.max(0, Math.floor((alvo - now)/1000));
+  let s = Math.max(0, Math.floor((alvo - now) / 1000));
   const d = Math.floor(s/86400); s %= 86400; const h = Math.floor(s/3600); s %= 3600; const m = Math.floor(s/60);
-  el.innerHTML = `<p style="font-weight:600">Faltam para a próxima feira:</p><div class="contagem"><div><b>${d}</b><small>dias</small></div><div><b>${String(h).padStart(2,"0")}</b><small>horas</small></div><div><b>${String(m).padStart(2,"0")}</b><small>min</small></div></div>`;
+  const p = n => String(n).padStart(2, "0");
+  el.innerHTML = `<div class="count" aria-label="Tempo até a próxima feira"><div><b>${p(d)}</b><small>dias</small></div><div><b>${p(h)}</b><small>horas</small></div><div><b>${p(m)}</b><small>min</small></div></div>`;
 }
 contagem(); setInterval(contagem, 30000);
 
-/* ---------- sumário, menu e progresso ---------- */
+/* menu, sumário, progresso */
 const paginas = $$("[data-page]");
-$("#sumario").innerHTML = paginas.map(p => {
-  const [n, nome] = p.dataset.page.includes("·") ? p.dataset.page.split(" · ") : ["", p.dataset.page];
-  return `<li><a href="#${p.id}"><span>${n.replace("pág. ","") || "—"}</span>${nome}</a></li>`;
-}).join("");
-const body = document.body, mb = $("#menuBtn");
-const abrirMenu = v => { body.classList.toggle("menu-open", v); mb.setAttribute("aria-expanded", v); };
-mb.addEventListener("click", () => abrirMenu(true));
-$("#closeMenu").addEventListener("click", () => abrirMenu(false));
-$("#drawerBg").addEventListener("click", () => abrirMenu(false));
-$("#drawer").addEventListener("click", e => { if (e.target.closest("a[href^='#']")) abrirMenu(false); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") abrirMenu(false); });
+$("#sumario").innerHTML = paginas.map(p => `<li><a href="#${p.id}">${p.dataset.page}<span>${p.dataset.n}</span></a></li>`).join("");
+const mb = $("#menuBtn");
+const menu = v => { document.body.classList.toggle("menu-open", v); mb.setAttribute("aria-expanded", v); };
+mb.addEventListener("click", () => menu(true));
+$("#closeMenu").addEventListener("click", () => menu(false));
+$("#drawerBg").addEventListener("click", () => menu(false));
+$("#drawer").addEventListener("click", e => { if (e.target.closest("a[href^='#']")) menu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") menu(false); });
 
-const ind = $("#pageIndicator"), prog = $("#progress");
+const prog = $("#progress"), navLinks = $$("#nav a");
 function onScroll(){
   const h = document.documentElement;
   prog.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100) + "%";
   let atual = paginas[0];
   for (const p of paginas) if (p.getBoundingClientRect().top < innerHeight * .4) atual = p;
-  ind.textContent = atual.dataset.page;
+  navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + atual.id));
 }
 addEventListener("scroll", onScroll, {passive:true}); onScroll();
 
-/* revelar ao rolar: o conteúdo já está visível, só desliza */
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
-  $$(".reveal").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+  $$(".reveal").forEach(el => { if (el.getBoundingClientRect().top > innerHeight){ el.classList.add("pre"); io.observe(el); } });
 }
 
-/* copiar número */
 $("#copyBtn").addEventListener("click", () => {
-  const ok = () => toast("Número copiado");
-  try { navigator.clipboard.writeText("31987276596").then(ok, selecionar); } catch(e){ selecionar(); }
-  function selecionar(){ const r = document.createRange(); r.selectNodeContents($("#numero")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Número selecionado, é só copiar"); }
+  const sel = () => { const r = document.createRange(); r.selectNodeContents($("#numero")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Número selecionado"); };
+  try { navigator.clipboard.writeText("31987276596").then(() => toast("Número copiado"), sel); } catch(e){ sel(); }
 });
 function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); }
 
