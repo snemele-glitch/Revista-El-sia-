@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Painel da Elisa</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F5F2F0; --ink:#1B1718; --muted:#6F6668; --line:#E4DEDC;
+  --wine:#6E1A2A; --wine-ink:#FFFFFF; --wa:#1C8C55; --ok:#1C8C55; --err:#B3202E;
+  --f-display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --gl:max(16px, env(safe-area-inset-left, 0px)); --gr:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#141112; --surface:#1D191A; --ink:#F3EEEC; --muted:#B3A8AA; --line:#332C2E; --wine:#B8475C; --wa:#24A866; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --bg:#141112; --surface:#1D191A; --ink:#F3EEEC; --muted:#B3A8AA; --line:#332C2E; --wine:#B8475C; --wa:#24A866; color-scheme:dark; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.1;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+svg.i{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1040px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.eyebrow{font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:2px;padding:13px 22px;font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s,border-color .2s;background:none}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--wine);color:var(--wine-ink)}
+.btn-line{border-color:var(--line)}
+.btn-line:hover{border-color:var(--ink)}
+.btn-danger{color:var(--err);border-color:var(--line)}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.btn-sm{padding:9px 14px;font-size:11.5px}
+
+/* login */
+.login{min-height:100vh;display:grid;place-items:center;padding:40px var(--gr) 40px var(--gl);background:var(--surface)}
+.login-card{width:min(420px,100%);background:var(--bg);padding:clamp(28px,6vw,48px);display:grid;gap:22px;border:1px solid var(--line)}
+.logo{display:grid;line-height:1;text-decoration:none}
+.logo strong{font-family:var(--f-display);font-weight:500;font-size:28px;letter-spacing:.32em}
+.logo span{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+label.f{display:grid;gap:6px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);min-width:0}
+input[type=text],input[type=email],input[type=password],input[type=number],input[type=tel],textarea,select{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 0;font:inherit;font-size:16px;letter-spacing:0;text-transform:none;border-radius:0}
+select{border:1px solid var(--line);padding:9px 10px}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
+textarea{resize:vertical}
+.msg{font-size:14px;min-height:1em}
+.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+.link{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;font-size:14px;justify-self:start}
+.demo{font-size:13px;background:var(--surface);border:1px dashed var(--line);padding:10px 14px;color:var(--muted)}
+
+/* app */
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:68px}
+.top-r{display:flex;gap:8px;align-items:center}
+.who{font-size:13px;color:var(--muted);max-width:28vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:560px){.who{display:none}}
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin:28px 0}
+.tab{background:none;border:0;padding:0 0 12px;font-size:14px;color:var(--muted);border-bottom:1px solid transparent;margin-bottom:-1px;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.tab .n{background:var(--wine);color:#fff;border-radius:9px;font-size:11px;padding:1px 7px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.head h1{font-size:clamp(32px,5vw,44px)}
+.head p{color:var(--muted);font-size:14.5px;margin-top:6px}
+main{padding-bottom:80px}
+
+.plist{display:grid;gap:0;border-top:1px solid var(--line)}
+.prow{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.prow img{width:64px;height:80px;object-fit:cover;background:var(--surface)}
+.prow h3{font-size:21px}
+.prow .meta{font-size:13.5px;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:2px}
+.prow .meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.prow.off{opacity:.55}
+.pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:2px 8px}
+.prow .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:end}
+@media (max-width:600px){.prow{grid-template-columns:56px 1fr}.prow img{width:56px;height:70px}.prow .acts{grid-column:1/-1;justify-content:start}}
+.vazio{padding:48px 0;text-align:center;color:var(--muted);display:grid;gap:16px;justify-items:center}
+
+/* formulário de produto */
+dialog{border:0;padding:0;width:min(760px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--bg);color:var(--ink);box-shadow:0 40px 80px -24px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(15,8,10,.55)}
+.pform{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:clamp(20px,4vw,36px)}
+.pform h2{grid-column:1/-1;font-size:32px}
+.foto{display:grid;gap:10px;align-content:start}
+.foto .ph{aspect-ratio:3/4;background:var(--surface);border:1px dashed var(--line);display:grid;place-items:center;overflow:hidden;position:relative;cursor:pointer}
+.foto .ph img{width:100%;height:100%;object-fit:cover}
+.foto .ph span{font-size:13px;color:var(--muted);text-align:center;padding:16px;display:grid;gap:8px;justify-items:center}
+.foto input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.fields{display:grid;gap:20px;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.marcas{display:flex;flex-wrap:wrap;gap:8px}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk label{display:inline-block;border:1px solid var(--line);padding:8px 14px;font-size:14px;cursor:pointer;letter-spacing:0;text-transform:none;color:var(--ink)}
+.chk input:checked + label{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chk input:focus-visible + label{outline:2px solid var(--wine)}
+.switch{display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer}
+.switch input{width:20px;height:20px;accent-color:var(--wine)}
+.pform .bar{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.pform .bar div{display:flex;gap:10px;flex-wrap:wrap}
+.hint{font-size:12.5px;color:var(--muted);letter-spacing:0;text-transform:none}
+@media (max-width:680px){.pform{grid-template-columns:1fr}.foto{max-width:260px}.two{grid-template-columns:1fr}}
+
+/* pedidos */
+.olist{display:grid;gap:14px}
+.order{border:1px solid var(--line);padding:18px 20px;display:grid;gap:12px}
+.order.novo{border-left:3px solid var(--wine)}
+.o-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.o-top h3{font-size:24px}
+.o-top .when{font-size:13px;color:var(--muted)}
+.o-items{font-size:14.5px;border-top:1px solid var(--line)}
+.o-items div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.o-items div:last-child{font-weight:600}
+.o-info{font-size:14px;color:var(--muted);display:grid;gap:2px}
+.o-info b{color:var(--ink);font-weight:500}
+.o-acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.o-acts select{width:auto}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filtros button{border:1px solid var(--line);background:none;padding:7px 14px;font-size:13px}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.cfg{display:grid;gap:22px;max-width:560px}
+.cfg h2{font-size:26px;margin-top:10px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:var(--bg);padding:12px 22px;font-size:14px;z-index:100;transition:transform .3s;max-width:calc(100vw - 32px)}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<!-- ENTRAR -->
+<section class="login" id="telaLogin" hidden>
+  <form class="login-card" id="formLogin">
+    <a class="logo" href="./"><strong>ELISA</strong><span>Painel da loja</span></a>
+    <div><h1 style="font-size:34px">Entrar</h1><p style="color:var(--muted);font-size:14.5px;margin-top:6px">Acesso exclusivo da Elisa para cadastrar produtos, preços e ver pedidos.</p></div>
+    <p class="demo" id="demoLogin" hidden>Modo demonstração: digite qualquer e-mail e senha. O que for cadastrado fica salvo só neste navegador até a loja ser ligada ao banco de dados.</p>
+    <label class="f">E-mail<input type="email" name="email" autocomplete="username" required></label>
+    <label class="f">Senha<input type="password" name="senha" autocomplete="current-password" required></label>
+    <p class="msg" id="loginMsg" role="alert"></p>
+    <button class="btn btn-primary" type="submit" id="btnEntrar">Entrar</button>
+    <button class="link" type="button" id="esqueci">Esqueci minha senha</button>
+  </form>
+</section>
+
+<!-- NOVA SENHA (link do e-mail de recuperação) -->
+<section class="login" id="telaSenha" hidden>
+  <form class="login-card" id="formSenha">
+    <a class="logo" href="./"><strong>ELISA</strong><span>Painel da loja</span></a>
+    <h1 style="font-size:32px">Criar nova senha</h1>
+    <label class="f">Nova senha<input type="password" name="senha" autocomplete="new-password" minlength="6" required></label>
+    <p class="msg" id="senhaMsg" role="alert"></p>
+    <button class="btn btn-primary" type="submit">Salvar senha</button>
+  </form>
+</section>
+
+<!-- PAINEL -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="./" target="_blank" rel="noopener" title="Abrir a loja"><strong>ELISA</strong><span>Painel da loja</span></a>
+      <div class="top-r">
+        <span class="who" id="who"></span>
+        <a class="btn btn-line btn-sm" href="./" target="_blank" rel="noopener">Ver loja</a>
+        <button class="btn btn-line btn-sm" id="sair">Sair</button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="demo" id="demoApp" hidden style="margin-top:20px">Modo demonstração: os dados ficam só neste navegador. Para os clientes verem, a loja precisa ser ligada ao banco de dados (veja COMO-CONFIGURAR.md).</p>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-t="produtos">Produtos</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="pedidos">Pedidos <span class="n" id="nNovos" hidden></span></button>
+      <button class="tab" role="tab" aria-selected="false" data-t="ajustes">Ajustes</button>
+    </div>
+
+    <section data-p="produtos">
+      <div class="head">
+        <div><h1>Produtos</h1><p>Toque em um produto para editar a foto, o preço ou a descrição.</p></div>
+        <button class="btn btn-primary" id="novo">+ Novo produto</button>
+      </div>
+      <div class="plist" id="plist"><p class="vazio">Carregando…</p></div>
+    </section>
+
+    <section data-p="pedidos" hidden>
+      <div class="head">
+        <div><h1>Pedidos</h1><p>Pedidos feitos pelo site. Mude a situação conforme for atendendo.</p></div>
+        <button class="btn btn-line btn-sm" id="recarregar">Atualizar</button>
+      </div>
+      <div class="filtros" id="filtros"></div>
+      <div class="olist" id="olist"></div>
+    </section>
+
+    <section data-p="ajustes" hidden>
+      <div class="head"><div><h1>Ajustes da loja</h1><p>WhatsApp que recebe os pedidos e dados do Pix.</p></div></div>
+      <form class="cfg" id="formCfg">
+        <label class="f">WhatsApp da loja (com DDD)<input type="tel" name="whatsapp" placeholder="31 98727-6596"></label>
+        <h2>Pix</h2>
+        <p class="hint" style="margin-top:-12px">Com a chave preenchida, o cliente que escolhe Pix recebe o código “copia e cola” e o QR Code já com o valor do pedido.</p>
+        <label class="f">Tipo de chave
+          <select name="pix_tipo">
+            <option value="telefone">Celular</option><option value="cpf">CPF</option><option value="cnpj">CNPJ</option>
+            <option value="email">E-mail</option><option value="aleatoria">Chave aleatória</option>
+          </select>
+        </label>
+        <label class="f">Chave Pix<input type="text" name="pix_chave" autocomplete="off"></label>
+        <div class="two">
+          <label class="f">Nome de quem recebe<input type="text" name="pix_nome" maxlength="25" placeholder="Elisa ..."></label>
+          <label class="f">Cidade<input type="text" name="pix_cidade" maxlength="15" placeholder="Belo Horizonte"></label>
+        </div>
+        <p class="msg" id="cfgMsg" role="status"></p>
+        <div><button class="btn btn-primary" type="submit">Salvar ajustes</button></div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <form class="pform" id="formProd" method="dialog" novalidate>
+    <h2 id="dlgTitle">Novo produto</h2>
+    <div class="foto">
+      <div class="ph" id="fotoPh">
+        <span id="fotoVazia"><svg class="i" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>Toque para tirar ou escolher uma foto</span>
+        <img id="fotoImg" alt="" hidden>
+        <input type="file" accept="image/*" id="fotoInput" aria-label="Foto do produto">
+      </div>
+      <span class="hint">Dica: foto em pé, com fundo liso e boa luz.</span>
+    </div>
+    <div class="fields">
+      <label class="f">Nome do produto<input type="text" name="nome" required maxlength="80" placeholder="Ex.: Kit Nativa SPA Ameixa"></label>
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:10px">Marca</span>
+        <div class="marcas" id="marcas"></div>
+      </div>
+      <div class="two">
+        <label class="f">Preço (R$)<input type="text" name="preco" inputmode="decimal" placeholder="89,90"><span class="hint">Deixe vazio para mostrar “Consultar valor”.</span></label>
+        <label class="f">Preço antigo (opcional)<input type="text" name="preco_de" inputmode="decimal" placeholder="109,90"><span class="hint">Aparece riscado, para promoções.</span></label>
+      </div>
+      <label class="f">Selo (opcional)<input type="text" name="selo" maxlength="24" placeholder="Ex.: Novidade, Promoção, Últimas unidades"></label>
+      <label class="f">Descrição<textarea name="descricao" rows="3" maxlength="600"></textarea></label>
+      <label class="f">O que vem no kit (um item por linha)<textarea name="itens" rows="3" maxlength="600"></textarea></label>
+      <div class="two">
+        <label class="switch"><input type="checkbox" name="disponivel" checked> Disponível na loja</label>
+        <label class="f">Ordem na vitrine<input type="number" name="ordem" min="0" step="1" value="0"><span class="hint">Números menores aparecem primeiro.</span></label>
+      </div>
+      <p class="msg" id="prodMsg" role="alert"></p>
+    </div>
+    <div class="bar">
+      <button class="btn btn-danger" type="button" id="excluir">Excluir</button>
+      <div>
+        <button class="btn btn-line" type="button" id="cancelar">Cancelar</button>
+        <button class="btn btn-primary" type="submit" id="salvar">Salvar produto</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/loja.js"></script>
+<script>
+(function(){
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const demo = Loja.modo === "demo";
+function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2400); }
+const num = v => { v = String(v || "").trim().replace(/[^\d,.-]/g, ""); if (!v) return null; if (v.includes(",")) v = v.replace(/\./g, "").replace(",", "."); const n = Number(v); return isFinite(n) && n > 0 ? Math.round(n * 100) / 100 : null; };
+const br = n => n == null ? "" : Number(n).toFixed(2).replace(".", ",");
+
+/* ---------- entrar / sair ---------- */
+function mostrar(tela){
+  $("#telaLogin").hidden = tela !== "login";
+  $("#telaSenha").hidden = tela !== "senha";
+  $("#app").hidden = tela !== "app";
+}
+$("#demoLogin").hidden = !demo; $("#demoApp").hidden = !demo;
+let recuperando = /type=recovery/.test(location.hash);
+
+$("#formLogin").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = new FormData(e.target), msg = $("#loginMsg"), b = $("#btnEntrar");
+  msg.className = "msg"; msg.textContent = ""; b.disabled = true; b.textContent = "Entrando…";
+  try { const s = await Loja.entrar(f.get("email").trim(), f.get("senha")); abrirPainel(s); }
+  catch(ex){ msg.className = "msg err"; msg.textContent = ex.message; }
+  b.disabled = false; b.textContent = "Entrar";
+});
+$("#esqueci").addEventListener("click", async () => {
+  const email = $("#formLogin [name=email]").value.trim(), msg = $("#loginMsg");
+  if (!email){ msg.className = "msg err"; msg.textContent = "Digite seu e-mail acima e toque de novo em “Esqueci minha senha”."; return; }
+  try { await Loja.esqueciSenha(email); msg.className = "msg ok"; msg.textContent = "Enviamos um link para " + email + ". Abra o e-mail para criar uma nova senha."; }
+  catch(ex){ msg.className = "msg err"; msg.textContent = ex.message; }
+});
+$("#formSenha").addEventListener("submit", async e => {
+  e.preventDefault();
+  const s = new FormData(e.target).get("senha"), msg = $("#senhaMsg");
+  if (String(s).length < 6){ msg.className = "msg err"; msg.textContent = "Use pelo menos 6 caracteres."; return; }
+  try { await Loja.trocarSenha(s); recuperando = false; history.replaceState(null, "", location.pathname); toast("Senha alterada"); abrirPainel(await Loja.sessao()); }
+  catch(ex){ msg.className = "msg err"; msg.textContent = ex.message; }
+});
+$("#sair").addEventListener("click", async () => { await Loja.sair(); mostrar("login"); });
+Loja.aoMudarSessao((ev, s) => { if (ev === "PASSWORD_RECOVERY"){ recuperando = true; mostrar("senha"); } });
+
+/* ---------- abas ---------- */
+$$(".tab").forEach(t => t.addEventListener("click", () => aba(t.dataset.t)));
+function aba(n){
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.t === n));
+  $$("[data-p]").forEach(s => s.hidden = s.dataset.p !== n);
+  if (n === "pedidos") carregarPedidos();
+  if (n === "ajustes") carregarAjustes();
+}
+
+async function abrirPainel(s){
+  if (!s){ mostrar("login"); return; }
+  $("#who").textContent = s.email;
+  mostrar("app");
+  carregarProdutos(); carregarPedidos(true);
+}
+
+/* ---------- produtos ---------- */
+let produtos = [];
+const nomesMarca = {}; Loja.MARCAS.forEach(m => nomesMarca[m.id] = m.nome);
+$("#marcas").innerHTML = Loja.MARCAS.map(m => `<span class="chk"><input type="checkbox" name="cat" value="${m.id}" id="m-${m.id}"><label for="m-${m.id}">${m.nome}</label></span>`).join("");
+
+async function carregarProdutos(){
+  try { produtos = await Loja.produtos({todos:true}); }
+  catch(ex){ $("#plist").innerHTML = `<p class="vazio">Erro ao carregar: ${esc(ex.message)}</p>`; return; }
+  if (!produtos.length){ $("#plist").innerHTML = `<div class="vazio"><p>Nenhum produto ainda.</p><button class="btn btn-primary" onclick="document.getElementById('novo').click()">Cadastrar o primeiro</button></div>`; return; }
+  $("#plist").innerHTML = produtos.map(p => `<div class="prow${p.disponivel ? "" : " off"}" data-id="${esc(p.id)}">
+    <img src="${esc(p.foto_url || "img/cesta-nativa-spa.jpg")}" alt="">
+    <div><h3>${esc(p.nome)}</h3><div class="meta">
+      <b>${p.preco ? Loja.moeda(p.preco) : "Consultar valor"}</b>
+      <span>${esc(p.marca || "")}</span>
+      ${p.disponivel ? "" : '<span class="pill">Oculto</span>'}${p.selo ? `<span class="pill">${esc(p.selo)}</span>` : ""}
+    </div></div>
+    <div class="acts">
+      <button class="btn btn-line btn-sm" data-a="vis">${p.disponivel ? "Ocultar" : "Mostrar"}</button>
+      <button class="btn btn-primary btn-sm" data-a="edit">Editar</button>
+    </div></div>`).join("");
+}
+$("#plist").addEventListener("click", async e => {
+  const row = e.target.closest(".prow"); if (!row) return;
+  const p = produtos.find(x => String(x.id) === row.dataset.id); if (!p) return;
+  const a = e.target.closest("[data-a]");
+  if (a && a.dataset.a === "vis"){
+    a.disabled = true;
+    try { await Loja.salvarProduto(Object.assign({}, p, {disponivel:!p.disponivel})); toast(p.disponivel ? "Produto oculto da loja" : "Produto visível na loja"); }
+    catch(ex){ toast("Erro: " + ex.message); }
+    carregarProdutos(); return;
+  }
+  editar(p);
+});
+
+const dlg = $("#dlg"), form = $("#formProd");
+let atual = null, novaFoto = null, fotoAtual = "";
+$("#novo").addEventListener("click", () => editar(null));
+$("#cancelar").addEventListener("click", () => dlg.close());
+function editar(p){
+  atual = p; novaFoto = null; fotoAtual = p ? (p.foto_url || "") : "";
+  form.reset(); $("#prodMsg").textContent = "";
+  $("#dlgTitle").textContent = p ? "Editar produto" : "Novo produto";
+  $("#excluir").hidden = !p;
+  const v = (n, x) => form.elements[n].value = x == null ? "" : x;
+  v("nome", p && p.nome); v("preco", p && br(p.preco)); v("preco_de", p && br(p.preco_de)); v("selo", p && p.selo);
+  v("descricao", p && p.descricao); v("itens", p && (p.itens || []).join("\n"));
+  v("ordem", p ? (p.ordem || 0) : (produtos.length ? Math.max.apply(null, produtos.map(x => x.ordem || 0)) + 1 : 1));
+  form.elements.disponivel.checked = p ? !!p.disponivel : true;
+  $$("#marcas input").forEach(i => i.checked = !!(p && (p.categorias || []).includes(i.value)));
+  mostrarFoto(fotoAtual);
+  dlg.showModal();
+}
+function mostrarFoto(src){
+  $("#fotoImg").hidden = !src; $("#fotoVazia").hidden = !!src;
+  if (src) $("#fotoImg").src = src;
+}
+$("#fotoInput").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  if (!/^image\//.test(f.type)){ toast("Escolha um arquivo de imagem"); return; }
+  novaFoto = f; mostrarFoto(URL.createObjectURL(f));
+});
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = $("#prodMsg"), b = $("#salvar"), el = form.elements;
+  msg.className = "msg err"; msg.textContent = "";
+  const nome = el.nome.value.trim();
+  if (nome.length < 2){ msg.textContent = "Dê um nome ao produto."; return; }
+  const preco = num(el.preco.value), precoDe = num(el.preco_de.value);
+  if (el.preco.value.trim() && preco == null){ msg.textContent = "Preço inválido. Use o formato 89,90."; return; }
+  if (!fotoAtual && !novaFoto){ msg.textContent = "Adicione uma foto do produto."; return; }
+  const cats = $$("#marcas input:checked").map(i => i.value);
+  b.disabled = true; b.textContent = novaFoto ? "Enviando foto…" : "Salvando…";
+  try {
+    let foto = fotoAtual;
+    if (novaFoto) foto = await Loja.enviarFoto(novaFoto);
+    b.textContent = "Salvando…";
+    const dados = Object.assign({}, atual || {}, {
+      nome, preco, preco_de: precoDe && preco && precoDe > preco ? precoDe : null,
+      selo: el.selo.value.trim() || null,
+      descricao: el.descricao.value.trim() || null,
+      itens: el.itens.value.split("\n").map(s => s.trim()).filter(Boolean),
+      categorias: cats, marca: cats.map(c => nomesMarca[c]).join(" · ") || null,
+      disponivel: el.disponivel.checked,
+      ordem: parseInt(el.ordem.value, 10) || 0,
+      foto_url: foto
+    });
+    await Loja.salvarProduto(dados);
+    dlg.close(); toast("Produto salvo"); carregarProdutos();
+  } catch(ex){ msg.textContent = "Não foi possível salvar: " + ex.message; }
+  b.disabled = false; b.textContent = "Salvar produto";
+});
+$("#excluir").addEventListener("click", async () => {
+  if (!atual || !confirm("Excluir “" + atual.nome + "”? Se for só por falta de estoque, use “Ocultar”.")) return;
+  try { await Loja.removerProduto(atual.id); dlg.close(); toast("Produto excluído"); carregarProdutos(); }
+  catch(ex){ $("#prodMsg").textContent = ex.message; }
+});
+
+/* ---------- pedidos ---------- */
+const SITUACOES = [["novo","Novo"],["confirmado","Confirmado"],["pago","Pago"],["entregue","Entregue"],["cancelado","Cancelado"]];
+let pedidos = [], filtroPed = "abertos";
+$("#filtros").innerHTML = [["abertos","Em aberto"],["todos","Todos"]].concat(SITUACOES).map(f => `<button data-f="${f[0]}" aria-pressed="${f[0] === filtroPed}">${f[1]}</button>`).join("");
+$("#filtros").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; filtroPed = b.dataset.f; $$("#filtros button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderPedidos(); });
+$("#recarregar").addEventListener("click", () => carregarPedidos());
+async function carregarPedidos(soContar){
+  try { pedidos = await Loja.pedidos(); }
+  catch(ex){ if (!soContar) $("#olist").innerHTML = `<p class="vazio">Erro ao carregar: ${esc(ex.message)}</p>`; return; }
+  const n = pedidos.filter(p => p.status === "novo").length;
+  $("#nNovos").hidden = !n; $("#nNovos").textContent = n;
+  renderPedidos();
+}
+function renderPedidos(){
+  const l = pedidos.filter(p => filtroPed === "todos" ? true : filtroPed === "abertos" ? ["novo","confirmado","pago"].includes(p.status) : p.status === filtroPed);
+  if (!l.length){ $("#olist").innerHTML = '<p class="vazio">Nenhum pedido aqui.</p>'; return; }
+  $("#olist").innerHTML = l.map(p => {
+    const quando = new Date(p.criado_em).toLocaleString("pt-BR", {day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit"});
+    const tel = String(p.cliente_telefone || "").replace(/\D/g, "");
+    const wa = Loja.waUrl(tel.length <= 11 ? "55" + tel : tel, "Olá " + String(p.cliente_nome).split(" ")[0] + "! Aqui é a Elisa, recebi seu pedido nº " + p.codigo + " pelo site.");
+    return `<article class="order ${p.status}" data-id="${esc(p.id)}">
+      <div class="o-top"><h3>${esc(p.cliente_nome)} <span style="font-size:16px;color:var(--muted)">· nº ${esc(p.codigo)}</span></h3><span class="when">${quando}</span></div>
+      <div class="o-items">${(p.itens || []).map(i => `<div><span>${i.qtd}x ${esc(i.nome)}</span><span>${Loja.moeda(i.preco * i.qtd)}</span></div>`).join("")}<div><span>Total</span><span>${Loja.moeda(p.total)}</span></div></div>
+      <div class="o-info">
+        <span>WhatsApp: <b>${esc(p.cliente_telefone)}</b></span>
+        <span>Receber: <b>${esc(p.entrega)}</b>${p.endereco ? " · " + esc(p.endereco) : ""}</span>
+        <span>Pagamento: <b>${esc(p.pagamento)}</b></span>
+        ${p.observacao ? `<span>Obs.: <b>${esc(p.observacao)}</b></span>` : ""}
+      </div>
+      <div class="o-acts">
+        <select aria-label="Situação do pedido">${SITUACOES.map(s => `<option value="${s[0]}"${s[0] === p.status ? " selected" : ""}>${s[1]}</option>`).join("")}</select>
+        <a class="btn btn-line btn-sm" target="_blank" rel="noopener" href="${wa}">Chamar no WhatsApp</a>
+      </div></article>`;
+  }).join("");
+}
+$("#olist").addEventListener("change", async e => {
+  const sel = e.target.closest("select"); if (!sel) return;
+  const id = sel.closest(".order").dataset.id;
+  try { await Loja.atualizarPedido(id, {status:sel.value}); const p = pedidos.find(x => String(x.id) === id); if (p) p.status = sel.value; toast("Situação atualizada"); carregarPedidos(); }
+  catch(ex){ toast("Erro: " + ex.message); }
+});
+
+/* ---------- ajustes ---------- */
+async function carregarAjustes(){
+  const a = await Loja.ajustes(), f = $("#formCfg").elements;
+  ["whatsapp","pix_chave","pix_nome","pix_cidade"].forEach(k => f[k].value = a[k] || "");
+  f.pix_tipo.value = a.pix_tipo || "telefone";
+}
+$("#formCfg").addEventListener("submit", async e => {
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(e.target)), msg = $("#cfgMsg");
+  Object.keys(d).forEach(k => d[k] = String(d[k]).trim() || null);
+  if (d.whatsapp && d.whatsapp.replace(/\D/g, "").length < 10){ msg.className = "msg err"; msg.textContent = "WhatsApp precisa ter DDD."; return; }
+  try { await Loja.salvarAjustes(d); msg.className = "msg ok"; msg.textContent = "Ajustes salvos."; }
+  catch(ex){ msg.className = "msg err"; msg.textContent = "Erro: " + ex.message; }
+});
+
+/* início */
+(async () => {
+  if (recuperando){ mostrar("senha"); return; }
+  try { abrirPainel(await Loja.sessao()); }
+  catch(ex){ mostrar("login"); $("#loginMsg").className = "msg err"; $("#loginMsg").textContent = ex.message; }
+})();
+})();
+</script>
+</body>
+</html>
